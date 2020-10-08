@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: CHANGEME_development
+  database: peo_scholarships_development
 
 test:
   <<: *default
-  database: CHANGEME_test
+  database: peo_scholarships_test
 
 production:
   <<: *default
