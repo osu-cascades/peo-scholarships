@@ -1,67 +1,38 @@
-# Rails 5 Application Boilerplate
+# Chapter FL, Oregon P.E.O. Scholarship Application System
 
-This is a starting point of a Rails 5 application that includes features common
-to most applications, such as user authentication. TODO what else.
+The scholarship application system enables students to complete a scholarship
+application, and for PEO chapter members to review the applications.
 
 ## Expectations
 
-Ruby versions, database, etc.
-
-TODO Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+This is a Rails application that relies on an Postgres database and S3.
 
 ## Development
 
-There are a few steps to get up and running in development.
+Clone the repo, `cd` into the directory, and install the dependencies with
+`bundle install`. Bootstrap the databases with `rails db:setup`. Run with
+`rails server`.
 
-### Set the application name
-
-After forking and/or cloning, change `CHANGEME` to the app name. It exists throughout the source, in:
-
-* config/application.rb
-* config/cable.yml
-* config/database.yml
-* config/environments/production.rb
-* package.json
-
-### Customize `.env`
+## Customize `.env`
 
 * `RECAPTCHA_SITE_KEY`
 * `RECAPTCHA_SECRET_KEY`
-
-### TODO
-
+* TODO
 
 ## Testing
 
-TODO
-
+Using minitest and the Rails test machinery for testing. Run the suite with
+`rails test`.
 
 ## Production Notes
 
 Configure env vars:
 
+* `RECAPTCHA_SITE_KEY`
+* `RECAPTCHA_SECRET_KEY`
 * `AWS_S3_KEY`
 * `AWS_S3_SECRET`
 * `AWS_REGION`
 * `AWS_S3_BUCKET`
 
-&copy; 2018 Yong Joseph Bakos. All rights reserved.
+&copy; 2020 Taylor Slye and Yong Joseph Bakos. All rights reserved.
