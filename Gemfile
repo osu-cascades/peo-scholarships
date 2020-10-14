@@ -17,6 +17,7 @@ gem 'puma', '~> 5.0.2'
 gem 'rails', '~> 5.2.4.4'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
+gem 'tzinfo-data'
 gem 'turbolinks', '~> 5.2.1'
 gem 'uglifier', '>= 4.2.0'
 
@@ -39,3 +40,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
