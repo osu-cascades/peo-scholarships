@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: peo_scholarships_development
+  url: <%= ENV['DATABASE_URL_DEV'] %>
 
 test:
   <<: *default
-  database: peo_scholarships_test
+  url: <%= ENV['DATABASE_URL_TEST'] %>
 
 production:
   <<: *default
