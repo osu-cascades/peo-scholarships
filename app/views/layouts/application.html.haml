@@ -14,8 +14,7 @@
         %span.navbar-toggler-icon
       #navbar.collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
-          %li.nav-item= link_to 'A', '#', class: 'nav-link'
-          %li.nav-item= link_to 'B', '#', class: 'nav-link'
+          %li.nav-item= link_to 'About', '#', class: 'nav-link'
           - if current_user&.admin?
             %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
           - if user_signed_in?
