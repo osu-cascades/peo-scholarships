@@ -1,5 +1,5 @@
 .container-auth.text-center
-  %h1.h3.font-weight-normal Sign up
+  %h1.h3.font-weight-normal Create an account
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-auth text-left'}) do |f|
     = devise_error_messages!
     .form-row.mb-4
