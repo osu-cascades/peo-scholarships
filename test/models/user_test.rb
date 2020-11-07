@@ -27,7 +27,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal new_user.role, 'guest'
   end
 
-  test 'pre-existing User without defined role has a default role of participant' do
+  test 'pre-existing User without defined role has a default role of guest' do
     assert_equal users(:unknown).role, 'guest'
   end
 
