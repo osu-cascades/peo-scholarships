@@ -5,10 +5,17 @@ admin:
   role: 'admin'
   active: true
 
+member:
+  first_name: Fake
+  last_name: Member
+  email: fake2@example.com
+  role: 'member'
+  active: true
+
 guest:
   first_name: Fake
   last_name: Host
-  email: fake2@example.com
+  email: fake3@example.com
   role: 'guest'
   active: true
 
