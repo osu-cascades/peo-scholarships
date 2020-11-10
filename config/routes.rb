@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   get "applications" => "applications#index"
   get "scholarships" => "scholarships#index"
 
+  namespace :admin do
+    resources :scholarships do
+      resources :questions
+    end
+  end
+
 end
