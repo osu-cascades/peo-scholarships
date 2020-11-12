@@ -1,9 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+first:
   name: MyString
   question: MyString
+  scholarship: first
+  applicant: guest
 
-two:
+second:
   name: MyString
   question: MyString
+  scholarship: second
+  applicant: guest

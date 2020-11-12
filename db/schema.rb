@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_010017) do
+ActiveRecord::Schema.define(version: 2020_11_12_062958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2020_11_12_010017) do
     t.string "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "scholarship_id", null: false
+    t.index ["scholarship_id", "user_id"], name: "index_applications_on_scholarship_id_and_user_id", unique: true
+    t.index ["scholarship_id"], name: "index_applications_on_scholarship_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -57,5 +62,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_010017) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applications", "scholarships"
+  add_foreign_key "applications", "users"
   add_foreign_key "questions", "scholarships"
 end

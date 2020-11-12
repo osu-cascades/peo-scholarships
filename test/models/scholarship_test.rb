@@ -6,6 +6,14 @@ class ScholarshipTest < ActiveSupport::TestCase
     Scholarship.new(name: 'Fake Scholarship')
   end
 
+  test 'has questions' do
+    assert_respond_to(Scholarship.new, :questions)
+  end
+
+  test 'has applications' do
+    assert_respond_to(Scholarship.new, :applications)
+  end
+
   test 'has a required name' do
     s = new_scholarship
     assert s.valid?
@@ -15,13 +23,6 @@ class ScholarshipTest < ActiveSupport::TestCase
 
   test 'has a string representation that is its name' do
     assert_equal scholarships(:first).to_s, scholarships(:first).name
-  end
-
-  test 'retains the original name during a name change' do
-    s = scholarships(:first)
-    original_name = s.name
-    s.name = 'CHANGED'
-    assert_equal original_name, s.name_was
   end
 
 end
