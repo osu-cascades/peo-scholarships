@@ -22,12 +22,24 @@ class Admin::QuestionsController < Admin::AdminController
     end
   end
 
-  def edit; end
-  def update; end
+  def edit
+    @scholarship = Scholarship.find(params[:scholarship_id])
+    @question = @scholarship.questions.find(params[:id])
+  end
+
+  def update
+    @scholarship = Scholarship.find(params[:scholarship_id])
+    @question = @scholarship.questions.find(params[:id])
+    if @question.update(question_params)
+      redirect_to [:admin, @scholarship, :questions], notice: 'Question updated.'
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @scholarship = Scholarship.find(params[:scholarship_id])
-    @question = Question.find(params[:id])
+    @question = @scholarship.questions.find(params[:id])
     @question.destroy
     redirect_to [:admin, @scholarship, :questions], notice: 'Question deleted.'
   end

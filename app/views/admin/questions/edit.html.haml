@@ -1,0 +1,16 @@
+%h1 Administration
+%h2= @scholarship
+%h3 Edit Question
+
+= form_for [:admin, @scholarship, @question] do |f|
+  - if @question.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
+      %ul
+        - @question.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :prompt
+    = f.text_field :prompt, class: 'form-control'
+  .actions
+    = f.submit({class: 'btn btn-success'})
