@@ -3,25 +3,25 @@ require 'test_helper'
 class ScholarshipTest < ActiveSupport::TestCase
 
   def new_scholarship
-    Scholarship.new(title: 'Fake Scholarship')
+    Scholarship.new(name: 'Fake Scholarship')
   end
 
-  test 'has a required title' do
+  test 'has a required name' do
     s = new_scholarship
     assert s.valid?
-    s.title = ''
+    s.name = ''
     refute s.valid?
   end
 
-  test 'has a string representation that is its title' do
-    assert_equal scholarships(:first).to_s, scholarships(:first).title
+  test 'has a string representation that is its name' do
+    assert_equal scholarships(:first).to_s, scholarships(:first).name
   end
 
-  test 'retains the original title during a title change' do
+  test 'retains the original name during a name change' do
     s = scholarships(:first)
-    original_title = s.title
-    s.title = 'CHANGED'
-    assert_equal original_title, u.title_was
+    original_name = s.name
+    s.name = 'CHANGED'
+    assert_equal original_name, u.name_was
   end
 
 end
