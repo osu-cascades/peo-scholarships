@@ -10,4 +10,20 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :scholarship)
   end
 
+  test 'only one application per scholarship per applicant' do
+    existing_application = applications(:first)
+    same_applicant_different_scholarship = Application.new(
+      applicant: existing_application.applicant,
+      scholarship: Scholarship.new(name: 'Fake'))
+    assert same_applicant_different_scholarship.valid?
+    same_scholarship_different_applicant = Application.new(
+      applicant: User.new,
+      scholarship: existing_application.scholarship)
+    assert same_scholarship_different_applicant.valid?
+    same_applicant_and_scholarship = Application.new(
+      applicant: existing_application.applicant,
+      scholarship: existing_application.scholarship)
+    refute same_applicant_and_scholarship.valid?
+  end
+
 end
