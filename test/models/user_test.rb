@@ -63,7 +63,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal users(:admin).last_name_first_name, 'Admin, Fake'
   end
 
-  test 'retains the original full name during a name change' do
+  test 'retains the original full name during a first or last name change' do
     u = users(:admin)
     original_full_name = "#{u.first_name} #{u.last_name}"
     u.first_name = "CHANGED"

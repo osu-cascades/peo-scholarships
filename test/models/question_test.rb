@@ -13,11 +13,4 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal questions(:first).to_s, questions(:first).prompt
   end
 
-  test 'retains the original prompt during a prompt change' do
-    q = questions(:first)
-    original_prompt = q.prompt
-    q.prompt = 'CHANGED'
-    assert_equal original_prompt, q.prompt_was
-  end
-
 end
