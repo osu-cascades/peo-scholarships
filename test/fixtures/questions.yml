@@ -1,0 +1,11 @@
+first:
+  prompt: Fake Question 1
+  scholarship: first
+
+second:
+  prompt: Fake Question 2
+  scholarship: first
+
+third:
+  prompt: Fake Question 1
+  scholarship: second
