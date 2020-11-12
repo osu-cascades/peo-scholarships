@@ -21,7 +21,7 @@ class ScholarshipTest < ActiveSupport::TestCase
     s = scholarships(:first)
     original_name = s.name
     s.name = 'CHANGED'
-    assert_equal original_name, u.name_was
+    assert_equal original_name, s.name_was
   end
 
 end
