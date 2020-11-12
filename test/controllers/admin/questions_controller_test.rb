@@ -15,9 +15,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
     # index
     get admin_scholarship_questions_path(scholarship_id: 'fake')
     assert_redirected_to new_user_session_path
-    # show
-    get admin_scholarship_question_path(scholarship_id: 'fake', id: 'fake')
-    assert_redirected_to new_user_session_path
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')
     assert_redirected_to new_user_session_path
@@ -42,9 +39,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
     # index
     get admin_scholarship_questions_path(scholarship_id: 'fake')
     assert_redirected_to root_url
-    # show
-    get admin_scholarship_question_path(scholarship_id: 'fake', id: 'fake')
-    assert_redirected_to root_url
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')
     assert_redirected_to root_url
@@ -68,9 +62,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:member)
     # index
     get admin_scholarship_questions_path(scholarship_id: 'fake')
-    assert_redirected_to root_url
-    # show
-    get admin_scholarship_question_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to root_url
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')

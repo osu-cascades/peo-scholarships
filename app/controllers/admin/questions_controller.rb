@@ -5,8 +5,6 @@ class Admin::QuestionsController < Admin::AdminController
     @questions = @scholarship.questions
   end
 
-  def show; end
-
   def new
     @scholarship = Scholarship.find(params[:scholarship_id])
     @question = @scholarship.questions.build
