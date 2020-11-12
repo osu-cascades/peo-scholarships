@@ -24,7 +24,13 @@ class Admin::QuestionsController < Admin::AdminController
 
   def edit; end
   def update; end
-  def destroy; end
+
+  def destroy
+    @scholarship = Scholarship.find(params[:scholarship_id])
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to [:admin, @scholarship, :questions], notice: 'Question deleted.'
+  end
 
   private
 

@@ -5,4 +5,7 @@
 %h3 Questions
 %ul
   - @questions.each do |q|
-    %li= q
+    %li
+      = q
+      = link_to 'Edit', [:admin, @scholarship, q], class: 'btn btn-light btn-sm mr-4'
+      = link_to 'Delete', [:admin, @scholarship, q], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
