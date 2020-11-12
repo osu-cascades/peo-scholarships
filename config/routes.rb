@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :scholarships do
+      resources :applications
       resources :questions
     end
   end
