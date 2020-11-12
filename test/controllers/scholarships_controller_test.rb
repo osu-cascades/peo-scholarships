@@ -1,7 +1,16 @@
 require 'test_helper'
 
 class ScholarshipsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  include Devise::Test::IntegrationHelpers
+
+  test 'requires user authentication' do
+    assert(defines_before_filter?(ScholarshipsController, :authenticate_user!))
+  end
+
+  test 'redirects requests from unauthenticated sessions' do
+    # index
+    get applications_path
+    assert_redirected_to new_user_session_path
+  end
+
 end
