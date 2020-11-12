@@ -6,7 +6,12 @@ class Admin::QuestionsController < Admin::AdminController
   end
 
   def show; end
-  def new; end
+
+  def new
+    @scholarship = Scholarship.includes('questions').find(params[:scholarship_id])
+    @question = @scholarship.questions.build
+  end
+
   def create; end
   def edit; end
   def update; end
