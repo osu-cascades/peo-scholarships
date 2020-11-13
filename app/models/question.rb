@@ -1,5 +1,7 @@
 class Question < ApplicationRecord
+
   belongs_to :scholarship
+  has_many :answers
 
   validates :prompt, presence: true
 

@@ -1,0 +1,9 @@
+first:
+  body: Fake answer body 1
+  application: first
+  question: first
+
+second:
+  body: Fake answer body 2
+  application: first
+  question: second

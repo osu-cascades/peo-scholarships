@@ -2,6 +2,14 @@ require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
 
+  test 'belongs to scholarship' do
+    assert_respond_to(Question.new, :scholarship)
+  end
+
+  test 'has many answers' do
+    assert_respond_to(Question.new, :answers)
+  end
+
   test 'has a required prompt' do
     q = questions(:first)
     assert q.valid?
