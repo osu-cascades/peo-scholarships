@@ -5,10 +5,11 @@ class Admin::ApplicationsController < Admin::AdminController
     @applications = @scholarship.applications
   end
 
-  def show; end
-  def new; end
-  def create; end
-  def edit; end
+  def show
+    @scholarship = Scholarship.includes('applications').find(params[:scholarship_id])
+    @application = @scholarship.applications.find(params[:id])
+  end
+
   def update; end
   def destroy; end
 

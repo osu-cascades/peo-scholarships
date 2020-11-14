@@ -2,5 +2,5 @@
 %h2= @scholarship
 %h3 Applications
 %ul
-  - @applications.each do |a|
-    %li= a
+  - @applications.each do |application|
+    %li= link_to application, [:admin, @scholarship, application]
