@@ -23,11 +23,7 @@
           - if !user_signed_in?
             %li.nav-item= link_to 'Apply Now', new_user_registration_path, class: 'btn btn-primary'
     %main.container{role: 'main'}
-      - flash.each do |message_type, message|
-        .alert.alert-dismissible.fade.show{class: "alert-#{message_type.to_s == 'notice' ? 'success' : 'warning'}"}
-          = message
-          %button.close{type: 'button', 'data-dismiss': 'alert', 'aria-label': 'Close'}
-            %span{'aria-hidden': 'true'} &times;
+      = render 'layouts/flashes'
       = yield
     %footer
       .container.text-muted
