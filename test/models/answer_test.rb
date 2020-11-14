@@ -21,4 +21,23 @@ class AnswerTest < ActiveSupport::TestCase
     assert_equal answers(:first).to_s, answers(:first).body
   end
 
+  test 'only one answer per question per application' do
+    existing_answer = answers(:first)
+    same_application_different_question = Answer.new(
+      body: 'Fake',
+      application: existing_answer.application,
+      question: Question.new)
+    assert same_application_different_question.valid?
+    same_question_different_application = Answer.new(
+      body: 'Fake',
+      application: Application.new,
+      question: existing_answer.question)
+    assert same_question_different_application.valid?
+    same_application_and_question = Answer.new(
+      body: 'Fake',
+      application: existing_answer.application,
+      question: existing_answer.question)
+    refute same_application_and_question.valid?
+  end
+
 end
