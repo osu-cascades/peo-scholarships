@@ -26,4 +26,10 @@ class ScholarshipsController < ApplicationController
 		@scholarship.save
 		redirect_to @scholarship
 	end
+
+	def destroy
+		@scholarship = Scholarship.find(params[:id])
+		@scholarship.destroy
+		redirect_to scholarships_url
+	end
 end
