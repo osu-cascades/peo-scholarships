@@ -20,6 +20,8 @@
           - if current_user&.admin?
             %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
           - if user_signed_in?
+            %li.nav-item= link_to 'Scholarships', scholarships_path, class: 'nav-link'
+          - if user_signed_in?
             %li.nav-item= link_to current_user, current_user, class: 'nav-link'
           %li.nav-item= sign_in_or_out_link
           - if !user_signed_in?
