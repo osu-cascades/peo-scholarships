@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   get "applications" => "applications#index"
-  get "scholarships" => "scholarships#index"
+  resources :scholarships
 
   namespace :admin do
     resources :scholarships do
