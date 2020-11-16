@@ -3,6 +3,10 @@ class ScholarshipsController < ApplicationController
 		@scholarships = Scholarship.all
 	end
 
+	def show
+			@scholarship = Scholarship.find(params[:id])
+	end
+
 	def new
 		@scholarship = Scholarship.new
 	end

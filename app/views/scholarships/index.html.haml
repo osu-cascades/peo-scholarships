@@ -2,6 +2,6 @@
 %ul
 	- @scholarships.each do |scholarship|
 		%li
-			= scholarship.name
+			= link_to scholarship.name, scholarship
 .mt-5.text-center
 	= link_to 'New Scholarship', new_scholarship_path, class: 'btn btn-primary'
