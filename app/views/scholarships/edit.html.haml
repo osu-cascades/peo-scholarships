@@ -2,5 +2,5 @@
     Edit #{@scholarship.name}
 = form_with(model: @scholarship, local:true) do |f|
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, :required => true
     = f.submit
