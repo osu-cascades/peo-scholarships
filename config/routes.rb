@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
 
-  resources :scholarships
+  resources :scholarships, only: [:index, :show]
 
   namespace :admin do
     resources :scholarships do
