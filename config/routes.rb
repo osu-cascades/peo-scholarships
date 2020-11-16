@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :scholarships do
-      resources :applications
+      resources :applications, except: [:new, :create, :edit]
       resources :questions, except: :show
     end
   end

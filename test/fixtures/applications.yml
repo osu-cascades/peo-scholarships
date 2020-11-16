@@ -1,11 +1,9 @@
 first:
   name: MyString
-  question: MyString
   scholarship: first
   applicant: guest
 
 second:
   name: MyString
-  question: MyString
   scholarship: second
   applicant: guest

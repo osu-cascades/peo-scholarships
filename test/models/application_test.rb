@@ -30,4 +30,9 @@ class ApplicationTest < ActiveSupport::TestCase
     refute same_applicant_and_scholarship.valid?
   end
 
+  test 'has a string representation including scholarship and applicant name' do
+    skip "TODO: Need Scholarship name tests done"
+  end
+
 end
+

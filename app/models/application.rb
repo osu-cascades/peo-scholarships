@@ -6,4 +6,8 @@ class Application < ApplicationRecord
 
   validates_uniqueness_of :user_id, scope: :scholarship_id
 
+  def to_s
+    "#{scholarship} application by #{applicant}"
+  end
+
 end

@@ -2,6 +2,7 @@ admin:
   first_name: Fake
   last_name: Admin
   email: fake@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: 'admin'
   active: true
 
@@ -16,6 +17,7 @@ guest:
   first_name: Fake
   last_name: Host
   email: fake3@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: 'guest'
   active: true
 
