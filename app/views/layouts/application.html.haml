@@ -23,7 +23,7 @@
             %li.nav-item= link_to current_user, current_user, class: 'nav-link'
           %li.nav-item= sign_in_or_out_link
           - if !user_signed_in?
-            %li.nav-item= link_to 'Apply Now', new_user_registration_path, class: 'btn btn-primary'
+            %li.nav-item= link_to 'Apply Now', scholarships_path, class: 'btn btn-primary'
     %main.container{role: 'main'}
       = render 'layouts/flashes'
       = yield
