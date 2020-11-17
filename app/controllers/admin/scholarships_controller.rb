@@ -14,8 +14,11 @@ class Admin::ScholarshipsController < Admin::AdminController
 
   def create
     @scholarship = Scholarship.new(params.require(:scholarship).permit(:name))
-    @scholarship.save
-    redirect_to [:admin, @scholarship]
+    if @scholarship.save
+      redirect_to [:admin, @scholarship], notice: 'Scholarship created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,8 +27,11 @@ class Admin::ScholarshipsController < Admin::AdminController
 
   def update
     @scholarship = Scholarship.find(params[:id])
-    @scholarship.update(params.require(:scholarship).permit(:name))
-    redirect_to [:admin, @scholarship]
+    if @scholarship.update(params.require(:scholarship).permit(:name))
+      redirect_to [:admin, @scholarship], notice: 'Scholarship updated.'
+    else
+      render :update
+    end
   end
 
   def destroy
