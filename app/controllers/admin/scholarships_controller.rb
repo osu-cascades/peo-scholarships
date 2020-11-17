@@ -30,7 +30,7 @@ class Admin::ScholarshipsController < Admin::AdminController
     if @scholarship.update(params.require(:scholarship).permit(:name))
       redirect_to [:admin, @scholarship], notice: 'Scholarship updated.'
     else
-      render :update
+      render :edit
     end
   end
 
