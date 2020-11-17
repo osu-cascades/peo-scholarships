@@ -16,15 +16,17 @@
         %span.navbar-toggler-icon
       #navbar.collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
-          %li.nav-item= link_to 'About', '#', class: 'nav-link'
-          - if current_user&.admin?
+          %li.nav-item= link_to 'About P.E.O.', '#', class: 'nav-link'
+          - if user_signed_in? && current_user.admin?
+            %li.nav-item= link_to 'Scholarships', admin_scholarships_path, class: 'nav-link'
             %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
-          - if user_signed_in?
-            %li.nav-item= link_to 'Scholarships', scholarships_path, class: 'nav-link'
-          - if user_signed_in?
             %li.nav-item= link_to current_user, current_user, class: 'nav-link'
-          %li.nav-item= sign_in_or_out_link
-          - if !user_signed_in?
+            %li.nav-item= sign_in_or_out_link
+          - elsif user_signed_in?
+            %li.nav-item= link_to 'Scholarships', scholarships_path, class: 'nav-link'
+            %li.nav-item= sign_in_or_out_link
+          - else
+            %li.nav-item= sign_in_or_out_link
             %li.nav-item= link_to 'Apply Now', scholarships_path, class: 'btn btn-primary'
     %main.container{role: 'main'}
       = render 'layouts/flashes'
