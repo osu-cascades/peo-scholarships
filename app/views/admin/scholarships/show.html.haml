@@ -1,5 +1,7 @@
 %h1 Administration
 
-%h2= @scholarship.name
-= link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'button'
-= link_to 'Delete', admin_scholarship_path(@scholarship), class: 'button', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
+.float-right
+  = link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'btn btn-outline-primary'
+  = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
+
+%h2= @scholarship
