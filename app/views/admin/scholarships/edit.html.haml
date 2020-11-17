@@ -1,8 +1,16 @@
 %h1 Administration
 
-%h2 Edit #{@scholarship.name}
+%h2 Edit #{@scholarship.name_was}
 
-= form_with(model: [:admin, @scholarship], local:true) do |f|
-  = f.label :name
-  = f.text_field :name, :required => true
-  = f.submit
+= form_with(model: [:admin, @scholarship], local: true) do |f|
+  - if @scholarship.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@scholarship.errors.count, "error")} prohibited this scholarship from being saved:"
+      %ul
+        - @scholarship.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :name
+    = f.text_field :name, required: true, class: 'form-control'
+  .actions
+    = f.submit({class: 'btn btn-success'})
