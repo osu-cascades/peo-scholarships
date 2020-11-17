@@ -13,6 +13,8 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :deactivated, -> { where(active: false) }
 
+  has_many :applications
+
   def to_s
     "#{first_name} #{last_name}"
   end

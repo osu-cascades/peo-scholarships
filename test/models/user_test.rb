@@ -8,6 +8,10 @@ class UserTest < ActiveSupport::TestCase
       first_name: 'New Fake', last_name: 'User')
   end
 
+  test 'has many applications' do
+    assert_respond_to(User.new, :applications)
+  end
+
   test 'has a required first name' do
     u = new_user
     assert u.valid?
