@@ -6,5 +6,5 @@
 			- if Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
 				%p Edit Application
 			- else
-				%p Create Application
+				= link_to 'New Scholarship', new_scholarship_application_path(scholarship.id), class: 'btn btn-outline-primary'
 			
