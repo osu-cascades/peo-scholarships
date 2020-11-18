@@ -3,3 +3,8 @@
 	- @scholarships.each do |scholarship|
 		%li
 			= link_to scholarship.name, scholarship
+			- if Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
+				%p Edit Application
+			- else
+				%p Create Application
+			
