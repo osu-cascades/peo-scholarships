@@ -14,7 +14,7 @@
       %th
   %tbody
     - @scholarships.each do |scholarship|
-      %tr
+      %tr[scholarship]
         %th{scope: 'row'}= scholarship.id
         %td
           = link_to scholarship, admin_scholarship_path(scholarship)
