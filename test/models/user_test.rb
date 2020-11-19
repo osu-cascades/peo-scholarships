@@ -74,5 +74,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal original_full_name, u.name_was
   end
 
+  test '#application_for' do
+    user = users(:guest)
+    scholarship = scholarships(:first)
+    assert_equal applications(:first), user.application_for(scholarship)
+  end
 
 end

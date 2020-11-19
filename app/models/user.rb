@@ -35,4 +35,8 @@ class User < ApplicationRecord
     "#{first_name_was} #{last_name_was}"
   end
 
+  def application_for(scholarship)
+    scholarship.applications.where(applicant: self).first
+  end
+
 end
