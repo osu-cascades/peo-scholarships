@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable,
          :rememberable, :validatable
 
-  enum role: [:guest, :admin, :member]
-  attribute :role, :integer, default: :guest
+  enum role: [:applicant, :admin, :member]
+  attribute :role, :integer, default: :applicant
 
   validates_presence_of :first_name
   validates_presence_of :last_name

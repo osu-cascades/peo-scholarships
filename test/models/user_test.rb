@@ -26,13 +26,13 @@ class UserTest < ActiveSupport::TestCase
     refute u.valid?
   end
 
-  test 'has a default role of guest' do
+  test 'has a default role of applicant' do
     new_user = User.new
-    assert_equal new_user.role, 'guest'
+    assert_equal new_user.role, 'applicant'
   end
 
-  test 'pre-existing User without defined role has a default role of guest' do
-    assert_equal users(:unknown).role, 'guest'
+  test 'pre-existing User without defined role has a default role of applicant' do
+    assert_equal users(:unknown).role, 'applicant'
   end
 
   test 'is active by default' do
@@ -75,7 +75,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#application_for' do
-    user = users(:guest)
+    user = users(:applicant)
     scholarship = scholarships(:first)
     assert_equal applications(:first), user.application_for(scholarship)
   end
