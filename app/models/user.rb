@@ -16,6 +16,10 @@ class User < ApplicationRecord
   has_many :applications
 
   def to_s
+    full_name
+  end
+
+  def full_name
     "#{first_name} #{last_name}"
   end
 

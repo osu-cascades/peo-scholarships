@@ -63,6 +63,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal users(:admin).to_s, 'Fake Admin'
   end
 
+  test 'has a full name consisting of first_name last_name' do
+    assert_equal users(:admin).full_name, 'Fake Admin'
+  end
+
   test 'has a string representation of last_name, first_name' do
     assert_equal users(:admin).last_name_first_name, 'Admin, Fake'
   end
