@@ -38,8 +38,12 @@ class Admin::QuestionsController < Admin::AdminController
   def destroy
     @scholarship = Scholarship.find(params[:scholarship_id])
     @question = @scholarship.questions.find(params[:id])
-    @question.destroy
-    redirect_to [:admin, @scholarship, :questions], notice: 'Question deleted.'
+    if @question.deletable?
+      @question.destroy
+      redirect_to [:admin, @scholarship, :questions], notice: 'Question deleted.'
+    else
+      redirect_to [:admin, @scholarship, :questions], alert: 'Applicants have answered this question, so it cannot be deleted.'
+    end
   end
 
   private

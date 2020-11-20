@@ -28,4 +28,9 @@ class QuestionTest < ActiveSupport::TestCase
     end
   end
 
+  test '#deletable? is true when there are no answers' do
+    question = Question.new
+    assert question.deletable?
+  end
+
 end

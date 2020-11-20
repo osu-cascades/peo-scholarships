@@ -12,7 +12,7 @@
       %th
   %tbody
     - @questions.each do |question|
-      %tr
+      %tr[question]
         %th{scope: 'row'}= question.id
         %td
           = link_to question

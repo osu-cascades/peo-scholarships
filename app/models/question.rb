@@ -9,4 +9,8 @@ class Question < ApplicationRecord
     prompt
   end
 
+  def deletable?
+    answers.none?
+  end
+
 end
