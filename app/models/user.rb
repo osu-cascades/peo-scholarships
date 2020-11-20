@@ -43,4 +43,8 @@ class User < ApplicationRecord
     scholarship.applications.where(applicant: self).first
   end
 
+  def deletable?
+    applications.none?
+  end
+
 end

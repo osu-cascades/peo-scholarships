@@ -84,4 +84,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal applications(:first), user.application_for(scholarship)
   end
 
+  test '#deletable?' do
+    user = User.new
+    assert user.deletable?
+    user.applications << Application.new
+    refute user.deletable?
+  end
+
 end
