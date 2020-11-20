@@ -21,4 +21,11 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal questions(:first).to_s, questions(:first).prompt
   end
 
+  test 'cannot be deleted if it has answers' do
+    question_with_answers = questions(:first)
+    assert_raises ActiveRecord::InvalidForeignKey do
+      question_with_answers.destroy
+    end
+  end
+
 end
