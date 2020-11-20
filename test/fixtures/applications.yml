@@ -1,9 +1,9 @@
 first:
-  name: MyString
+  name: Fake first scholarship application
   scholarship: first
   applicant: applicant
 
 second:
-  name: MyString
+  name: Fake second scholarship application
   scholarship: second
   applicant: applicant
