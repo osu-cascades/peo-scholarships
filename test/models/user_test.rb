@@ -84,6 +84,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal applications(:first), user.application_for(scholarship)
   end
 
+  test 'cannot be deleted if it has applications' do
+    user_with_application = applications(:first).applicant
+    assert_raises ActiveRecord::InvalidForeignKey do
+      user_with_application.destroy
+    end
+  end
+
   test '#deletable?' do
     user = User.new
     assert user.deletable?
