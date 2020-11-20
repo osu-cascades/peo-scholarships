@@ -28,9 +28,11 @@ class QuestionTest < ActiveSupport::TestCase
     end
   end
 
-  test '#deletable? is true when there are no answers' do
+  test '#deletable?' do
     question = Question.new
     assert question.deletable?
+    question.answers << Answer.new
+    refute question.deletable?
   end
 
 end
