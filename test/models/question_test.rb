@@ -23,9 +23,10 @@ class QuestionTest < ActiveSupport::TestCase
 
   test 'cannot be deleted if it has answers' do
     question_with_answers = questions(:first)
-    assert_raises ActiveRecord::InvalidForeignKey do
-      question_with_answers.destroy
-    end
+    assert_empty question_with_answers.errors
+    refute question_with_answers.destroy
+    refute question_with_answers.destroyed?
+    refute_empty question_with_answers.errors
   end
 
   test '#deletable?' do
