@@ -13,7 +13,7 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :deactivated, -> { where(active: false) }
 
-  has_many :applications
+  has_many :applications, dependent: :restrict_with_error
 
   def to_s
     full_name
