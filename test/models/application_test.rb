@@ -37,5 +37,14 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_equal "#{scholarship_name} application by #{applicant_name}", application.to_s
   end
 
+  test 'deleting an application deletes all of its answers' do
+    application = applications(:first)
+    answers = application.answers
+    assert application.answers.any?
+    application.destroy
+    assert application.destroyed?
+    assert_empty application.answers
+  end
+
 end
 
