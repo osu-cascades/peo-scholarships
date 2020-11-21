@@ -6,3 +6,6 @@ second:
 
 third:
   name: Third Fake Scholarship
+
+with_questions_but_no_applications:
+  name: Fourth Fake Scholarship

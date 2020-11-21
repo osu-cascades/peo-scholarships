@@ -36,8 +36,11 @@ class Admin::ScholarshipsController < Admin::AdminController
 
   def destroy
     @scholarship = Scholarship.find(params[:id])
-    @scholarship.destroy
-    redirect_to admin_scholarships_url, notice: 'Scholarship deleted.'
+    if @scholarship.destroy
+      redirect_to admin_scholarships_url, notice: 'Scholarship deleted.'
+    else
+      redirect_to admin_scholarships_url, alert: 'Could not delete scholarship. There are already either answered questions or applications.'
+    end
   end
 
 end
