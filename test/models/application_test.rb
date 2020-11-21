@@ -31,7 +31,10 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   test 'has a string representation including scholarship and applicant name' do
-    skip "TODO: Need Scholarship name tests done"
+    application = applications(:first)
+    applicant_name = application.applicant.full_name
+    scholarship_name = application.scholarship.name
+    assert_equal "#{scholarship_name} application by #{applicant_name}", application.to_s
   end
 
 end
