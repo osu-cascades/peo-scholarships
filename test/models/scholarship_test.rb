@@ -42,4 +42,12 @@ class ScholarshipTest < ActiveSupport::TestCase
     skip # See https://stackoverflow.com/questions/64941365/how-to-incorporate-a-rails-restrict-with-error-message-in-a-parents-parent
   end
 
+  test 'cannot be deleted when applications exist' do
+    scholarship_with_application = scholarships(:second)
+    assert_empty scholarship_with_application.errors
+    assert_empty scholarship_with_application.questions.collect(&:answers).flatten
+    refute scholarship_with_application.destroy
+    refute scholarship_with_application.destroyed?
+  end
+
 end

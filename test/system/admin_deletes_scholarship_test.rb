@@ -38,4 +38,15 @@ class AdminDeletesScholarship < ApplicationSystemTestCase
     assert_text scholarships(:first).name
   end
 
+  test 'admin tries to delete a scholarship that has applications' do
+    sign_in(users(:admin))
+    visit admin_scholarships_path
+    scholarship_to_delete = scholarships(:second)
+    within "##{dom_id(scholarship_to_delete)}" do
+      click_on 'Delete'
+    end
+    assert_text 'Could not delete scholarship'
+    assert_text scholarships(:second).name
+  end
+
 end
