@@ -32,4 +32,18 @@ class ApplicationsController < ApplicationController
 		end
 	  end
 	
+	  def edit
+		@scholarship = Scholarship.find(params[:scholarship_id])
+		@application = Application.find(params[:id])
+	  end
+	
+	  def update
+		@scholarship = Scholarship.find(params[:scholarship_id])
+		@application = Application.find(params[:id])
+		if @application.update(params.require(:application).permit(:name))
+		  redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
+		else
+		  render :edit
+		end
+	  end
 end

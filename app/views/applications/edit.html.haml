@@ -1,0 +1,8 @@
+%h2 Edit application
+
+= form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, required: true, class: 'form-control'
+  .actions
+    = f.submit({class: 'btn btn-success'})
