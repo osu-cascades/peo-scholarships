@@ -21,4 +21,19 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal questions(:first).to_s, questions(:first).prompt
   end
 
+  test 'cannot be deleted if it has answers' do
+    question_with_answers = questions(:first)
+    assert_empty question_with_answers.errors
+    refute question_with_answers.destroy
+    refute question_with_answers.destroyed?
+    refute_empty question_with_answers.errors
+  end
+
+  test '#deletable?' do
+    question = Question.new
+    assert question.deletable?
+    question.answers << Answer.new
+    refute question.deletable?
+  end
+
 end

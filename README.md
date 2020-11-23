@@ -31,7 +31,7 @@ After cloning this repository and `cd`ing into it, get up and running with:
 ### Create an initial User
 
 To sign in to the app, you can create a user via /users/sign_up. However, this
-user will have the `guest` role. To create an `admin` user, use the Rails
+user will have the `applicant` role. To create an `admin` user, use the Rails
 console:
 
 ```

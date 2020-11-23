@@ -28,8 +28,8 @@ class AdminApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
-  test 'redirects requests from guest users to root url' do
-    sign_in users(:guest)
+  test 'redirects requests from applicant users to root url' do
+    sign_in users(:applicant)
     # index
     get admin_scholarship_applications_path(scholarship_id: 'fake')
     assert_redirected_to root_url

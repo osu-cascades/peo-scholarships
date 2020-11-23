@@ -13,12 +13,12 @@ member:
   role: 'member'
   active: true
 
-guest:
+applicant:
   first_name: Fake
-  last_name: Host
+  last_name: Applicant
   email: fake3@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  role: 'guest'
+  role: 'applicant'
   active: true
 
 unknown:

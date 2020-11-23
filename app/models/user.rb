@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable,
          :rememberable, :validatable
 
-  enum role: [:guest, :admin, :member]
-  attribute :role, :integer, default: :guest
+  enum role: [:applicant, :admin, :member]
+  attribute :role, :integer, default: :applicant
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -13,9 +13,13 @@ class User < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :deactivated, -> { where(active: false) }
 
-  has_many :applications
+  has_many :applications, dependent: :restrict_with_error
 
   def to_s
+    full_name
+  end
+
+  def full_name
     "#{first_name} #{last_name}"
   end
 
@@ -33,6 +37,14 @@ class User < ApplicationRecord
 
   def name_was
     "#{first_name_was} #{last_name_was}"
+  end
+
+  def application_for(scholarship)
+    scholarship.applications.where(applicant: self).first
+  end
+
+  def deletable?
+    applications.none?
   end
 
 end
