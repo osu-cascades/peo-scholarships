@@ -5,7 +5,8 @@ class ApplicationsController < ApplicationController
 
 	def create
 		@scholarship = Scholarship.find(params[:scholarship_id])
-		@application = Application.new(user_id:current_user.id, scholarship_id: @scholarship.id)
+		@application = Application.new(params.require(:application).permit(:name))
+		@application.update(user_id:current_user.id, scholarship_id: @scholarship.id)
 		if @application.save
 			redirect_to scholarship_application_path(@scholarship, @application), notice: 'Scholarship created.'
 		  else
@@ -32,12 +33,12 @@ class ApplicationsController < ApplicationController
 		end
 	  end
 	
-	  def edit
+	def edit
 		@scholarship = Scholarship.find(params[:scholarship_id])
 		@application = Application.find(params[:id])
-	  end
+	end
 	
-	  def update
+	def update
 		@scholarship = Scholarship.find(params[:scholarship_id])
 		@application = Application.find(params[:id])
 		if @application.update(params.require(:application).permit(:name))
@@ -45,5 +46,5 @@ class ApplicationsController < ApplicationController
 		else
 		  render :edit
 		end
-	  end
+	end
 end
