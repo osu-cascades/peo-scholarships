@@ -10,9 +10,9 @@ class ApplicationsController < ApplicationController
     @application.update(user_id:current_user.id, scholarship_id: @scholarship.id)
     if @application.save
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Scholarship created.'
-      else
+    else
       render :new
-      end
+    end
   end
 
   def new
@@ -32,7 +32,7 @@ class ApplicationsController < ApplicationController
     else
       redirect_to scholarships_url, alert: 'Could not delete application.'
     end
-    end
+  end
 
   def edit
     @scholarship = Scholarship.find(params[:scholarship_id])
