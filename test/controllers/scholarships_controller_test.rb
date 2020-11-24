@@ -12,7 +12,7 @@ class ScholarshipsControllerTest < ActionDispatch::IntegrationTest
     get scholarships_path
     assert_redirected_to new_user_session_path
     # show
-    get admin_scholarship_path(id: 'fake')
+    get scholarship_path(id: 'fake')
     assert_redirected_to new_user_session_path
   end
 
