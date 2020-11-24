@@ -5,7 +5,7 @@ class Admin::ScholarshipsController < Admin::AdminController
   end
 
   def show
-    @scholarship = Scholarship.find(params[:id])
+    @scholarship = Scholarship.includes(:questions, :applications).find(params[:id])
   end
 
   def new

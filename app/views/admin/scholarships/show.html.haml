@@ -5,3 +5,35 @@
   = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
 
 %h2= @scholarship
+
+%h3.mt-5 Questions
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: 'col'} id
+      %th{scope: 'col'} Prompt
+      %th
+  %tbody
+    - @scholarship.questions.each do |question|
+      %tr[question]
+        %th{scope: 'row'}= question.id
+        %td= question
+        %td
+          = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
+          = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
+
+%h3.mt-5 Applications
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: 'col'} id
+      %th{scope: 'col'} Applicant
+      %th{scope: 'col'} Status
+      %th Last Updated
+  %tbody
+    - @scholarship.applications.each do |application|
+      %tr
+        %th{scope: 'row'}= application.id
+        %td= link_to application.applicant, admin_scholarship_application_path(@scholarship, application)
+        %td (todo)
+        %td= application.updated_at.to_s(:long)
