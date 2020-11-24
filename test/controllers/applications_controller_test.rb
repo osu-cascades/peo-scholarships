@@ -8,9 +8,25 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests from unauthenticated sessions' do
-    skip
-    # index
-    get applications_path
+    # show
+    get scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to new_user_session_path
+    # new
+    get new_scholarship_application_path(scholarship_id: 'fake')
+    assert_redirected_to new_user_session_path
+    # edit
+    get edit_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to new_user_session_path
+    # create
+    post scholarship_applications_path(scholarship_id: 'fake')
+    assert_redirected_to new_user_session_path
+    # update
+    patch scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to new_user_session_path
+    put scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to new_user_session_path
+    # destroy
+    delete scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to new_user_session_path
   end
 
