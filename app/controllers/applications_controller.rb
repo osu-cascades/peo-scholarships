@@ -1,9 +1,5 @@
 class ApplicationsController < ApplicationController
 
-  def index
-    @applications = Application.all
-  end
-
   def show
     @scholarship = Scholarship.find(params[:scholarship_id])
     @application = Application.find(params[:id])
