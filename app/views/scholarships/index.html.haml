@@ -1,10 +1,12 @@
 %h1 Scholarships
-%ul
+
+%ul.list-unstyled.mt-5
   - @scholarships.each do |scholarship|
-    %li
-      = link_to scholarship.name, scholarship
-      - if Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
-        - application = Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
-        = link_to 'Show Application', scholarship_application_path(scholarship, application.id), class: 'btn btn-outline-primary'
-      - else
-        = link_to 'New Application', new_scholarship_application_path(scholarship), class: 'btn btn-outline-primary'
+    %li.mb-5
+      %h2= link_to scholarship.name, scholarship
+      %p
+        - if Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
+          - application = Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
+          = link_to 'View Application', scholarship_application_path(scholarship, application.id), class: 'btn btn-xs btn-primary'
+        - else
+          = link_to 'Begin New Application', new_scholarship_application_path(scholarship), class: 'btn btn-xs btn-outline-primary'

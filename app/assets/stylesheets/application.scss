@@ -79,6 +79,13 @@ footer {
   }
 }
 
+.btn-group-xs > .btn, .btn-xs {
+  padding: .25rem .4rem;
+  font-size: .75rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
 /* Authentication */
 
 body.sessions.new, body.registrations.new, body.registrations.create {
