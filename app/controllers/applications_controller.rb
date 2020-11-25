@@ -9,14 +9,14 @@ class ApplicationsController < ApplicationController
 
   def new
     @scholarship = Scholarship.find(params[:scholarship_id])
-    @application = Application.new(user_id:current_user.id, scholarship_id: @scholarship.id)
+    @application = Application.new(user_id:current_user.id, scholarship_id: @scholarship)
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
   end
 
   def create
     @scholarship = Scholarship.find(params[:scholarship_id])
     @application = Application.new(application_params)
-    @application.update(user_id:current_user.id, scholarship_id: @scholarship.id)
+    @application.update(user_id:current_user.id, scholarship_id: @scholarship)
     if @application.save
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
     else
