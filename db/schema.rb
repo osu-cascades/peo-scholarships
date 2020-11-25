@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_152601) do
+ActiveRecord::Schema.define(version: 2020_11_25_234319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2020_11_25_152601) do
     t.string "marital_status", null: false
     t.string "student_id"
     t.string "ssn", null: false
+    t.string "institution_name", null: false
+    t.string "academic_year", null: false
+    t.string "institution_address", null: false
+    t.string "major", null: false
+    t.date "completion_date", null: false
+    t.string "academic_standing", null: false
+    t.float "post_high_school_gpa"
+    t.float "high_school_gpa", null: false
+    t.text "career_plan", null: false
     t.index ["scholarship_id", "user_id"], name: "index_applications_on_scholarship_id_and_user_id", unique: true
     t.index ["scholarship_id"], name: "index_applications_on_scholarship_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
