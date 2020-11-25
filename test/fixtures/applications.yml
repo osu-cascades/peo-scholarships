@@ -1,9 +1,25 @@
 first:
-  name: Fake first scholarship application
+  name: First Fake Applicant
+  dob: 1/1/2000
+  email: fake@example.com
+  address: "1 Fake Street\nBend, OR\n97702"
+  phone_number: 541-555-5555
+  ages_of_children: 1, 2, 3
+  marital_status: married
+  student_id: 123456789
+  ssn: 5555
   scholarship: first
   applicant: applicant
 
 second:
-  name: Fake second scholarship application
+  name: Second Fake Applicant
+  dob: 1/1/2000
+  email: fake@example.com
+  address: "1 Fake Street\nBend, OR\n97702"
+  phone_number: 541-555-5555
+  ages_of_children: 1, 2, 3
+  marital_status: married
+  student_id: 123456789
+  ssn: 5555
   scholarship: second
   applicant: applicant
