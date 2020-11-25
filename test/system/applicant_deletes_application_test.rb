@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class ApplicantDeletesApplicaationTest < ApplicationSystemTestCase
+class ApplicantDeletesApplicationTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
 
