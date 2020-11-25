@@ -5,7 +5,7 @@
     %li.mb-5
       %h2= link_to scholarship.name, scholarship
       %p
-        - if Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
+        - if current_user.applied_for?(scholarship)
           - application = Application.find_by user_id: current_user.id, scholarship_id: scholarship.id
           = link_to 'View Application', scholarship_application_path(scholarship, application.id), class: 'btn btn-xs btn-primary'
         - else

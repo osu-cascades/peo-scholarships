@@ -99,4 +99,18 @@ class UserTest < ActiveSupport::TestCase
     refute user.deletable?
   end
 
+  test 'see if current user has applied for the scholarship already' do
+    application = applications(:first)
+    applicant = application.applicant
+    scholarship = application.scholarship
+    assert applicant.applied_for?(scholarship)
+  end
+
+
+  test 'see if current user has not applied for the scholarship already' do
+    applicant = new_user
+    scholarship = scholarships(:first)
+    refute applicant.applied_for?(scholarship)
+  end
+
 end
