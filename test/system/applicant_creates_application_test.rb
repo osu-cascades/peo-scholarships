@@ -20,7 +20,7 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     sign_in(users(:applicant_with_no_applications))
     visit new_scholarship_application_path(scholarships(:first))
     click_on 'Create Application'
-    assert_text 'Create a new Application'
+    assert_text 'Create a new application'
     assert_text 'error'
   end
 end
