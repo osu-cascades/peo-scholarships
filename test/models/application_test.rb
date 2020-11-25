@@ -91,6 +91,8 @@ class ApplicationTest < ActiveSupport::TestCase
     assert application.valid?
     application.ssn = ''
     refute application.valid?
+    application.ssn = 'Fake'
+    refute application.valid?
     application.ssn = '1'
     refute application.valid?
     application.ssn = '55555'

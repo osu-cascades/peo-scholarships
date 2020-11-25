@@ -12,7 +12,7 @@ class Application < ApplicationRecord
   validates :address, presence: true, allow_blank: false
   validates :phone_number, presence: true, allow_blank: false
   validates :marital_status, presence: true, allow_blank: false
-  validates :ssn, presence: true, allow_blank: false, length: { is: 4 }
+  validates :ssn, presence: true, numericality: { only_integer: true }, allow_blank: false, length: { is: 4 }
 
   def to_s
     "#{scholarship} application by #{applicant}"
