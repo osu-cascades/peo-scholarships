@@ -1,8 +1,25 @@
-
 .float-right
   = link_to 'Edit', edit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary'
   = link_to 'Delete', scholarship_application_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this application? This can not be undone' }
 
 %h2= @application
 
-%h3= @application.name
+%dl.row.mt-5
+  %dt.col-sm-3 Name
+  %dd.col-sm-9= @application.name
+  %dt.col-sm-3 Date of Birth
+  %dd.col-sm-9= @application.dob
+  %dt.col-sm-3 Email
+  %dd.col-sm-9= @application.email
+  %dt.col-sm-3 Address
+  %dd.col-sm-9= @application.address
+  %dt.col-sm-3 Phone number
+  %dd.col-sm-9= @application.phone_number
+  %dt.col-sm-3 Ages of dependent children
+  %dd.col-sm-9= @application.ages_of_children
+  %dt.col-sm-3 Marital Status
+  %dd.col-sm-9= @application.marital_status
+  %dt.col-sm-3 Student ID
+  %dd.col-sm-9= @application.student_id
+  %dt.col-sm-3 Last four of SSN
+  %dd.col-sm-9= @application.ssn
