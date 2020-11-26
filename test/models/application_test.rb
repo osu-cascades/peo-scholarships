@@ -11,6 +11,14 @@ class ApplicationTest < ActiveSupport::TestCase
       phone_number: '541-555-5555',
       marital_status: 'single',
       ssn: '5555',
+      institution_name: 'Fake Institution',
+      academic_year: '2020-21',
+      institution_address: "100 Fake Street\nBend, OR\n97703",
+      major: 'Fake',
+      completion_date: '6/6/2025',
+      academic_standing: 'Freshman',
+      high_school_gpa: 4.0,
+      career_plan: 'Fake',
       applicant: applicant,
       scholarship: scholarship)
   end
@@ -38,6 +46,15 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(application, :marital_status)
     assert_respond_to(application, :student_id)
     assert_respond_to(application, :ssn)
+    assert_respond_to(application, :institution_name)
+    assert_respond_to(application, :institution_address)
+    assert_respond_to(application, :academic_year)
+    assert_respond_to(application, :major)
+    assert_respond_to(application, :completion_date)
+    assert_respond_to(application, :academic_standing)
+    assert_respond_to(application, :post_high_school_gpa)
+    assert_respond_to(application, :high_school_gpa)
+    assert_respond_to(application, :career_plan)
   end
 
   test 'is invalid without a name' do
