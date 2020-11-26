@@ -46,8 +46,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.deletable?
-      @user.destroy
+    @user.destroy
+    if @user.destroyed?
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
         format.json { head :no_content }
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to users_url, alert: 'This user has submitted an application, and cannot be deleted.' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: user.errors, status: :unprocessable_entity }
       end
     end
   end
