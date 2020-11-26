@@ -106,7 +106,6 @@ class UserTest < ActiveSupport::TestCase
     assert applicant.applied_for?(scholarship)
   end
 
-
   test 'see if current user has not applied for the scholarship already' do
     applicant = new_user
     scholarship = scholarships(:first)

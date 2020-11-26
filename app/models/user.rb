@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def applied_for?(scholarship)
-    Application.find_by user_id: id, scholarship_id: scholarship
+    application_for(scholarship).present?
   end
 
 end
