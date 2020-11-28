@@ -11,7 +11,7 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     fill_in 'Address', with: 'Fake address'
     fill_in 'Phone number', with: '555-555-5555'
     select 'Single', from: 'Marital status'
-    fill_in 'Last four digits of SSN', with: '1111'
+    fill_in 'Last 4 digits of SSN', with: '1111'
     click_on 'Create Application'
     assert_text 'Application created'
   end
@@ -20,7 +20,7 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     sign_in(users(:applicant_with_no_applications))
     visit new_scholarship_application_path(scholarships(:first))
     click_on 'Create Application'
-    assert_text 'Create a new application'
+    assert_text 'Scholarship Application'
     assert_text 'error'
   end
 end
