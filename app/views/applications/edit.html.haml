@@ -7,32 +7,38 @@
       %ul
         - @application.errors.full_messages.each do |message|
           %li= message
-  .form-group
-    = f.label :name
-    = f.text_field :name, required: true, class: 'form-control', value: current_user.full_name unless @application.name
-  .form-group
-    = f.label :dob, 'Date of birth'
-    = f.date_field :dob, required: true, class: 'form-control'
-  .form-group
-    = f.label :address
-    = f.text_area :address, required: true, size: '1x4', class: 'form-control'
-  .form-group
-    = f.label :phone_number
-    = f.telephone_field :phone_number, required: true, class: 'form-control'
-  .form-group
-    = f.label :ages_of_children, 'Ages of dependent children'
-    = f.text_field :ages_of_children, class: 'form-control'
-  .form-group
-    = f.label :email
-    = f.email_field :email, required: true, class: 'form-control', value: current_user.email unless @application.email
-  .form-group
-    = f.label :marital_status
-    = f.select :marital_status, @options_for_marital_status, {include_blank: true}, {required: true, class: 'form-control'}
-  .form-group
-    = f.label :student_id, 'Student ID (if applicable)'
-    = f.text_field :student_id, class: 'form-control'
-  .form-group
-    = f.label :ssn, 'Last four digits of SSN'
-    = f.text_field :ssn, required: true, pattern: '.{4}', oninvalid: "setCustomValidity('Just the last four digits of your social security number, please.')", class: 'form-control'
+  %h3.mt-4 Personal Information
+  .row
+    .col-5.form-group
+      = f.label :name, 'Full name'
+      = f.text_field :name, required: true, class: 'form-control', value: current_user.full_name unless @application.name
+    .col-4.form-group
+      = f.label :dob, 'Date of birth'
+      = f.date_field :dob, required: true, class: 'form-control'
+    .col-3.form-group
+      = f.label :ssn, 'Last 4 digits of SSN'
+      = f.text_field :ssn, required: true, class: 'form-control'
+  .row.mt-3
+    .col-3.form-group
+      = f.label :marital_status
+      = f.select :marital_status, @options_for_marital_status, {include_blank: true}, {required: true, class: 'form-control'}
+    .col-4.form-group
+      = f.label :ages_of_children, 'Ages of dependent children'
+      = f.text_field :ages_of_children, class: 'form-control'
+    .col.form-group
+      = f.label :student_id, 'Student ID (if applicable)'
+      = f.text_field :student_id, class: 'form-control'
+  .row.mt-3
+    .col.form-group-8
+      = f.label :address
+      = f.text_area :address, required: true, size: '1x4', class: 'form-control'
+    .col
+      .form-group
+        = f.label :phone_number
+        = f.telephone_field :phone_number, required: true, class: 'form-control'
+        = f.label :email, class: 'mt-1'
+        = f.email_field :email, required: true, class: 'form-control', value: current_user.email unless @application.email
+  %h3.mt-4 Institution to be Attended
+  %p TODO
   .actions
     = f.submit({class: 'btn btn-success'})
