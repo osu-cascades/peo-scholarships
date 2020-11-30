@@ -2,6 +2,7 @@
 %h2= @scholarship
 %h3= @application
 
+%h3 Personal Information
 %dl.row.mt-5
   %dt.col-sm-3 Full Name
   %dd.col-sm-9= @application.name
@@ -21,3 +22,34 @@
   %dd.col-sm-9= @application.phone_number
   %dt.col-sm-3 Email
   %dd.col-sm-9= @application.email
+
+%h3 Institution to be Attended
+%p TODO
+
+%h3 Educational History
+%dl.row.mt-5
+  %dt.col-sm-3 Previous College/Institution
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.previous_college1_name
+      %dt.col-sm-3 Years
+      %dd.col-sm-9= @application.previous_college1_years
+      %dt.col-sm-3 Degree Earned
+      %dd.col-sm-9= @application.previous_college1_degree
+  %dt.col-sm-3 Previous College/Institution
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.previous_college2_name
+      %dt.col-sm-3 Years
+      %dd.col-sm-9= @application.previous_college2_years
+      %dt.col-sm-3 Degree Earned
+      %dd.col-sm-9= @application.previous_college2_degree
+  %dt.col-sm-3 High School
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.high_school_name
+      %dt.col-sm-3 Year Graduated
+      %dd.col-sm-9= @application.high_school_graduation_year

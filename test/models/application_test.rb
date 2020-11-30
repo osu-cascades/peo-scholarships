@@ -19,6 +19,8 @@ class ApplicationTest < ActiveSupport::TestCase
       academic_standing: 'Freshman',
       high_school_gpa: 4.0,
       career_plan: 'Fake',
+      high_school_name: 'Fake High School',
+      high_school_graduation_year: '2020',
       applicant: applicant,
       scholarship: scholarship)
   end
@@ -55,6 +57,14 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(application, :post_high_school_gpa)
     assert_respond_to(application, :high_school_gpa)
     assert_respond_to(application, :career_plan)
+    assert_respond_to(application, :previous_college1_name)
+    assert_respond_to(application, :previous_college1_years)
+    assert_respond_to(application, :previous_college1_degree)
+    assert_respond_to(application, :previous_college2_name)
+    assert_respond_to(application, :previous_college2_years)
+    assert_respond_to(application, :previous_college2_degree)
+    assert_respond_to(application, :high_school_name)
+    assert_respond_to(application, :high_school_graduation_year)
   end
 
   test 'is invalid without a name' do

@@ -57,7 +57,10 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application).permit(:name, :dob, :email, :address,
-     :phone_number, :ages_of_children, :marital_status, :student_id, :ssn)
+      :phone_number, :ages_of_children, :marital_status, :student_id, :ssn,
+      :previous_college1_name, :previous_college1_years, :previous_college1_degree,
+      :previous_college2_name, :previous_college2_years, :previous_college2_degree,
+      :high_school_name, :high_school_graduation_year)
   end
 
 end

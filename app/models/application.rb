@@ -14,6 +14,9 @@ class Application < ApplicationRecord
   validates :marital_status, presence: true, allow_blank: false
   validates :ssn, presence: true, numericality: { only_integer: true }, allow_blank: false, length: { is: 4 }
 
+  validates :high_school_name, presence: true, allow_blank: false
+  validates :high_school_graduation_year, presence: true, numericality: { only_integer: true }, allow_blank: false, length: { is: 4 }
+
   def to_s
     "#{scholarship} application by #{applicant}"
   end

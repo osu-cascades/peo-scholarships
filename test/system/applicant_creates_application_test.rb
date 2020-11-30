@@ -12,6 +12,9 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     fill_in 'Phone number', with: '555-555-5555'
     select 'Single', from: 'Marital status'
     fill_in 'Last 4 digits of SSN', with: '1111'
+    # TODO: filling in institution fields.
+    fill_in 'High School Name', with: 'Fake High School'
+    fill_in 'Year Graduated', with: '2000'
     click_on 'Create Application'
     assert_text 'Application created'
   end

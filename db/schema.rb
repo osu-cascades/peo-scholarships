@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_234319) do
+ActiveRecord::Schema.define(version: 2020_11_30_042026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2020_11_25_234319) do
   end
 
   create_table "applications", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "scholarship_id", null: false
-    t.string "name", null: false
     t.string "email", null: false
     t.date "dob", null: false
     t.string "address", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_11_25_234319) do
     t.float "post_high_school_gpa"
     t.float "high_school_gpa", null: false
     t.text "career_plan", null: false
+    t.string "previous_college1_name"
+    t.string "previous_college1_years"
+    t.string "previous_college1_degree"
+    t.string "previous_college2_name"
+    t.string "previous_college2_years"
+    t.string "previous_college2_degree"
+    t.string "high_school_name", null: false
+    t.string "high_school_graduation_year", null: false
     t.index ["scholarship_id", "user_id"], name: "index_applications_on_scholarship_id_and_user_id", unique: true
     t.index ["scholarship_id"], name: "index_applications_on_scholarship_id"
     t.index ["user_id"], name: "index_applications_on_user_id"

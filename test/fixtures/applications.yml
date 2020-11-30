@@ -16,6 +16,8 @@ first:
   academic_standing: Freshman
   high_school_gpa: 4.0
   career_plan: 'Fake'
+  high_school_name: 'Fake High School'
+  high_school_graduation_year: '2020'
   scholarship: first
   applicant: applicant
 
@@ -37,5 +39,7 @@ second:
   academic_standing: Freshman
   high_school_gpa: 4.0
   career_plan: 'Fake'
+  high_school_name: 'Fake High School'
+  high_school_graduation_year: '2020'
   scholarship: second
   applicant: applicant
