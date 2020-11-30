@@ -24,8 +24,26 @@
   %dd.col-sm-9= @application.email
 
 %h3 Institution to be Attended
-%p TODO
-
+%dl.row.mt-5
+  %dt.col-sm-3 Institution
+  %dd.col-sm-9= @application.institution_name
+  %dt.col-sm-3 Academic Year
+  %dd.col-sm-9= @application.academic_year
+  %dt.col-sm-3 Address of Institution’s Business Office
+  %dd.col-sm-9= @application.institution_address
+  %dt.col-sm-3 Major/focus
+  %dd.col-sm-9= @application.major
+  %dt.col-sm-3 Projected Date of Completion
+  %dd.col-sm-9= @application.completion_date
+  %dt.col-sm-3 Academic Standing
+  %dd.col-sm-9= @application.academic_standing
+  %dt.col-sm-3 Post High School GPA
+  %dd.col-sm-9= @application.post_high_school_gpa
+  %dt.col-sm-3 High School GPA
+  %dd.col-sm-9= @application.high_school_gpa
+  %dt.col-sm-3 Career Plan
+  %dd.col-sm-9= @application.career_plan
+  
 %h3 Educational History
 %dl.row.mt-5
   %dt.col-sm-3 Previous College/Institution
