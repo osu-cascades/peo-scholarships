@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2020_11_30_042026) do
   end
 
   create_table "applications", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "scholarship_id", null: false
+    t.string "name", null: false
     t.string "email", null: false
     t.date "dob", null: false
     t.string "address", null: false

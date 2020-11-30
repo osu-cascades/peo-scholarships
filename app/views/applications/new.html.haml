@@ -38,8 +38,41 @@
         = f.telephone_field :phone_number, required: true, class: 'form-control'
         = f.label :email, class: 'mt-1'
         = f.email_field :email, required: true, class: 'form-control', value: current_user.email unless @application.email
-  %h3.mt-4 Institution to be Attended
-  %p TODO
+
+  %h3.mt-4 Institution to be attended
+  .row
+    .col-5.form-group
+      = f.label :institution_name, 'Institution'
+      = f.text_field :institution_name, required: true, class: 'form-control'
+    .col-3.form-group
+      = f.label :academic_year, 'Academic Year'
+      = f.text_field :academic_year, required: true, class: 'form-control'
+  .row
+    .col-8.form-group
+      = f.label :institution_address, 'Address of Institution’s Business Office'
+      = f.text_field :institution_address, required: true, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :major, 'Major/focus'
+      = f.text_field :major, required: true, class: 'form-control'
+    .col-4.form-group
+      = f.label :completion_date, 'Projected Date of Completion'
+      = f.date_field :completion_date, required: true, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :academic_standing, 'Standing at start of Term/Semester (Frosh, Soph, Jr, Sen, Other)'
+      = f.text_field :academic_standing, required: true, class: 'form-control'
+    .col-3.form-group
+      = f.label :post_high_school_gpa, 'Cumulative Post-High School G.P.A.'
+      = f.text_field :post_high_school_gpa, class: 'form-control'
+    .col-3.form-group
+      = f.label :high_school_gpa, 'Cumulative High School G.P.A.'
+      = f.text_field :high_school_gpa, required: true, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :career_plan, 'Educational Goals/Career Plans'
+      = f.text_area :career_plan, required: true, size: '1x8', class: 'form-control'
+
   %h3.mt-4 Educational history
   %h4 Colleges / Institutions
   .row
