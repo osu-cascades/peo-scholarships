@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_042026) do
+ActiveRecord::Schema.define(version: 2020_11_30_235156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,24 @@ ActiveRecord::Schema.define(version: 2020_11_30_042026) do
     t.string "previous_college2_degree"
     t.string "high_school_name", null: false
     t.string "high_school_graduation_year", null: false
+    t.integer "total_monthly_income", null: false
+    t.integer "total_scholarship_monthy", null: false
+    t.string "scholarship1"
+    t.integer "scholarship1_per_month"
+    t.string "scholarship2"
+    t.integer "scholarship2_per_month"
+    t.string "scholarship3"
+    t.integer "scholarship3_per_month"
+    t.integer "tuition_cost", null: false
+    t.integer "supplies", null: false
+    t.integer "childcare", null: false
+    t.integer "transportation", null: false
+    t.integer "other", null: false
+    t.integer "monthly_expenses", null: false
+    t.integer "savings", null: false
+    t.integer "investments", null: false
+    t.integer "school_loan_debt", null: false
+    t.integer "other_debt", null: false
     t.index ["scholarship_id", "user_id"], name: "index_applications_on_scholarship_id_and_user_id", unique: true
     t.index ["scholarship_id"], name: "index_applications_on_scholarship_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
