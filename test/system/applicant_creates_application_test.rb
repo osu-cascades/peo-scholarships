@@ -12,7 +12,14 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     fill_in 'Phone number', with: '555-555-5555'
     select 'Single', from: 'Marital status'
     fill_in 'Last 4 digits of SSN', with: '1111'
-    # TODO: filling in institution fields.
+    fill_in 'Institution', with: 'Fake University'
+    fill_in 'Academic Year', with: '2019'
+    fill_in 'application[institution_address]', with: '1234 Fake Rd'
+    fill_in 'Major/focus', with: 'Fake Major'
+    fill_in 'Projected Date of Completion', with: '01/01/2019'
+    fill_in 'application[academic_standing]', with: 'Fake Standing'
+    fill_in 'application[high_school_gpa]', with: 4.0
+    fill_in 'application[career_plan]', with: 'Fake career plan'
     fill_in 'High School Name', with: 'Fake High School'
     fill_in 'Year Graduated', with: '2000'
     click_on 'Create Application'
