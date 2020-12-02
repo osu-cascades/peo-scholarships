@@ -62,7 +62,11 @@ class ApplicationsController < ApplicationController
       :completion_date, :academic_standing, :post_high_school_gpa, :high_school_gpa,
       :previous_college1_name, :previous_college1_years, :previous_college1_degree,
       :previous_college2_name, :previous_college2_years, :previous_college2_degree,
-      :high_school_name, :high_school_graduation_year)
+      :high_school_name, :high_school_graduation_year, :total_monthly_income,
+      :total_scholarship_monthy, :scholarship1, :scholarship1_per_month,
+      :scholarship2, :scholarship2_per_month,  :scholarship3, :scholarship3_per_month,
+      :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
+      :savings, :investments, :school_loan_debt, :other_debt )
   end
 
 end
