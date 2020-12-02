@@ -73,3 +73,53 @@
       %dd.col-sm-9= @application.high_school_name
       %dt.col-sm-3 Year Graduated
       %dd.col-sm-9= @application.high_school_graduation_year
+
+%h3 Income
+%dl.row.mt-5
+  %dt.col-sm-3 Total Household Monthly Income
+  %dd.col-sm-9= @application.total_monthly_income
+  %dt.col-sm-3 Scholarships/Grant
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.scholarship1
+      %dt.col-sm-3 Amount Per Month
+      %dd.col-sm-9= @application.scholarship1_per_month
+  %dt.col-sm-3 Scholarships/Grant
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.scholarship2
+      %dt.col-sm-3 Amount Per Month
+      %dd.col-sm-9= @application.scholarship2_per_month
+  %dt.col-sm-3 Scholarships/Grant
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.scholarship3
+      %dt.col-sm-3 Amount Per Month
+      %dd.col-sm-9= @application.scholarship3_per_month
+%h3 Educational Expenses
+%dl.row.mt-5
+  %dt.col-sm-3 Tuiton per Semester
+  %dd.col-sm-9= @application.tuition_cost
+  %dt.col-sm-3 Books/Educational supplies
+  %dd.col-sm-9= @application.supplies
+  %dt.col-sm-3 Childcare related to education
+  %dd.col-sm-9= @application.childcare
+  %dt.col-sm-3 Transportation (gas, parking, bus fare)
+  %dd.col-sm-9= @application.transportation
+  %dt.col-sm-3 Other
+  %dd.col-sm-9= @application.other
+%h3 Non-Educational Expenses
+%dl.row.mt-5
+  %dt.col-sm-3 Estimated Monthly Expenses
+  %dd.col-sm-9= @application.monthly_expenses
+  %dt.col-sm-3 Total in Savings Account
+  %dd.col-sm-9= @application.savings
+  %dt.col-sm-3 Total in Investments
+  %dd.col-sm-9= @application.investments
+  %dt.col-sm-3 Current Educational Loan Debt
+  %dd.col-sm-9= @application.school_loan_debt
+  %dt.col-sm-3 Total Balance of Other Indebtedness
+  %dd.col-sm-9= @application.other_debt
