@@ -66,7 +66,7 @@ class ApplicationsController < ApplicationController
       :total_scholarship_monthy, :scholarship1, :scholarship1_per_month,
       :scholarship2, :scholarship2_per_month,  :scholarship3, :scholarship3_per_month,
       :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
-      :savings, :investments, :school_loan_debt, :other_debt )
+      :savings, :investments, :school_loan_debt, :other_debt)
   end
 
 end
