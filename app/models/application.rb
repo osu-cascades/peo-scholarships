@@ -18,18 +18,38 @@ class Application < ApplicationRecord
   validates :high_school_graduation_year, presence: true, numericality: { only_integer: true }, allow_blank: false, length: { is: 4 }
 
   validates :total_monthly_income, presence: true, allow_blank: false, numericality: { only_integer: true }
-  validates :total_scholarship_monthy, presence: true, numericality: { only_integer: true }
-  # validates :scholarship1, presence: true
-  # validates :scholarship1_per_month, presence: true numericality: { only_integer: true }
-  # validates :scholarship2, presence: true
-  # validates :scholarship2_per_month, presence: true, numericality: { only_integer: true }
-  # validates :scholarship3, presence: true
-  # validates :scholarship3_per_month, presence: true, numericality: { only_integer: true }
+  validates :total_scholarship_monthly, presence: true, numericality: { only_integer: true }
   validates :tuition_cost, presence: true, allow_blank: false, numericality: { only_integer: true }
   validates :supplies, presence: true, allow_blank: false, numericality: { only_integer: true }
   validates :childcare, presence: true, allow_blank: false, numericality: { only_integer: true }
   validates :transportation, presence: true, allow_blank: false, numericality: { only_integer: true }
   validates :other, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :monthly_expenses, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :investments, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :school_loan_debt, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :other_debt, presence: true, allow_blank: false, numericality: { only_integer: true }
+
+  validates :institution_name, presence: true, allow_blank: false
+  validates :academic_year, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :institution_address, presence: true, allow_blank: false
+  validates :major, presence: true, allow_blank: false
+  validates :completion_date, presence: true, allow_blank: false
+  validates :academic_standing, presence: true, allow_blank: false
+  validates :high_school_gpa, presence: true, allow_blank: false
+  validates :career_plan, presence: true, allow_blank: false
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

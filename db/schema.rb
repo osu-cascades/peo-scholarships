@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_073051) do
+ActiveRecord::Schema.define(version: 2021_01_11_174919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_12_19_073051) do
     t.string "high_school_name", null: false
     t.string "high_school_graduation_year", null: false
     t.integer "total_monthly_income", null: false
-    t.integer "total_scholarship_monthy", null: false
+    t.integer "total_scholarship_monthly", null: false
     t.string "scholarship1"
     t.integer "scholarship1_per_month"
     t.string "scholarship2"
