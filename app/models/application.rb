@@ -30,7 +30,7 @@ class Application < ApplicationRecord
   validates :other_debt, presence: true, allow_blank: false, numericality: { only_integer: true }
 
   validates :institution_name, presence: true, allow_blank: false
-  validates :academic_year, presence: true, allow_blank: false, numericality: { only_integer: true }
+  validates :academic_year, presence: true, allow_blank: false
   validates :institution_address, presence: true, allow_blank: false
   validates :major, presence: true, allow_blank: false
   validates :completion_date, presence: true, allow_blank: false
