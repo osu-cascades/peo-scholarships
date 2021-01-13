@@ -4,7 +4,9 @@ class ApplicationsController < ApplicationController
 
   def show
     @scholarship = Scholarship.find(params[:scholarship_id])
-    @application = Application.find(params[:id])
+    @application = current_user.applications.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
   def new
@@ -28,29 +30,35 @@ class ApplicationsController < ApplicationController
 
   def edit
     @scholarship = Scholarship.find(params[:scholarship_id])
-    @application = Application.find(params[:id])
+    @application = current_user.applications.find(params[:id])
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
   def update
     @scholarship = Scholarship.find(params[:scholarship_id])
-    @application = Application.find(params[:id])
+    @application = current_user.applications.find(params[:id])
     if @application.update(application_params)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :edit
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
   def destroy
-    application = Application.find(params[:id])
+    application = current_user.applications.find(params[:id])
     application.destroy
     if application.destroyed?
       redirect_to scholarships_url, notice: 'Application deleted.'
     else
       redirect_to scholarships_url, alert: 'Could not delete application.'
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
   private
