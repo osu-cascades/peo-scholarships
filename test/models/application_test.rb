@@ -21,6 +21,18 @@ class ApplicationTest < ActiveSupport::TestCase
       career_plan: 'Fake',
       high_school_name: 'Fake High School',
       high_school_graduation_year: '2020',
+      total_monthly_income: 100,
+      total_scholarship_monthly: 100,
+      tuition_cost: 100,
+      supplies: 100,
+      childcare: 100,
+      transportation: 100,
+      other: 100,
+      monthly_expenses: 100,
+      savings: 100,
+      investments: 100,
+      school_loan_debt: 100,
+      other_debt: 100,
       applicant: applicant,
       scholarship: scholarship)
   end
