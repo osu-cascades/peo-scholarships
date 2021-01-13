@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_174919) do
+ActiveRecord::Schema.define(version: 2021_01_13_172107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 2021_01_11_174919) do
     t.index ["application_id", "question_id"], name: "index_answers_on_application_id_and_question_id", unique: true
     t.index ["application_id"], name: "index_answers_on_application_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "application_forms", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "scholarship_id", null: false
+    t.string "name"
+    t.string "email"
+    t.date "dob"
+    t.string "address"
+    t.string "phone_number"
+    t.string "ages_of_children"
+    t.string "marital_status"
+    t.string "student_id"
+    t.string "ssn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "applications", force: :cascade do |t|
