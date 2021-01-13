@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :scholarships, only: [:index, :show] do
     resources :applications, except: [:index]
+    resources :application_forms, except: [:index]
   end
 
   namespace :admin do
