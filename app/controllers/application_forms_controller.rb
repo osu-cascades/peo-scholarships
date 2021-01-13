@@ -17,7 +17,7 @@ class ApplicationFormsController < ApplicationController
     @application_form.applicant = current_user
     @application_form.scholarship = @scholarship
     if @application.save
-      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
+      redirect_to scholarship_application_form_path(@scholarship, @application), notice: 'Application created.'
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :new
@@ -34,7 +34,7 @@ class ApplicationFormsController < ApplicationController
     @scholarship = Scholarship.find(params[:scholarship_id])
     @application_form = ApplicationForm.find(params[:id])
     if @application.update(application_params)
-      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
+      redirect_to scholarship_application_form_path(@scholarship, @application), notice: 'Application updated.'
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :edit
