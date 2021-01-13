@@ -1,8 +1,8 @@
 class CreateApplicationForm < ActiveRecord::Migration[5.2]
   def change
     create_table :application_forms do |t|
-      t.bigint :user_id, null: false
-      t.bigint :scholarship_id, null: false
+      t.references :user, foreign_key: true, null: false
+      t.references :scholarship, foreign_key: true, null: false
       t.string :name
       t.string :email
       t.date :dob
