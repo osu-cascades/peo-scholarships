@@ -30,4 +30,25 @@ class ApplicationFormsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
+  test 'redirects requests for someone else\'s application form' do
+    applicant = users(:applicant)
+    other_persons_application_form = application_forms(:third)
+    refute_equal applicant, other_persons_application_form.applicant
+    sign_in(applicant)
+    # show
+    get scholarship_application_form_path(other_persons_application_form.scholarship, other_persons_application_form)
+    assert_redirected_to scholarships_path
+    # edit
+    get edit_scholarship_application_form_path(other_persons_application_form.scholarship, other_persons_application_form)
+    assert_redirected_to scholarships_path
+    # update
+    patch scholarship_application_form_path(other_persons_application_form.scholarship, other_persons_application_form)
+    assert_redirected_to scholarships_path
+    put scholarship_application_form_path(other_persons_application_form.scholarship, other_persons_application_form)
+    assert_redirected_to scholarships_path
+    # destroy
+    delete scholarship_application_form_path(other_persons_application_form.scholarship, other_persons_application_form)
+    assert_redirected_to scholarships_path
+  end
+
 end
