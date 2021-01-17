@@ -14,6 +14,10 @@ class ScholarshipTest < ActiveSupport::TestCase
     assert_respond_to(Scholarship.new, :applications)
   end
 
+  test 'has application_forms' do
+    assert_respond_to(Scholarship.new, :application_forms)
+  end
+
   test 'has a required name' do
     s = new_scholarship
     assert s.valid?
