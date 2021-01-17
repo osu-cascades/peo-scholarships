@@ -38,26 +38,6 @@ class Application < ApplicationRecord
   validates :high_school_gpa, presence: true, allow_blank: false
   validates :career_plan, presence: true, allow_blank: false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
   def to_s
     "#{scholarship} application by #{applicant}"
   end
