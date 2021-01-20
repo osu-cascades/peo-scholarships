@@ -12,7 +12,7 @@ class ApplicantSavesApplicationTest < ApplicationSystemTestCase
     fill_in 'Phone number', with: '555-555-5555'
     select 'Single', from: 'Marital status'
     fill_in 'Last 4 digits of SSN', with: '1111'
-    click_on 'Save'
+    click_on 'Save Application'
     assert_text 'Application created'
   end
 
