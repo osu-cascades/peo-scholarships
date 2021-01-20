@@ -10,6 +10,7 @@
     %tr
       %th{scope: 'col'} id
       %th{scope: 'col'} Name
+      %th{scope: 'col'} Status
       %th{scope: 'col'} Number of Applications
       %th
   %tbody
@@ -20,6 +21,7 @@
           = link_to scholarship, admin_scholarship_path(scholarship)
           .small
             = link_to pluralize(scholarship.questions.count, 'question'), admin_scholarship_questions_path(scholarship)
+        %td= scholarship.published? ? 'Published' : 'Not visible'
         %td= link_to pluralize(scholarship.applications.count, 'application'), admin_scholarship_applications_path(scholarship)
         %td
           = link_to 'Edit', edit_admin_scholarship_path(scholarship), class: 'btn btn-light btn-sm mr-4'

@@ -13,3 +13,7 @@ third:
 with_questions_but_no_applications:
   name: Fourth Fake Scholarship
   published: true
+
+unpublished:
+  name: Unpublished Scholarship
+  published: false
