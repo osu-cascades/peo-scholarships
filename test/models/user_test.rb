@@ -12,11 +12,6 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to(User.new, :applications)
   end
 
-  test 'has many application forms' do
-    assert_respond_to(User.new, :application_forms)
-  end
-
-
   test 'has a required first name' do
     u = new_user
     assert u.valid?
