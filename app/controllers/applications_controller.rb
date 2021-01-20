@@ -20,7 +20,7 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.applicant = current_user
     @application.scholarship = @scholarship
-    if @application.save
+    if @application.save(validate: false)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }

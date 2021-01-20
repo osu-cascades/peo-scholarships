@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_182429) do
+ActiveRecord::Schema.define(version: 2021_01_20_185947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_182429) do
     t.integer "investments"
     t.integer "school_loan_debt"
     t.integer "other_debt"
+    t.boolean "submitted", default: false
     t.index ["scholarship_id", "user_id"], name: "index_applications_on_scholarship_id_and_user_id", unique: true
     t.index ["scholarship_id"], name: "index_applications_on_scholarship_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
