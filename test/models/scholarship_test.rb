@@ -21,6 +21,11 @@ class ScholarshipTest < ActiveSupport::TestCase
     refute s.valid?
   end
 
+  test 'is not published by default' do
+    s = new_scholarship
+    refute s.published?
+  end
+
   test 'has a string representation that is its name' do
     assert_equal scholarships(:first).to_s, scholarships(:first).name
   end
