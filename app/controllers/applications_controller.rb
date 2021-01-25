@@ -39,7 +39,8 @@ class ApplicationsController < ApplicationController
   def update
     @scholarship = Scholarship.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
-    if @application.update(application_params)
+    @application.attributes = application_params
+    if @application.save(validate: false)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
@@ -59,6 +60,18 @@ class ApplicationsController < ApplicationController
     end
   rescue ActiveRecord::RecordNotFound
     redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
+  end
+
+  def submit
+    @scholarship = Scholarship.find(params[:scholarship_id])
+    @application = current_user.applications.find(params[:id])
+    @application.submitted = true
+    if @application.save
+      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
+    else
+      @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
+      render :new
+    end
   end
 
   private
