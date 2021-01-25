@@ -1,11 +1,19 @@
 first:
   name: First Fake Scholarship
+  published: true
 
 second:
   name: Second Fake Scholarship
+  published: true
 
 third:
   name: Third Fake Scholarship
+  published: true
 
 with_questions_but_no_applications:
   name: Fourth Fake Scholarship
+  published: true
+
+unpublished:
+  name: Unpublished Scholarship
+  published: false

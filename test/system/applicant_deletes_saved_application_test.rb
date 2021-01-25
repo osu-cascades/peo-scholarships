@@ -1,10 +1,10 @@
 require 'application_system_test_case'
 
-class ApplicantDeletesApplicationTest < ApplicationSystemTestCase
+class ApplicantDeletesSavedApplicationTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
 
-  test 'applicant deletes their application' do
+  test 'applicant deletes their saved application' do
     sign_in(users(:applicant))
     application = applications(:first)
     visit scholarship_application_path(application.scholarship, application)

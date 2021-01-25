@@ -24,6 +24,7 @@
             %li.nav-item= sign_in_or_out_link
           - elsif user_signed_in?
             %li.nav-item= link_to 'Scholarships', scholarships_path, class: 'nav-link'
+            %li.nav-item= link_to current_user, current_user, class: 'nav-link'
             %li.nav-item= sign_in_or_out_link
           - else
             %li.nav-item= sign_in_or_out_link
