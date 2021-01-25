@@ -32,6 +32,12 @@ class AdminScholarshipsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
     put admin_scholarship_path(id: 'fake')
     assert_redirected_to new_user_session_path
+    # publish
+    patch publish_admin_scholarship_path(id: 'fake')
+    assert_redirected_to new_user_session_path
+    # unpublish
+    patch unpublish_admin_scholarship_path(id: 'fake')
+    assert_redirected_to new_user_session_path
     # destroy
     delete admin_scholarship_path(id: 'fake')
     assert_redirected_to new_user_session_path
@@ -59,6 +65,12 @@ class AdminScholarshipsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     put admin_scholarship_path(id: 'fake')
     assert_redirected_to root_url
+    # publish
+    patch publish_admin_scholarship_path(id: 'fake')
+    assert_redirected_to root_url
+    # unpublish
+    patch unpublish_admin_scholarship_path(id: 'fake')
+    assert_redirected_to root_url
     # destroy
     delete admin_scholarship_path(id: 'fake')
     assert_redirected_to root_url
@@ -85,6 +97,12 @@ class AdminScholarshipsControllerTest < ActionDispatch::IntegrationTest
     patch admin_scholarship_path(id: 'fake')
     assert_redirected_to root_url
     put admin_scholarship_path(id: 'fake')
+    assert_redirected_to root_url
+    # publish
+    patch publish_admin_scholarship_path(id: 'fake')
+    assert_redirected_to root_url
+    # unpublish
+    patch unpublish_admin_scholarship_path(id: 'fake')
     assert_redirected_to root_url
     # destroy
     delete admin_scholarship_path(id: 'fake')
