@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class AdminDeletesUser < ApplicationSystemTestCase
+class AdminDeletesUserTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
   include ActionView::RecordIdentifier

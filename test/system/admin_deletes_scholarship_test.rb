@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class AdminDeletesScholarship < ApplicationSystemTestCase
+class AdminDeletesScholarshipTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
   include ActionView::RecordIdentifier
