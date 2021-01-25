@@ -38,7 +38,7 @@
   %dt.col-sm-3 Major/focus
   %dd.col-sm-9= @application.major
   %dt.col-sm-3 Projected Date of Completion
-  %dd.col-sm-9= @application.completion_date
+  %dd.col-sm-9= @application.completion_date.strftime("%Y, %B")
   %dt.col-sm-3 Academic Standing
   %dd.col-sm-9= @application.academic_standing
   %dt.col-sm-3 Post High School GPA
