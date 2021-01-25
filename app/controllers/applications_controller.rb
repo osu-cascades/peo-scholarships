@@ -62,6 +62,18 @@ class ApplicationsController < ApplicationController
     redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
+  def submit
+    @scholarship = Scholarship.find(params[:scholarship_id])
+    @application = current_user.applications.find(params[:id])
+    @application.submitted = true
+    if @application.save
+      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
+    else
+      @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
+      render :new
+    end
+  end
+
   private
 
   def application_params

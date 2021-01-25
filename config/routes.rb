@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :scholarships, only: [:index, :show] do
-    resources :applications, except: [:index]
+    resources :applications, except: [:index] do
+      patch 'submit', on: :member
+    end
   end
 
   namespace :admin do
