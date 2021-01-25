@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class AdminCreatesScholarship < ApplicationSystemTestCase
+class AdminCreatesScholarshipTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
 

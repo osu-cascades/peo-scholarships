@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class AdminViewsListOfScholarships < ApplicationSystemTestCase
+class AdminViewsListOfScholarshipsTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
   include ActionView::RecordIdentifier

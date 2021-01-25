@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :scholarships do
+      patch 'publish', on: :member
+      patch 'unpublish', on: :member
       resources :applications, except: [:new, :create, :edit]
       resources :questions, except: :show
     end

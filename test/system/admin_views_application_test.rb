@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class AdminViewsApplication < ApplicationSystemTestCase
+class AdminViewsApplicationTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
 
