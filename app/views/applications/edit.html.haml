@@ -12,7 +12,7 @@
   .row
     .col-5.form-group
       = f.label :name, 'Full name'
-      = f.text_field :full_name, class: 'form-control', value: current_user.full_name unless @application.name
+      = f.text_field :name, class: 'form-control'
     .col-4.form-group
       = f.label :dob, 'Date of birth'
       = f.date_field :dob, class: 'form-control'
@@ -38,7 +38,7 @@
         = f.label :phone_number
         = f.telephone_field :phone_number, class: 'form-control'
         = f.label :email, class: 'mt-1'
-        = f.email_field :email, class: 'form-control', value: current_user.email unless @application.email
+        = f.email_field :email, class: 'form-control'
 
   %h3.mt-4 Institution to be Attended
   .row
