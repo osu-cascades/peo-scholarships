@@ -125,3 +125,12 @@
   %dd.col-sm-9= @application.school_loan_debt
   %dt.col-sm-3 Total Balance of Other Indebtedness
   %dd.col-sm-9= @application.other_debt
+
+%h3 Essay Questions
+- @scholarship.questions.each do |question, index|
+  %dl.row.mt-5
+    %dt.col-sm-3
+      = "Question "
+      = index
+      = ": "
+      = question
