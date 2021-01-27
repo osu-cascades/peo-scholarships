@@ -28,6 +28,9 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     # destroy
     delete scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to new_user_session_path
+    # submit
+    patch submit_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to new_user_session_path
   end
 
   test 'redirects requests for someone else\'s application' do
@@ -48,6 +51,9 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to scholarships_path
     # destroy
     delete scholarship_application_path(other_persons_application.scholarship, other_persons_application)
+    assert_redirected_to scholarships_path
+    # submit
+    patch submit_scholarship_application_path(other_persons_application.scholarship, other_persons_application)
     assert_redirected_to scholarships_path
   end
 
