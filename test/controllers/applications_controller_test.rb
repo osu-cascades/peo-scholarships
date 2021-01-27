@@ -51,4 +51,34 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to scholarships_path
   end
 
+  test 'redirects requests including unpublished scholarships' do
+    application = applications(:first)
+    scholarship = application.scholarship
+    scholarship.update(published: false)
+    sign_in(application.applicant)
+    # show
+    get scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+    # new
+    get new_scholarship_application_path(scholarship)
+    assert_redirected_to scholarships_path
+    # edit
+    get edit_scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+    # create
+    post scholarship_applications_path(scholarship)
+    assert_redirected_to scholarships_path
+    # update
+    patch scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+    put scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+    # destroy
+    delete scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+    # submit
+    patch submit_scholarship_application_path(scholarship, application)
+    assert_redirected_to scholarships_path
+  end
+
 end
