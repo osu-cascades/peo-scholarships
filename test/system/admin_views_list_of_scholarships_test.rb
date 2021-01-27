@@ -5,7 +5,7 @@ class AdminViewsListOfScholarshipsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
   include ActionView::RecordIdentifier
 
-  test 'admin creates a scholarship' do
+  test 'admin views the list of scholarships' do
     sign_in(users(:admin))
     visit admin_scholarships_path
     assert_text 'Scholarships'
