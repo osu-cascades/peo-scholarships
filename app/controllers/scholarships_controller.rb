@@ -1,11 +1,11 @@
 class ScholarshipsController < ApplicationController
 
   def index
-    @scholarships = Scholarship.all
+    @scholarships = Scholarship.published
   end
 
   def show
-    @scholarship = Scholarship.find(params[:id])
+    @scholarship = Scholarship.published.find(params[:id])
   end
 
 end

@@ -5,6 +5,8 @@ class Scholarship < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :published, -> { where(published: true) }
+
   def to_s
     name
   end
