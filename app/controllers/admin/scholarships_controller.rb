@@ -13,7 +13,7 @@ class Admin::ScholarshipsController < Admin::AdminController
   end
 
   def create
-    @scholarship = Scholarship.new(params.require(:scholarship).permit(:name))
+    @scholarship = Scholarship.new(scholarship_params)
     if @scholarship.save
       redirect_to [:admin, @scholarship], notice: 'Scholarship created.'
     else
@@ -27,7 +27,7 @@ class Admin::ScholarshipsController < Admin::AdminController
 
   def update
     @scholarship = Scholarship.find(params[:id])
-    if @scholarship.update(params.require(:scholarship).permit(:name))
+    if @scholarship.update(scholarship_params)
       redirect_to [:admin, @scholarship], notice: 'Scholarship updated.'
     else
       render :edit
@@ -60,6 +60,12 @@ class Admin::ScholarshipsController < Admin::AdminController
     else
       redirect_to admin_scholarships_url, alert: 'Could not delete scholarship. There are already either answered questions or applications.'
     end
+  end
+
+  private
+
+  def scholarship_params
+    params.require(:scholarship).permit(:name, :application_deadline)
   end
 
 end
