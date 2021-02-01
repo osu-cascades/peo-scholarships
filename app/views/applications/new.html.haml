@@ -55,9 +55,9 @@
     .col-4.form-group
       = f.label :major, 'Major/focus'
       = f.text_field :major, class: 'form-control'
-    .col-4.form-group
+    .col-6.form-group
       = f.label :completion_date, 'Projected Date of Completion'
-      = f.date_select :completion_date, class: 'form-control', discard_day: true, start_year: Time.now.year
+      = f.date_select :completion_date, {discard_day: true, order: [:month, :year],start_year: Date.current.year}, {class: 'form-control'}
   .row
     .col-4.form-group
       = f.label :academic_standing, 'Standing at start of Term/Semester (Frosh, Soph, Jr, Sen, Other)'
