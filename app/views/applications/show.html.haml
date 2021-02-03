@@ -1,5 +1,5 @@
 .float-right
-  - if @application.submitted == false
+  - unless @application.submitted?
     = link_to 'Edit', edit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary'
     = link_to 'Submit', submit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary', method: :patch, data: {confirm: 'Are you sure you are ready to to submit this application? It can not be changed or deleted later'}
     = link_to 'Delete', scholarship_application_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this application? This can not be undone' }
