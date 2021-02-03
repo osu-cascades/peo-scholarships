@@ -127,10 +127,7 @@
   %dd.col-sm-9= @application.other_debt
 
 %h3 Essay Questions
-- @scholarship.questions.each do |question, index|
+- @scholarship.questions.each do |question|
   %dl.row.mt-5
     %dt.col-sm-3
-      = "Question "
-      = index
-      = ": "
       = question
