@@ -6,7 +6,7 @@ class ApplicantDeletesSavedApplicationTest < ApplicationSystemTestCase
 
   test 'applicant deletes their saved application' do
     sign_in(users(:applicant))
-    application = applications(:first)
+    application = applications(:second)
     visit scholarship_application_path(application.scholarship, application)
     click_on 'Delete'
     assert_text 'Application deleted'
