@@ -7,7 +7,8 @@
       %p Application deadline: #{scholarship.application_deadline.to_s(:long)}
       %p
         - if current_user.started_application_for?(scholarship)
-          - application = current_user.application_for(scholarship)
-          = link_to 'View Application', scholarship_application_path(scholarship, application.id), class: 'btn btn-xs btn-primary'
+          = link_to 'View Application', scholarship_application_path(scholarship, current_user.application_for(scholarship)), class: 'btn btn-xs btn-primary'
+        - elsif scholarship.closed?
+          Applications are closed.
         - else
           = link_to 'Begin New Application', new_scholarship_application_path(scholarship), class: 'btn btn-xs btn-outline-primary'
