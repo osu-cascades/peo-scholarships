@@ -3,7 +3,7 @@
 .row
   .col
     %h2= @scholarship
-    %h3 Application Deadline: #{@scholarship.application_deadline}
+    %h3 Application Deadline: #{@scholarship.application_deadline.to_s(:long)}
 
   .col.text-right
     = link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'btn btn-outline-primary'
