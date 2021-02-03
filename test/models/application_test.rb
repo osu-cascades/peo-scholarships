@@ -80,14 +80,14 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   test 'is invalid without a name' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.name = ''
     refute application.valid?
   end
 
   test 'is invalid without a formatted email address' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.email = ''
     refute application.valid?
@@ -98,35 +98,35 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   test 'is invalid without a dob' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.dob = ''
     refute application.valid?
   end
 
   test 'is invalid without an address' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.address = ''
     refute application.valid?
   end
 
   test 'is invalid without a phone number' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.phone_number = ''
     refute application.valid?
   end
 
   test 'is invalid without a marital_status' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.marital_status = ''
     refute application.valid?
   end
 
   test 'is invalid without a the last four of ssn' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     assert application.valid?
     application.ssn = ''
     refute application.valid?
@@ -141,7 +141,7 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   test 'only one application per scholarship per applicant' do
-    existing_application = applications(:first)
+    existing_application = applications(:first_submitted)
     same_applicant_different_scholarship = valid_application_for(
       existing_application.applicant, Scholarship.new(name: 'Fake'))
     assert same_applicant_different_scholarship.valid?
@@ -154,14 +154,14 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   test 'has a string representation including scholarship and applicant name' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     applicant_name = application.applicant.full_name
     scholarship_name = application.scholarship.name
     assert_equal "#{scholarship_name} application by #{applicant_name}", application.to_s
   end
 
   test 'deleting an application deletes all of its answers' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     answers = application.answers
     assert application.answers.any?
     application.destroy

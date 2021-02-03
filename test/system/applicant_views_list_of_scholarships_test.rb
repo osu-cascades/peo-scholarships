@@ -41,7 +41,7 @@ class ApplicantViewsListOfScholarshipsTest < ApplicationSystemTestCase
   end
 
   test 'applicant sees a link to view a saved but unsubmitted application' do
-    unsubmitted_application = applications(:second)
+    unsubmitted_application = applications(:second_unsubmitted)
     sign_in(unsubmitted_application.applicant)
     visit scholarships_path
     assert_text unsubmitted_application.scholarship.name
@@ -51,7 +51,7 @@ class ApplicantViewsListOfScholarshipsTest < ApplicationSystemTestCase
   end
 
   test 'applicant sees a link to view a submitted application' do
-    submitted_application = applications(:first)
+    submitted_application = applications(:first_submitted)
     sign_in(submitted_application.applicant)
     visit scholarships_path
     assert_text submitted_application.scholarship.name

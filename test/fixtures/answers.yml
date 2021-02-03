@@ -1,9 +1,9 @@
 first:
   body: Fake answer body 1
-  application: first
+  application: first_submitted
   question: first
 
 second:
   body: Fake answer body 2
-  application: first
+  application: first_submitted
   question: second

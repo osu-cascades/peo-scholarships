@@ -58,7 +58,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests including unpublished scholarships' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     scholarship = application.scholarship
     scholarship.update(published: false)
     sign_in(application.applicant)

@@ -1,4 +1,4 @@
-first:
+first_submitted:
   submitted: true
   name: First Fake Applicant
   dob: 1/1/2000
@@ -34,7 +34,7 @@ first:
   scholarship: first
   applicant: applicant
 
-second:
+second_unsubmitted:
   submitted: false
   name: First Fake Applicant
   dob: 1/1/2000
