@@ -4,6 +4,7 @@
   - @scholarships.each do |scholarship|
     %li.mb-5
       %h2= link_to scholarship.name, scholarship
+      %p Applicaiton deadline: #{scholarship.application_deadline}
       %p
         - if current_user.applied_for?(scholarship)
           - application = current_user.application_for(scholarship)

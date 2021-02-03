@@ -3,20 +3,22 @@ require 'marital_status'
 class ApplicationsController < ApplicationController
 
   def show
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
   end
 
   def new
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = Application.new(applicant: current_user, scholarship: @scholarship)
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem starting this application.'
   end
 
   def create
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = Application.new(application_params)
     @application.applicant = current_user
     @application.scholarship = @scholarship
@@ -26,10 +28,12 @@ class ApplicationsController < ApplicationController
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :new
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem saving this application.'
   end
 
   def edit
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
   rescue ActiveRecord::RecordNotFound
@@ -37,7 +41,7 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
     if @application.save(validate: false)
@@ -47,7 +51,7 @@ class ApplicationsController < ApplicationController
       render :edit
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
+    redirect_to scholarships_path, alert: 'There was a problem saving this application.'
   end
 
   def destroy
@@ -59,11 +63,11 @@ class ApplicationsController < ApplicationController
       redirect_to scholarships_url, alert: 'Could not delete application.'
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
+    redirect_to scholarships_path, alert: 'There was a problem deleting this application.'
   end
 
   def submit
-    @scholarship = Scholarship.find(params[:scholarship_id])
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.submitted = true
     if @application.save
@@ -72,6 +76,8 @@ class ApplicationsController < ApplicationController
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :new
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
   end
 
   private

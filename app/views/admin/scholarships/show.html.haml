@@ -3,6 +3,8 @@
 .row
   .col
     %h2= @scholarship
+    %h3 Application Deadline: #{@scholarship.application_deadline}
+
   .col.text-right
     = link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'btn btn-outline-primary'
     = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }

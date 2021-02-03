@@ -12,5 +12,9 @@
   .form-group
     = f.label :name
     = f.text_field :name, required: true, class: 'form-control'
-  .actions
+  .form-group
+    = f.label :application_deadline
+    = f.date_field :application_deadline, required: true, class: 'form-control'
+
+  .actions.mt-5
     = f.submit({class: 'btn btn-success'})

@@ -1,19 +1,24 @@
 first:
   name: First Fake Scholarship
   published: true
+  application_deadline: <%= 90.days.from_now.to_date %>
 
 second:
   name: Second Fake Scholarship
   published: true
+  application_deadline: <%= 90.days.from_now.to_date %>
 
 third:
   name: Third Fake Scholarship
   published: true
+  application_deadline: <%= 90.days.from_now.to_date %>
 
 with_questions_but_no_applications:
   name: Fourth Fake Scholarship
   published: true
+  application_deadline: <%= 90.days.from_now.to_date %>
 
 unpublished:
   name: Unpublished Scholarship
   published: false
+  application_deadline: <%= 90.days.from_now.to_date %>

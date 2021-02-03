@@ -3,7 +3,7 @@ require 'test_helper'
 class ScholarshipTest < ActiveSupport::TestCase
 
   def new_scholarship
-    Scholarship.new(name: 'Fake Scholarship')
+    Scholarship.new(name: 'Fake Scholarship', application_deadline: 90.days.from_now.to_date)
   end
 
   test 'has questions' do
@@ -24,6 +24,20 @@ class ScholarshipTest < ActiveSupport::TestCase
   test 'is not published by default' do
     s = new_scholarship
     refute s.published?
+  end
+
+  test 'has a required application deadline' do
+    s = new_scholarship
+    assert s.valid?
+    s.application_deadline = nil
+    refute s.valid?
+  end
+
+  test 'must have an application_deadline in the future' do
+    s = new_scholarship
+    assert s.valid?
+    s.application_deadline = Date.yesterday
+    refute s.valid?
   end
 
   test 'has a string representation that is its name' do
