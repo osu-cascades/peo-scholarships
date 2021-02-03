@@ -6,7 +6,7 @@
       %h2= link_to scholarship.name, scholarship
       %p Application deadline: #{scholarship.application_deadline.to_s(:long)}
       %p
-        - if current_user.applied_for?(scholarship)
+        - if current_user.started_application_for?(scholarship)
           - application = current_user.application_for(scholarship)
           = link_to 'View Application', scholarship_application_path(scholarship, application.id), class: 'btn btn-xs btn-primary'
         - else
