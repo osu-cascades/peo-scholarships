@@ -10,6 +10,14 @@ class Scholarship < ApplicationRecord
 
   scope :published, -> { where(published: true) }
 
+  def open?
+    published && Date.current <= application_deadline
+  end
+
+  def closed?
+    !open?
+  end
+
   def to_s
     name
   end
