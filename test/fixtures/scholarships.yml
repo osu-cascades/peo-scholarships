@@ -22,3 +22,8 @@ unpublished:
   name: Unpublished Scholarship
   published: false
   application_deadline: <%= 90.days.from_now.to_date %>
+
+past_deadline:
+  name: Fifth Fake Scholarship
+  published: true
+  application_deadline: <%= Date.yesterday %>
