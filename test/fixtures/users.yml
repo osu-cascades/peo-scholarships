@@ -30,9 +30,17 @@ second_applicant:
   active: true
 
 applicant_with_no_applications:
-  first_name: Fake
+  first_name: Third Fake
   last_name: Applicant
   email: fake4@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'applicant'
+  active: true
+
+late_applicant:
+  first_name: Late Fake
+  last_name: Applicant
+  email: fake6@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: 'applicant'
   active: true
