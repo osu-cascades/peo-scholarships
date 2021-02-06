@@ -9,9 +9,10 @@ class Scholarship < ApplicationRecord
   validate :application_deadline_cannot_be_changed_to_a_past_date, on: :update
 
   scope :published, -> { where(published: true) }
+  scope :open, -> { published.where('application_deadline >= ?', Date.current) }
 
   def open?
-    published && Date.current <= application_deadline
+    published && application_deadline >= Date.current
   end
 
   def closed?
