@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
+    @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = Application.new(applicant: current_user, scholarship: @scholarship)
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
   rescue ActiveRecord::RecordNotFound
@@ -18,7 +18,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
+    @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = Application.new(application_params)
     @application.applicant = current_user
     @application.scholarship = @scholarship
@@ -33,7 +33,7 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
+    @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
   rescue ActiveRecord::RecordNotFound
@@ -41,11 +41,10 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
-    byebug
+    @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
-    byebug
+  
     if @application.save(validate: false)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
     else
@@ -69,7 +68,7 @@ class ApplicationsController < ApplicationController
   end
 
   def submit
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
+    @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.submitted = true
     if @application.save

@@ -47,7 +47,7 @@ class User < ApplicationRecord
     applications.none?
   end
 
-  def applied_for?(scholarship)
+  def started_application_for?(scholarship)
     application_for(scholarship).present?
   end
 

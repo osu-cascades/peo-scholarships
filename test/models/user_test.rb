@@ -81,11 +81,11 @@ class UserTest < ActiveSupport::TestCase
   test '#application_for' do
     user = users(:applicant)
     scholarship = scholarships(:first)
-    assert_equal applications(:first), user.application_for(scholarship)
+    assert_equal applications(:first_submitted), user.application_for(scholarship)
   end
 
   test 'cannot be deleted if it has applications' do
-    user_with_application = applications(:first).applicant
+    user_with_application = applications(:first_submitted).applicant
     assert_empty user_with_application.errors
     refute user_with_application.destroy
     refute user_with_application.destroyed?
@@ -99,17 +99,18 @@ class UserTest < ActiveSupport::TestCase
     refute user.deletable?
   end
 
-  test 'see if current user has applied for the scholarship already' do
-    application = applications(:first)
+  # started_application_for?
+
+  test 'is true when the applicant has an application for the scholarship' do
+    application = applications(:first_submitted)
     applicant = application.applicant
-    scholarship = application.scholarship
-    assert applicant.applied_for?(scholarship)
+    assert applicant.started_application_for?(application.scholarship)
   end
 
-  test 'see if current user has not applied for the scholarship already' do
+  test 'is false when the applicant does not have an application for the scholarship' do
     applicant = new_user
     scholarship = scholarships(:first)
-    refute applicant.applied_for?(scholarship)
+    refute applicant.started_application_for?(scholarship)
   end
 
 end

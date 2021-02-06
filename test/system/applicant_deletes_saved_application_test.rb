@@ -4,11 +4,12 @@ class ApplicantDeletesSavedApplicationTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
 
-  test 'applicant deletes their saved application' do
+  test 'applicant deletes their unsubmitted application' do
     sign_in(users(:applicant))
-    application = applications(:first)
+    application = applications(:second_unsubmitted)
     visit scholarship_application_path(application.scholarship, application)
     click_on 'Delete'
     assert_text 'Application deleted'
   end
+
 end

@@ -5,7 +5,7 @@ class AdminViewsApplicationTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   test 'admin views an application' do
-    application = applications(:first)
+    application = applications(:first_submitted)
     sign_in(users(:admin))
     visit admin_scholarships_path
     click_on '2 applications', match: :first

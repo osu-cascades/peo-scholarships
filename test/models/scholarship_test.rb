@@ -69,4 +69,34 @@ class ScholarshipTest < ActiveSupport::TestCase
     refute scholarship_with_application.destroyed?
   end
 
+  # closed?
+
+  test 'is closed if it is not published' do
+    assert scholarships(:unpublished).closed?
+  end
+
+  test 'is closed if it is published but the application deadline is in the past' do
+    assert scholarships(:past_deadline).closed?
+  end
+
+  # open?
+
+  test 'is not open if it is not published' do
+    refute scholarships(:unpublished).open?
+  end
+
+  test 'is not open if it is published but the application deadline is in the past' do
+    refute scholarships(:past_deadline).open?
+  end
+
+  test 'is open if it is published and the application deadline is in the future' do
+    assert scholarships(:first).open?
+  end
+
+  test 'is open if it is published and the application deadline is the current date' do
+    scholarship = scholarships(:first)
+    scholarship.application_deadline = Date.current
+    assert scholarships(:first).open?
+  end
+
 end
