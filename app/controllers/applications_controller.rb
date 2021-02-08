@@ -44,7 +44,7 @@ class ApplicationsController < ApplicationController
     @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
-
+    byebug
     if @application.save(validate: false)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
     else
@@ -95,7 +95,7 @@ class ApplicationsController < ApplicationController
       :scholarship2, :scholarship2_per_month,  :scholarship3, :scholarship3_per_month,
       :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
       :savings, :investments, :school_loan_debt, :other_debt,
-      answers_attributes: [:question_id, :body])
+      answers_attributes: [:id, :question_id, :body])
   end
 
 end

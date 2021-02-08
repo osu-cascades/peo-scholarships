@@ -171,11 +171,12 @@
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
       = f.text_field :other_debt, class: 'form-control'
   %h4 Essay Questions
-  - @scholarship.questions.each do |question|
+  - @application.answers.each do |answer|
     .row
       .col-4.form-group
-        = question.prompt
-        = f.fields_for question.answers.build do |answer_form|
+        = answer.question.prompt
+        = f.fields_for :answers, answer do |answer_form|
+          = answer_form.hidden_field :question_id, value: answer.question.id
           .row
             = answer_form.text_area :body
 
