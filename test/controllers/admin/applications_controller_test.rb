@@ -18,6 +18,9 @@ class AdminApplicationsControllerTest < ActionDispatch::IntegrationTest
     # show
     get admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to new_user_session_path
+    # new
+    get new_admin_scholarship_application_path(scholarship_id: 'fake')
+    assert_redirected_to new_user_session_path
     # update
     patch admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to new_user_session_path
@@ -36,6 +39,9 @@ class AdminApplicationsControllerTest < ActionDispatch::IntegrationTest
     # show
     get admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to root_url
+    # new
+    get new_admin_scholarship_application_path(scholarship_id: 'fake')
+    assert_redirected_to root_url
     # update
     patch admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
     assert_redirected_to root_url
@@ -53,6 +59,9 @@ class AdminApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     # show
     get admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')
+    assert_redirected_to root_url
+    # new
+    get new_admin_scholarship_application_path(scholarship_id: 'fake')
     assert_redirected_to root_url
     # update
     patch admin_scholarship_application_path(scholarship_id: 'fake', id: 'fake')

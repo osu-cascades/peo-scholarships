@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :scholarships do
       patch 'publish', on: :member
       patch 'unpublish', on: :member
-      resources :applications, except: [:new, :create, :edit]
+      resources :applications, except: [:create, :edit]
       resources :questions, except: :show
     end
   end

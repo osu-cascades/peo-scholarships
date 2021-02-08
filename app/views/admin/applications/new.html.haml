@@ -1,0 +1,181 @@
+%h2 #{@scholarship} Application
+
+= form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
+  %h3.mt-4 Personal Information
+  .row
+    .col-5.form-group
+      = f.label :name, 'Full name'
+      = f.text_field :name, class: 'form-control'
+    .col-4.form-group
+      = f.label :dob, 'Date of birth'
+      = f.date_field :dob, class: 'form-control'
+    .col-3.form-group
+      = f.label :ssn, 'Last 4 digits of SSN'
+      = f.text_field :ssn, class: 'form-control'
+  .row.mt-3
+    .col-3.form-group
+      = f.label :marital_status
+      = f.select :marital_status, @options_for_marital_status, {include_blank: true}, {class: 'form-control'}
+    .col-4.form-group
+      = f.label :ages_of_children, 'Ages of dependent children'
+      = f.text_field :ages_of_children, class: 'form-control'
+    .col.form-group
+      = f.label :student_id, 'Student ID (if applicable)'
+      = f.text_field :student_id, class: 'form-control'
+  .row.mt-3
+    .col.form-group-8
+      = f.label :address
+      = f.text_area :address, size: '1x4', class: 'form-control'
+    .col
+      .form-group
+        = f.label :phone_number
+        = f.telephone_field :phone_number, class: 'form-control'
+        = f.label :email, class: 'mt-1'
+        = f.email_field :email, class: 'form-control'
+
+  %h3.mt-4 Institution to be attended
+  .row
+    .col-5.form-group
+      = f.label :institution_name, 'Institution'
+      = f.text_field :institution_name, class: 'form-control'
+    .col-3.form-group
+      = f.label :academic_year, 'Academic Year'
+      = f.text_field :academic_year, class: 'form-control'
+  .row
+    .col-8.form-group
+      = f.label :institution_address, "Address of Institution's Business Office"
+      = f.text_field :institution_address, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :major, 'Major/focus'
+      = f.text_field :major, class: 'form-control'
+    .col-6.form-group
+      = f.label :completion_date, 'Projected Date of Completion'
+      = f.date_select :completion_date, {discard_day: true, order: [:month, :year],start_year: Date.current.year}, {class: 'form-control'}
+  .row
+    .col-4.form-group
+      = f.label :academic_standing, 'Standing at start of Term/Semester (Frosh, Soph, Jr, Sen, Other)'
+      = f.text_field :academic_standing, class: 'form-control'
+    .col-3.form-group
+      = f.label :post_high_school_gpa, 'Cumulative Post-High School G.P.A.'
+      = f.text_field :post_high_school_gpa, class: 'form-control'
+    .col-3.form-group
+      = f.label :high_school_gpa, 'Cumulative High School G.P.A.'
+      = f.text_field :high_school_gpa, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :career_plan, 'Educational Goals/Career Plans'
+      = f.text_area :career_plan, size: '1x8', class: 'form-control'
+
+  %h3.mt-4 Educational history
+  %h4 Colleges / Institutions
+  .row
+    .col-5.form-group
+      = f.label :previous_college1_name, 'College / Institution Name'
+      = f.text_field :previous_college1_name, class: 'form-control'
+    .col-3.form-group
+      = f.label :previous_college1_years, 'Years'
+      = f.text_field :previous_college1_years, class: 'form-control'
+    .col-4.form-group
+      = f.label :previous_college1_degree, 'Degree'
+      = f.text_field :previous_college1_degree, class: 'form-control'
+  .row
+    .col-5.form-group
+      = f.label :previous_college2_name, 'College / Institution Name'
+      = f.text_field :previous_college2_name, class: 'form-control'
+    .col-3.form-group
+      = f.label :previous_college2_years, 'Years'
+      = f.text_field :previous_college2_years, class: 'form-control'
+    .col-4.form-group
+      = f.label :previous_college2_degree, 'Degree'
+      = f.text_field :previous_college2_degree, class: 'form-control'
+  %h4 High School
+  .row
+    .col-5.form-group
+      = f.label :high_school_name, 'High School Name'
+      = f.text_field :high_school_name, class: 'form-control'
+    .col-3.form-group
+      = f.label :high_school_graduation_year, 'Year Graduated'
+      = f.text_field :high_school_graduation_year, class: 'form-control'
+
+  %h3.mt-4 Income and Expenses
+  %h4 Monthly Income
+  .row
+    .col-5.form-group
+      = f.label :total_monthly_income, 'Total Monthly Income'
+      = f.text_field :total_monthly_income, class: 'form-control'
+    .col-5.form-group
+      = f.label :total_scholarship_monthly, 'Total Monthly from Scholarships/Grants'
+      = f.text_field :total_scholarship_monthly, class: 'form-control'
+  .row
+    .col-5.form-group
+      = f.label :scholarship1, 'Scholarship/Grant Name'
+      = f.text_field :scholarship1, class: 'form-control'
+    .col-5.form-group
+      = f.label :scholarship1_per_month, 'Amount per Month'
+      = f.text_field :scholarship1_per_month, class: 'form-control'
+  .row
+    .col-5.form-group
+      = f.label :scholarship2, 'Scholarship/Grant Name'
+      = f.text_field :scholarship2, class: 'form-control'
+    .col-5.form-group
+      = f.label :scholarship2_per_month, 'Amount per Month'
+      = f.text_field :scholarship2_per_month, class: 'form-control'
+  .row
+    .col-5.form-group
+      = f.label :scholarship3, 'Scholarship/Grant Name'
+      = f.text_field :scholarship3, class: 'form-control'
+    .col-5.form-group
+      = f.label :scholarship3_per_month, 'Amount per Month'
+      = f.text_field :scholarship3_per_month, class: 'form-control'
+  %h4 Educational Expenses per Term
+  .row
+    .col-3.form-group
+      = f.label :tuition_cost, 'Tuition'
+      = f.text_field :tuition_cost, class: 'form-control'
+    .col-3.form-group
+      = f.label :supplies, 'Books/Educational supplies'
+      = f.text_field :supplies, class: 'form-control'
+    .col-3.form-group
+      = f.label :childcare, 'Childcare related to education'
+      = f.text_field :childcare, class: 'form-control'
+  .row
+    .col-3.form-group
+      = f.label :transportation, 'Transportation (gas, parking, bus fare)'
+      = f.text_field :transportation, class: 'form-control'
+    .col-3.form-group
+      = f.label :other, 'Other'
+      = f.text_field :other, class: 'form-control'
+  %h4 Monthly Non-educational Expenses
+  .row
+    .col-4.form-group
+      = f.label :monthly_expenses, 'Estimated Monthly Expenses (please consider total expenses including housing, food, utilities, medical, and car)'
+      = f.text_field :monthly_expenses, class: 'form-control'
+    .col-4.form-group
+      = f.label :savings, 'Total in Savings Account'
+      = f.text_field :savings, class: 'form-control'
+    .col-4.form-group
+      = f.label :investments, 'Total in Investments'
+      = f.text_field :investments, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.label :school_loan_debt, 'Current Educational Loan Debt'
+      = f.text_field :school_loan_debt, class: 'form-control'
+    .col-4.form-group
+      = f.label :other_debt, 'Total Balance of Other Indebtedness'
+      = f.text_field :other_debt, class: 'form-control'
+
+  %h3.mt-4 Essay Questions
+  - if @scholarship.questions.empty?
+    %p There are no essay questions to answer.
+  - @scholarship.questions.each do |question|
+    .row
+      .col.form-group
+        = f.fields_for :answers, Answer.new do |answer_form|
+          = answer_form.hidden_field :question_id, value: question.id
+          = answer_form.label :body, question.prompt
+          = answer_form.text_area :body, class: 'form-control'
+
+  .actions.mt-4
+    = f.submit('Save Application', {class: 'btn btn-success', disabled: true})
+    %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
