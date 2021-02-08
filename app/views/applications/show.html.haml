@@ -127,7 +127,8 @@
   %dd.col-sm-9= @application.other_debt
 
 %h3 Essay Questions
-- @scholarship.questions.each do |question|
+- @application.answers.each do |answer|
   %dl.row.mt-5
     %dt.col-sm-3
-      = question
+      = answer.question.prompt
+      = answer.body
