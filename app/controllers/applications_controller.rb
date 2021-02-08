@@ -44,7 +44,6 @@ class ApplicationsController < ApplicationController
     @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
-    byebug
     if @application.save(validate: false)
       redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
     else
