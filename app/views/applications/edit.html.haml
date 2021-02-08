@@ -7,7 +7,6 @@
       %ul
         - @application.errors.full_messages.each do |message|
           %li= message
-
   %h3.mt-4 Personal Information
   .row
     .col-5.form-group
@@ -104,6 +103,7 @@
     .col-3.form-group
       = f.label :high_school_graduation_year, 'Year Graduated'
       = f.text_field :high_school_graduation_year, class: 'form-control'
+
   %h3.mt-4 Income and Expenses
   %h4 Monthly Income
   .row
@@ -163,24 +163,23 @@
     .col-4.form-group
       = f.label :investments, 'Total in Investments'
       = f.text_field :investments, class: 'form-control'
-  .row
+  .row.border
     .col-4.form-group
       = f.label :school_loan_debt, 'Current Educational Loan Debt'
       = f.text_field :school_loan_debt, class: 'form-control'
     .col-4.form-group
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
       = f.text_field :other_debt, class: 'form-control'
-  %h4 Essay Questions
+
+  %h3.mt-4 Essay Questions
   - @application.answers.each do |answer|
     .row
-      .col-4.form-group
-        = answer.question.prompt
+      .col.form-group
         = f.fields_for :answers, answer do |answer_form|
           = answer_form.hidden_field :question_id, value: answer.question.id
-          .row
-            = answer_form.text_area :body
+          = answer_form.label :body, answer.question.prompt
+          = answer_form.text_area :body, class: 'form-control'
 
-
-  .actions
+  .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
-
+    %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
