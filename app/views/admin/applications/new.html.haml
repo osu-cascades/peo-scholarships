@@ -1,12 +1,6 @@
 %h2 #{@scholarship} Application
 
 = form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
-  - if @application.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@application.errors.count, "error")} prohibited this application from being saved:"
-      %ul
-        - @application.errors.full_messages.each do |message|
-          %li= message
   %h3.mt-4 Personal Information
   .row
     .col-5.form-group
@@ -39,7 +33,7 @@
         = f.label :email, class: 'mt-1'
         = f.email_field :email, class: 'form-control'
 
-  %h3.mt-4 Institution to be Attended
+  %h3.mt-4 Institution to be attended
   .row
     .col-5.form-group
       = f.label :institution_name, 'Institution'
@@ -55,7 +49,7 @@
     .col-4.form-group
       = f.label :major, 'Major/focus'
       = f.text_field :major, class: 'form-control'
-    .col-4.form-group
+    .col-6.form-group
       = f.label :completion_date, 'Projected Date of Completion'
       = f.date_select :completion_date, {discard_day: true, order: [:month, :year],start_year: Date.current.year}, {class: 'form-control'}
   .row
@@ -163,7 +157,7 @@
     .col-4.form-group
       = f.label :investments, 'Total in Investments'
       = f.text_field :investments, class: 'form-control'
-  .row.border
+  .row
     .col-4.form-group
       = f.label :school_loan_debt, 'Current Educational Loan Debt'
       = f.text_field :school_loan_debt, class: 'form-control'
@@ -172,14 +166,16 @@
       = f.text_field :other_debt, class: 'form-control'
 
   %h3.mt-4 Essay Questions
-  - @application.answers.each do |answer|
+  - if @scholarship.questions.empty?
+    %p There are no essay questions to answer.
+  - @scholarship.questions.each do |question|
     .row
       .col.form-group
-        = f.fields_for :answers, answer do |answer_form|
-          = answer_form.hidden_field :question_id, value: answer.question.id
-          = answer_form.label :body, answer.question.prompt
+        = f.fields_for :answers, Answer.new do |answer_form|
+          = answer_form.hidden_field :question_id, value: question.id
+          = answer_form.label :body, question.prompt
           = answer_form.text_area :body, class: 'form-control'
 
   .actions.mt-4
-    = f.submit('Save Application', {class: 'btn btn-success'})
+    = f.submit('Save Application', {class: 'btn btn-success', disabled: true})
     %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
