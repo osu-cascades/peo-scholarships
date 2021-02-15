@@ -4,6 +4,7 @@ class Application < ApplicationRecord
   belongs_to :scholarship
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers
+  has_one_attached :recommendation_letter
 
   validates_uniqueness_of :user_id, scope: :scholarship_id
   validates :name, presence: true, allow_blank: false
