@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       patch 'publish', on: :member
       patch 'unpublish', on: :member
       resources :applications, except: [:create, :edit]
-      resources :questions, except: :show
+      resources :questions, except: [:index, :show]
     end
   end
 

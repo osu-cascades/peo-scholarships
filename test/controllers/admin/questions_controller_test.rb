@@ -12,9 +12,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests from unauthenticated sessions' do
-    # index
-    get admin_scholarship_questions_path(scholarship_id: 'fake')
-    assert_redirected_to new_user_session_path
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')
     assert_redirected_to new_user_session_path
@@ -36,9 +33,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'redirects requests from applicant users to root url' do
     sign_in users(:applicant)
-    # index
-    get admin_scholarship_questions_path(scholarship_id: 'fake')
-    assert_redirected_to root_url
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')
     assert_redirected_to root_url
@@ -60,9 +54,6 @@ class AdminQuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'redirects requests from member users to root url' do
     sign_in users(:member)
-    # index
-    get admin_scholarship_questions_path(scholarship_id: 'fake')
-    assert_redirected_to root_url
     # new
     get new_admin_scholarship_question_path(scholarship_id: 'fake')
     assert_redirected_to root_url
