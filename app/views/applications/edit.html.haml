@@ -187,7 +187,8 @@
         = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: "attachment")
   .row
     .col-4.form-group
-      %p Newly Uploaded Letter of Recommendation:
+      - if @application.recommendation_letter.attached?
+        %p Newly Uploaded Letter of Recommendation:
       = f.file_field :recommendation_letter
 
       
