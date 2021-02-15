@@ -179,17 +179,10 @@
           = answer_form.hidden_field :question_id, value: question.id
           = answer_form.label :body, question.prompt
           = answer_form.text_area :body, class: 'form-control'
-          
+
   %h3.mt-4 Letter of Recommendation
     .row
-      .col-4.form-group
-        - if @application.recommendation_letter.attached?
-          %p Currently Uploaded Letter of Recommendation:
-          = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: "attachment")
-    .row
-      .col-4.form-group
-        %p Newly Uploaded Letter of Recommendation:
-        = f.file_field :recommendation_letter
+      = f.file_field :recommendation_letter
 
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
