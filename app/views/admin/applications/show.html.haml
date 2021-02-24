@@ -133,3 +133,9 @@
 %h3 Letter of Recommendation
 - if @application.recommendation_letter.attached?
   = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
+%h3 Transcripts
+- if @application.transcripts.attached?
+  - @application.transcripts.each do |transcript|
+    .row
+      .col-4.form-group
+        = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
