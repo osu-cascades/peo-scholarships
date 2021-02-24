@@ -184,13 +184,14 @@
     .col-4.form-group
       - if @application.recommendation_letter.attached?
         %p Currently Uploaded Letter of Recommendation:
-        = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: "attachment")
+        = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
   .row
     .col-4.form-group
       - if @application.recommendation_letter.attached?
         %p Newly Uploaded Letter of Recommendation:
       = f.file_field :recommendation_letter
 
+<<<<<<< HEAD
   %h3.mt-4 Transcripts
   - if @application.transcripts.attached?
     - @application.transcripts.each do |transcript|
@@ -204,6 +205,8 @@
     .col-4.form-group
       %p add another transcript
       = f.file_field :transcripts, multiple:true
+=======
+>>>>>>> 995fc3e652fa141921957a32b9f3e3f698d301e6
 
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
