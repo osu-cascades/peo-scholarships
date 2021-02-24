@@ -199,7 +199,7 @@
       .row
         .col-4.form-group
           = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
-          = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure'}
+          = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure'}, class: 'btn btn-success'
   .row
     .col-4.form-group
       %p add another transcript
