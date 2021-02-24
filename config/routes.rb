@@ -16,9 +16,7 @@ Rails.application.routes.draw do
   resources :scholarships, only: [:index, :show] do
     resources :applications, except: [:index] do
       patch 'submit', on: :member
-      member do
-        delete :delete_attachment
-      end
+      resources :transcripts, only: [:destroy]
     end
   end
 

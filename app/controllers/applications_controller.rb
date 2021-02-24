@@ -80,12 +80,6 @@ class ApplicationsController < ApplicationController
     redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
   end
 
-  def delete_attachment
-    @attachment = ActiveStorage::Attachment.find(params[:trancript_id])
-    @attachment.purge
-    redirect_to scholarship_application_path(@scholarship, @application)
-  end
-
   private
 
   def application_params

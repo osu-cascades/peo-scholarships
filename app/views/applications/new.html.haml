@@ -181,8 +181,8 @@
           = answer_form.text_area :body, class: 'form-control'
 
   %h3.mt-4 Letter of Recommendation
-    .row
-      = f.file_field :recommendation_letter
+  .row
+    = f.file_field :recommendation_letter
   %h3.mt-4 Transcripts
   .row
     %h4 Please upload high school transcript(if in the past ten years) and any post high-school transcripts
@@ -200,6 +200,4 @@
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
     %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
-  .actions.mt-4
-    = f.submit('Save Application', {class: 'btn btn-success'})
-    %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
+
