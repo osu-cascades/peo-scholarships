@@ -191,7 +191,20 @@
         %p Newly Uploaded Letter of Recommendation:
       = f.file_field :recommendation_letter
 
-      
+  %h3.mt-4 Transcripts
+  - if @application.transcripts.attached?
+    - @application.transcripts.each do |transcript|
+      .row
+        .col-4.form-group
+          = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
+          = link_to 'Remove', delete_attachment_scholarship_application_url(transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure'}
+
+
+  .row
+    .col-4.form-group
+      %p add another transcript
+      = f.file_field :transcripts, multiple:true
+
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
     %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
