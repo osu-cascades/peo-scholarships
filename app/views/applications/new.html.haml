@@ -186,11 +186,6 @@
   %h3.mt-4 Transcripts
   .row
     %h4 Please upload high school transcript(if in the past ten years) and any post high-school transcripts
-  - if @application.transcripts.attached?
-    - @application.transcripts.each do |transcript|
-      .row
-        .col-4.form-group
-          = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
   .row
     .col-4.form-group
       %p add another transcript
