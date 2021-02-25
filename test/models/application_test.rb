@@ -85,6 +85,26 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(application, :previous_college2_degree)
     assert_respond_to(application, :high_school_name)
     assert_respond_to(application, :high_school_graduation_year)
+    assert_respond_to(application, :total_monthly_income)
+    assert_respond_to(application, :total_scholarship_monthly)
+    assert_respond_to(application, :scholarship1)
+    assert_respond_to(application, :scholarship1_per_month)
+    assert_respond_to(application, :scholarship2)
+    assert_respond_to(application, :scholarship2_per_month)
+    assert_respond_to(application, :scholarship3)
+    assert_respond_to(application, :scholarship3_per_month)
+    assert_respond_to(application, :tuition_cost)
+    assert_respond_to(application, :supplies)
+    assert_respond_to(application, :childcare)
+    assert_respond_to(application, :transportation)
+    assert_respond_to(application, :other)
+    assert_respond_to(application, :monthly_expenses)
+    assert_respond_to(application, :savings)
+    assert_respond_to(application, :investments)
+    assert_respond_to(application, :school_loan_debt)
+    assert_respond_to(application, :other_debt)
+
+    assert_respond_to(application, :submitted)
   end
 
   test 'is invalid without a name' do
