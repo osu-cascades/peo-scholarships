@@ -49,6 +49,14 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :answers)
   end
 
+  test 'has a recommendation letter' do
+    assert_respond_to(Application.new, :recommendation_letter)
+  end
+
+  test 'has transcripts' do
+    assert_respond_to(Application.new, :transcripts)
+  end
+
   test 'personal information attributes' do
     application = Application.new
     assert_respond_to(application, :name)
