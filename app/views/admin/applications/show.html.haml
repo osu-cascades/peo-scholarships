@@ -134,7 +134,7 @@
     %dd.col-sm-9
       = answer.body
 
-%h3 Letter of Recommendation
+%h3 Recommendation Letter
 - if @application.recommendation_letter.attached?
   = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
 - else
