@@ -99,6 +99,7 @@
       %dd.col-sm-9= @application.scholarship3
       %dt.col-sm-3 Amount Per Month
       %dd.col-sm-9= @application.scholarship3_per_month
+
 %h3 Educational Expenses
 %dl.row.mt-5
   %dt.col-sm-3 Tuiton per Semester
@@ -111,6 +112,7 @@
   %dd.col-sm-9= @application.transportation
   %dt.col-sm-3 Other
   %dd.col-sm-9= @application.other
+
 %h3 Non-Educational Expenses
 %dl.row.mt-5
   %dt.col-sm-3 Estimated Monthly Expenses
@@ -123,6 +125,7 @@
   %dd.col-sm-9= @application.school_loan_debt
   %dt.col-sm-3 Total Balance of Other Indebtedness
   %dd.col-sm-9= @application.other_debt
+
 %h3 Essay Questions
 - @application.answers.each do |answer|
   %dl.row.mt-5
@@ -130,12 +133,18 @@
       = answer.question.prompt
     %dd.col-sm-9
       = answer.body
+
 %h3 Letter of Recommendation
 - if @application.recommendation_letter.attached?
   = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
+- else
+  %p No recommendation letter has been provided.
+
 %h3 Transcripts
 - if @application.transcripts.attached?
   - @application.transcripts.each do |transcript|
     .row
-      .col-4.form-group
-        = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
+      .col-9
+        = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
+- else
+  %p The applicant has not provided any academic transcripts.
