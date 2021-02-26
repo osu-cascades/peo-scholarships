@@ -101,6 +101,7 @@
       %dd.col-sm-9= @application.scholarship3
       %dt.col-sm-3 Amount Per Month
       %dd.col-sm-9= @application.scholarship3_per_month
+
 %h3 Educational Expenses
 %dl.row.mt-5
   %dt.col-sm-3 Tuiton per Semester
@@ -113,6 +114,7 @@
   %dd.col-sm-9= @application.transportation
   %dt.col-sm-3 Other
   %dd.col-sm-9= @application.other
+
 %h3 Non-Educational Expenses
 %dl.row.mt-5
   %dt.col-sm-3 Estimated Monthly Expenses
@@ -143,4 +145,4 @@
   - @application.transcripts.each do |transcript|
     .row
       .col-4.form-group
-        = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
+        = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
