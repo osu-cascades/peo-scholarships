@@ -179,31 +179,29 @@
           = answer_form.hidden_field :question_id, value: answer.question.id
           = answer_form.label :body, answer.question.prompt
           = answer_form.text_area :body, class: 'form-control'
+
   %h3.mt-4 Recommendation Letter
   .row
-    .col-4.form-group
+    .col.form-group
       - if @application.recommendation_letter.attached?
-        %p Currently Uploaded Recommendation Letter:
-        = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
-  .row
-    .col-4.form-group
-      - if @application.recommendation_letter.attached?
-        %p Newly Uploaded Recommendation Letter:
-      = f.file_field :recommendation_letter
+        %p.my-0 Current recommendation letter:
+        %p= link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
+        =f.label :recommendation_letter, 'Replace with new recommendation letter:'
+      = f.file_field :recommendation_letter, class: 'form-control-file'
 
   %h3.mt-4 Transcripts
   .row
-    %h4 Please upload high school transcript(if in the past ten years) and any post high-school transcripts
-  - if @application.transcripts.attached?
-    - @application.transcripts.each do |transcript|
-      .row
-        .col-4.form-group
-          = link_to transcript.filename, rails_blob_path(transcript, disposition: "attachment")
-          = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure'}, class: 'btn btn-success'
-  .row
-    .col-4.form-group
-      %p add another transcript
-      = f.file_field :transcripts, multiple:true
+    .col.form-group
+      - if @application.transcripts.attached?
+        %p.my-0 Current transcripts:
+        - @application.transcripts.each do |transcript|
+          %p
+            = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
+            = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-outline-danger btn-sm'
+        = f.label :transcripts, 'Add another transcript:'
+      - else
+        = f.label :transcripts, 'Please upload a high school transcript (if in the past ten years) and any post-high school transcripts.'
+      = f.file_field :transcripts, multiple:true, class: 'form-control-file'
 
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})

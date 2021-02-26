@@ -182,16 +182,15 @@
 
   %h3.mt-4 Recommendation Letter
   .row
-    = f.file_field :recommendation_letter
+    .col.form-group
+      = f.file_field :recommendation_letter, class: 'form-control-file'
+
   %h3.mt-4 Transcripts
   .row
-    %h4 Please upload high school transcript(if in the past ten years) and any post high-school transcripts
-  .row
-    .col-4.form-group
-      %p add another transcript
-      = f.file_field :transcripts, multiple:true
+    .col.form-group
+      = f.label :transcripts, 'Please upload a high school transcript (if in the past ten years) and any post-high school transcripts.'
+      = f.file_field :transcripts, multiple:true, class: 'form-control-file'
 
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
     %small.form-text.text-muted You can save as frequently as you wish. Your application will not be seen until you submit it.
-

@@ -144,7 +144,7 @@
 - if @application.transcripts.attached?
   - @application.transcripts.each do |transcript|
     .row
-      .col-9
+      .col
         = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
 - else
   %p The applicant has not provided any academic transcripts.
