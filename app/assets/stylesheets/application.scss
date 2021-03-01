@@ -100,14 +100,12 @@ body.home main.container {
   text-align: center;
   color: white;
 }
-
 .title-bar > img {
   width: 100%;
   background-position: center;
   background-size: cover;
   filter: blur(4px);
 }
-
 .centered-title {
   text-shadow: 0 0 5px black;
   position: absolute;
@@ -115,7 +113,6 @@ body.home main.container {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .centered-title h1, .centered-title h2, .centered-title img {
   filter: drop-shadow(0 0 5px black);
 }
@@ -126,6 +123,17 @@ body.home main.container {
   padding-left: 15px;
   padding-right: 15px;
 }
+.apply-button {
+  padding: 10px 10% 10px 10%;
+  font-weight: bold;
+  color: white;
+  border: solid #012d72 2px;
+  background-color: #012d72;
+}
+.apply-button:hover {
+  color: #012d72;
+  background-color: #dbe3f3;
+}
 
 .info-bar {
   margin-top: 3rem;
@@ -134,12 +142,10 @@ body.home main.container {
   background-image: linear-gradient(#012d72, #001f51);
   font-size: 1.2em;
 }
-
 .info-bar p {
   padding: 5px;
   margin: 0;
 }
-
 .info-bar span {
   font-weight: bold;
   color: yellow;
