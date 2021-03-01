@@ -19,6 +19,16 @@ class Scholarship < ApplicationRecord
     !open?
   end
 
+  def status
+    if !published?
+      'Not visible'
+    elsif closed?
+      'Closed'
+    elsif open?
+      'Open'
+    end
+  end
+
   def to_s
     name
   end

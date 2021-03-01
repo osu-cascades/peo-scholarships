@@ -99,4 +99,24 @@ class ScholarshipTest < ActiveSupport::TestCase
     assert scholarships(:first).open?
   end
 
+  # status
+
+  test "is 'Not visible' if it is not published, regardless of the application deadline" do
+    scholarship = scholarships(:unpublished)
+    scholarship.application_deadline = 2.days.from_now
+    assert_equal scholarship.status, 'Not visible'
+    scholarship.application_deadline = 2.days.ago
+    assert_equal scholarship.status, 'Not visible'
+  end
+
+  test "is 'Closed' if it is published and has a past application deadline" do
+    scholarship = scholarships(:past_deadline)
+    assert_equal scholarship.status, 'Closed'
+  end
+
+  test "is 'Open' if it is published and has a future application deadline" do
+    scholarship = scholarships(:first)
+    assert_equal scholarship.status, 'Open'
+  end
+
 end
