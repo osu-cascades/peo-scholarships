@@ -1,7 +1,7 @@
 class Admin::ScholarshipsController < Admin::AdminController
 
   def index
-    @scholarships = Scholarship.all
+    @scholarships = Scholarship.order(application_deadline: :desc).all
   end
 
   def show

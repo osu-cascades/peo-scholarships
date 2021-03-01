@@ -12,12 +12,12 @@ class AdminViewsListOfScholarshipsTest < ApplicationSystemTestCase
     assert_text scholarships(:first).name
   end
 
-  test 'admin sees indicator for published scholarship' do
+  test 'admin sees indicator for published, open scholarship' do
     sign_in(users(:admin))
     visit admin_scholarships_path
     published_scholarship = scholarships(:first)
     within "##{dom_id(published_scholarship)}" do
-      assert_text 'Published'
+      assert_text 'Open'
     end
   end
 
@@ -27,6 +27,15 @@ class AdminViewsListOfScholarshipsTest < ApplicationSystemTestCase
     unpublished_scholarship = scholarships(:unpublished)
     within "##{dom_id(unpublished_scholarship)}" do
       assert_text 'Not visible'
+    end
+  end
+
+  test 'admin sees indicator for closed scholarship' do
+    sign_in(users(:admin))
+    visit admin_scholarships_path
+    published_scholarship = scholarships(:past_deadline)
+    within "##{dom_id(published_scholarship)}" do
+      assert_text 'Closed'
     end
   end
 

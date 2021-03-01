@@ -28,14 +28,12 @@
 %table.table.table-hover
   %thead
     %tr
-      %th{scope: 'col'} id
       %th{scope: 'col'} Prompt
       %th
   %tbody
     - @scholarship.questions.each do |question|
       %tr[question]
-        %th{scope: 'row'}= question.id
-        %td= question
+        %th.font-weight-normal{scope: 'row'}= question
         %td
           = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
           = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
@@ -44,14 +42,12 @@
 %table.table.table-hover
   %thead
     %tr
-      %th{scope: 'col'} id
       %th{scope: 'col'} Applicant
       %th{scope: 'col'} Status
       %th Last Updated
   %tbody
-    - @scholarship.applications.each do |application|
+    - @scholarship.applications.order(:updated_at).each do |application|
       %tr
-        %th{scope: 'row'}= application.id
-        %td= link_to application.applicant, admin_scholarship_application_path(@scholarship, application)
-        %td (todo)
+        %th.font-weight-normal{scope: 'row'}= link_to application.applicant, admin_scholarship_application_path(@scholarship, application)
+        %td= application.submitted? ? 'Complete' : 'Incomplete'
         %td= application.updated_at.to_s(:long)
