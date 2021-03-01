@@ -6,5 +6,8 @@ class TranscriptsController < ApplicationController
     @attachment = @application.transcripts.find(params[:transcript_id])
     @attachment.purge
     redirect_to edit_scholarship_application_path(@scholarship, @application)
+
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
   end
 end

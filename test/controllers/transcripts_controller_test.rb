@@ -14,7 +14,6 @@ class TranscriptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests for someone else\'s application' do
-    skip
     applicant = users(:applicant)
     other_persons_application = applications(:third)
     refute_equal applicant, other_persons_application.applicant
@@ -25,7 +24,6 @@ class TranscriptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests for unpublished scholarships' do
-    skip
     application = applications(:first_submitted)
     scholarship = application.scholarship
     scholarship.update(published: false)
@@ -36,7 +34,6 @@ class TranscriptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirects requests for scholarships with application deadlines in the past' do
-    skip
     application = applications(:late)
     scholarship = application.scholarship
     sign_in(application.applicant)
