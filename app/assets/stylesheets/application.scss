@@ -88,6 +88,11 @@ footer {
 
 /* Homepage */
 
+body.home main.container {
+  padding: 0;
+  max-width: 100%;
+}
+
 .title-bar {
   position: relative;
   bottom: 6rem;
