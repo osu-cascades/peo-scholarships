@@ -20,8 +20,7 @@
         %th{scope: 'row'}= scholarship.id
         %td
           = link_to scholarship, admin_scholarship_path(scholarship)
-          .small
-            = link_to pluralize(scholarship.questions.count, 'question'), admin_scholarship_questions_path(scholarship)
+          .small= pluralize(scholarship.questions.count, 'essay question')
         %td= scholarship.status
         %td= scholarship.application_deadline.to_s(:long)
         %td= link_to pluralize(scholarship.applications.count, 'application'), admin_scholarship_applications_path(scholarship)
