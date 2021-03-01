@@ -89,13 +89,14 @@ footer {
 /* Homepage */
 
 body.home main.container {
+  margin: 0;
   padding: 0;
   max-width: 100%;
 }
 
 .title-bar {
   position: relative;
-  bottom: 6rem;
+  bottom: 3rem;
   text-align: center;
   color: white;
 }
@@ -124,6 +125,24 @@ body.home main.container {
   max-width: 1140px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.info-bar {
+  margin-top: 3rem;
+  padding: 30px 10% 30px 10%;
+  color: white;
+  background-image: linear-gradient(#012d72, #001f51);
+  font-size: 1.2em;
+}
+
+.info-bar p {
+  padding: 5px;
+  margin: 0;
+}
+
+.info-bar span {
+  font-weight: bold;
+  color: yellow;
 }
 
 /* Authentication */
