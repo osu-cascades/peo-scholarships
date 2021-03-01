@@ -8,7 +8,6 @@
 %table.table.table-hover
   %thead
     %tr
-      %th{scope: 'col'} id
       %th{scope: 'col'} Name
       %th{scope: 'col'} Status
       %th{scope: 'col'} Application Deadline
@@ -17,8 +16,7 @@
   %tbody
     - @scholarships.each do |scholarship|
       %tr[scholarship]
-        %th{scope: 'row'}= scholarship.id
-        %td
+        %th{scope: 'row'}
           = link_to scholarship, admin_scholarship_path(scholarship)
           .small= pluralize(scholarship.questions.count, 'essay question')
         %td= scholarship.status
