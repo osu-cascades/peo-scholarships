@@ -11,16 +11,6 @@ class ScholarshipsControllerTest < ActionDispatch::IntegrationTest
     # index
     get scholarships_path
     assert_redirected_to new_user_session_path
-    # show
-    get scholarship_path(id: 'fake')
-    assert_redirected_to new_user_session_path
-  end
-
-  test 'respond with error for requests for unpublished scholarships' do
-    sign_in(users(:applicant))
-    # show
-    get scholarship_path(scholarships(:unpublished))
-    assert_redirected_to scholarships_path
   end
 
 end
