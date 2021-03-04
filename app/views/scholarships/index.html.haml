@@ -3,7 +3,7 @@
 %ul.list-unstyled.mt-5
   - @scholarships.each do |scholarship|
     %li.mb-5[scholarship]
-      %h2= link_to scholarship.name, scholarship
+      %h2= link_to_if scholarship.open?, scholarship.name, scholarship
       %p Application deadline: #{scholarship.application_deadline.to_s(:long)}
       %p
         - if current_user.started_application_for?(scholarship)

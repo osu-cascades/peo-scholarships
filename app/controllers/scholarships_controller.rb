@@ -1,7 +1,7 @@
 class ScholarshipsController < ApplicationController
 
   def index
-    @scholarships = Scholarship.published
+    @scholarships = Scholarship.published.order(application_deadline: :desc)
   end
 
   def show
