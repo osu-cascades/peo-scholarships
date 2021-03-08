@@ -36,6 +36,13 @@ class ApplicantViewsSavedApplicationTest < ApplicationSystemTestCase
     refute_link 'Edit'
   end
 
+  test 'applicant does not see a link to submit a submitted application' do
+    application = applications(:first_submitted)
+    sign_in(application.applicant)
+    visit scholarship_application_path(application.scholarship, application)
+    refute_link 'Submit'
+  end
+
   test 'applicant does not see a link to delete a submitted application' do
     application = applications(:first_submitted)
     sign_in(application.applicant)
