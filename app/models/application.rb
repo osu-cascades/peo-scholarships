@@ -45,4 +45,12 @@ class Application < ApplicationRecord
     "#{scholarship} application by #{applicant}"
   end
 
+  def delete_application(current_user)
+    if current_user.role == 'admin' || (current_user.id == self.user_id && !self.submitted? && current_user.role == 'applicant')
+      self.destroy
+      return true
+    end
+    return false
+  end
+
 end

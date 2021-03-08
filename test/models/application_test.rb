@@ -197,5 +197,46 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_empty application.answers
   end
 
-end
+  # test 'can not be edited after being submitted' do
+  #   original_application = applications(:first_submitted)
+  #   application = original_application
+  #   application.email = 'fake@fake.com'
+  #   assert_not_empty application.errors
+  #   assert_equal original_application, application
+  # end
 
+  # test 'can not be deleted after being submitted' do
+  #   application = applications(:first_submitted)
+  #   application.destroy
+  #   assert_not_empty application.errors
+  #   assert_not application.destroyed?
+  # end
+
+  test 'can not be deleted by applicant after being submitted' do
+    application = applications(:first_submitted)
+    applicant = users(:applicant)
+    assert_not application.delete_application(applicant)
+    assert_not application.destroyed?
+  end
+
+  test 'can not be deleted by applicant who does not own it' do
+    application = applications(:second_unsubmitted)
+    applicant = users(:second_applicant)
+    assert_not application.delete_application(applicant)
+    assert_not application.destroyed?
+  end
+
+  test 'can be deleted by applicant when unsubmitted' do
+    application = applications(:second_unsubmitted)
+    applicant = users(:applicant)
+    assert application.delete_application(applicant)
+    assert application.destroyed?
+  end
+  
+  test 'can be deleted by admin' do
+    application = applications(:first_submitted)
+    admin = users(:admin)
+    assert application.delete_application(admin)
+    assert application.destroyed?
+  end
+end

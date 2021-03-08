@@ -56,8 +56,7 @@ class ApplicationsController < ApplicationController
 
   def destroy
     application = current_user.applications.find(params[:id])
-    application.destroy
-    if application.destroyed?
+    if application.delete_application(current_user)
       redirect_to scholarships_url, notice: 'Application deleted.'
     else
       redirect_to scholarships_url, alert: 'Could not delete application.'
