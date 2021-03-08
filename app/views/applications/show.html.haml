@@ -128,6 +128,16 @@
   %dt.col-sm-3 Total Balance of Other Indebtedness
   %dd.col-sm-9= @application.other_debt
 
+
+%h3 Awards
+%dl.row.mt5
+  %dt.col-sm-3 Award Name:
+  %dd.col-sm-9= @application.award.name
+  %dt.col-sm-3 Award Received At:
+  %dd.col-sm-9= @application.award.awarded_date
+  %dt.col-sm-3 Award Description:
+  %dd.col-sm-9= @application.award.description
+
 %h3 Essay Questions
 - @application.answers.each do |answer|
   %dl.row.mt-5
