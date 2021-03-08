@@ -171,6 +171,20 @@
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
       = f.text_field :other_debt, class: 'form-control'
 
+  %h3.mt-4 Awards
+  = f.fields_for :award, @application.award do |award_form|
+    .row
+      .col-4.form-group
+        = award_form.label :name, 'Award Name'
+        = award_form.text_field :name, class: 'form-control'
+      .col-4.form-group
+        = award_form.label :awarded_date, 'Awarded At:'
+        = award_form.date_field :awarded_date, class: 'form-control'
+    .row
+      .col-8.form-group
+        = award_form.label :description, 'Description of Award'
+        = award_form.text_field :description, class: 'form-control'
+
   %h3.mt-4 Essay Questions
   - @scholarship.questions.each do |question|
     .row

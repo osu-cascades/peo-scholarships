@@ -11,7 +11,8 @@ class ApplicationsController < ApplicationController
 
   def new
     @scholarship = Scholarship.open.find(params[:scholarship_id])
-    @application = Application.new(applicant: current_user, scholarship: @scholarship)
+    @application = Application.new(applicant: current_user, scholarship: @scholarship, award: Award.new)
+    @application.award.application_id = @application.id
     @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
   rescue ActiveRecord::RecordNotFound
     redirect_to scholarships_path, alert: 'There was a problem starting this application.'
@@ -93,7 +94,8 @@ class ApplicationsController < ApplicationController
       :scholarship2, :scholarship2_per_month,  :scholarship3, :scholarship3_per_month,
       :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
       :savings, :investments, :school_loan_debt, :other_debt, :recommendation_letter, transcripts: [],
-      answers_attributes: [:id, :question_id, :body])
+      answers_attributes: [:id, :question_id, :body],
+      award_attributes: [:id, :name, :awarded_date, :description])
   end
 
 end
