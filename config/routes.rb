@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
-  get '/about', to: 'static_pages#about', as: :about_page
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
 
-  resources :scholarships, only: [:index, :show] do
+  resources :scholarships, only: :index do
     resources :applications, except: [:index] do
       patch 'submit', on: :member
       resources :transcripts, only: [:destroy]
