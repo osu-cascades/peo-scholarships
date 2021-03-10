@@ -231,4 +231,54 @@ class ApplicationTest < ActiveSupport::TestCase
     assert application.delete_application(admin)
     assert application.destroyed?
   end
+
+  test 'can not be updated by applicant after being submitted' do
+    application = applications(:first_submitted)
+    applicant = users(:applicant)
+    previous_update = application.updated_at
+
+    application.email = 'updated_fake_email@example.com'
+    assert_not application.update_application(applicant)
+    assert_equal application.updated_at, previous_update
+  end
+
+  test 'can not be updated by applicant who does not own it' do
+    application = applications(:second_unsubmitted)
+    applicant = users(:second_applicant)
+    previous_update = application.updated_at
+
+    application.email = 'updated_fake_email@example.com'
+    assert_not application.update_application(applicant)
+    assert_equal application.updated_at, previous_update
+  end
+
+  test 'can not be updated by member' do
+    application = applications(:second_unsubmitted)
+    member = users(:member)
+    previous_update = application.updated_at
+
+    application.email = 'updated_fake_email@example.com'
+    assert_not application.update_application(member)
+    assert_equal application.updated_at, previous_update
+  end
+
+  test 'can be updated by applicant when unsubmitted' do
+    application = applications(:second_unsubmitted)
+    applicant = users(:applicant)
+    previous_update = application.updated_at
+
+    application.email = 'updated_fake_email@example.com'
+    assert application.update_application(applicant)
+    assert_not_equal application.updated_at, previous_update
+  end
+
+  test 'can be updated by admin' do
+    application = applications(:first_submitted)
+    admin = users(:admin)
+    previous_update = application.updated_at
+
+    application.email = 'updated_fake_email@example.com'
+    assert application.update_application(admin)
+    assert_not_equal application.updated_at, previous_update
+  end
 end

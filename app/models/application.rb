@@ -48,15 +48,21 @@ class Application < ApplicationRecord
   end
 
   def delete_application(current_user)
-    if deletable_by? current_user
-      self.destroy
-      return true
+    if modifiable_by? current_user
+      return self.destroy
+    end
+    false
+  end
+
+  def update_application(current_user)
+    if modifiable_by? current_user
+      return self.save(validate: false)
     end
     false
   end
 
   private
-    def deletable_by? current_user
+    def modifiable_by? current_user
       current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
     end
 end
