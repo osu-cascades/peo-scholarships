@@ -48,11 +48,15 @@ class Application < ApplicationRecord
   end
 
   def delete_application(current_user)
-    if current_user.role == 'admin' || (current_user.id == self.user_id && !self.submitted? && current_user.role == 'applicant')
+    if deletable_by? current_user
       self.destroy
       return true
     end
-    return false
+    false
   end
 
+  private
+    def deletable_by? current_user
+      current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
+    end
 end
