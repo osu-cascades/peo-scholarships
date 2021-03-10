@@ -211,6 +211,13 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_not application.destroyed?
   end
 
+  test 'can not be deleted by member' do
+    application = applications(:second_unsubmitted)
+    member = users(:member)
+    assert_not application.delete_application(member)
+    assert_not application.destroyed?
+  end
+
   test 'can be deleted by applicant when unsubmitted' do
     application = applications(:second_unsubmitted)
     applicant = users(:applicant)
