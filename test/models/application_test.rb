@@ -200,22 +200,22 @@ class ApplicationTest < ActiveSupport::TestCase
   test 'can not be deleted by applicant after being submitted' do
     application = applications(:first_submitted)
     applicant = users(:applicant)
-    assert_not application.delete_application(applicant)
-    assert_not application.destroyed?
+    refute application.delete_application(applicant)
+    refute application.destroyed?
   end
 
   test 'can not be deleted by applicant who does not own it' do
     application = applications(:second_unsubmitted)
     applicant = users(:second_applicant)
-    assert_not application.delete_application(applicant)
-    assert_not application.destroyed?
+    refute application.delete_application(applicant)
+    refute application.destroyed?
   end
 
   test 'can not be deleted by member' do
     application = applications(:second_unsubmitted)
     member = users(:member)
-    assert_not application.delete_application(member)
-    assert_not application.destroyed?
+    refute application.delete_application(member)
+    refute application.destroyed?
   end
 
   test 'can be deleted by applicant when unsubmitted' do
@@ -238,7 +238,7 @@ class ApplicationTest < ActiveSupport::TestCase
     previous_update = application.updated_at
 
     application.email = 'updated_fake_email@example.com'
-    assert_not application.update_application(applicant)
+    refute application.update_application(applicant)
     assert_equal application.updated_at, previous_update
   end
 
@@ -248,7 +248,7 @@ class ApplicationTest < ActiveSupport::TestCase
     previous_update = application.updated_at
 
     application.email = 'updated_fake_email@example.com'
-    assert_not application.update_application(applicant)
+    refute application.update_application(applicant)
     assert_equal application.updated_at, previous_update
   end
 
@@ -258,7 +258,7 @@ class ApplicationTest < ActiveSupport::TestCase
     previous_update = application.updated_at
 
     application.email = 'updated_fake_email@example.com'
-    assert_not application.update_application(member)
+    refute application.update_application(member)
     assert_equal application.updated_at, previous_update
   end
 
@@ -269,7 +269,7 @@ class ApplicationTest < ActiveSupport::TestCase
 
     application.email = 'updated_fake_email@example.com'
     assert application.update_application(applicant)
-    assert_not_equal application.updated_at, previous_update
+    refute_equal application.updated_at, previous_update
   end
 
   test 'can be updated by admin' do
@@ -279,6 +279,6 @@ class ApplicationTest < ActiveSupport::TestCase
 
     application.email = 'updated_fake_email@example.com'
     assert application.update_application(admin)
-    assert_not_equal application.updated_at, previous_update
+    refute_equal application.updated_at, previous_update
   end
 end
