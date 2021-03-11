@@ -177,12 +177,11 @@
       .col-4.form-group
         = award_form.label :name, 'Award Name'
         = award_form.text_field :name, class: 'form-control'
-      .col-4.form-group
-        = award_form.label :awarded_date, 'Awarded At:'
+      .col-2.form-group
+        = award_form.label :awarded_date, 'Date Awarded'
         = award_form.date_field :awarded_date, class: 'form-control'
-    .row
-      .col-8.form-group
-        = award_form.label :description, 'Description of Award'
+      .col-6.form-group
+        = award_form.label :description, 'Description'
         = award_form.text_field :description, class: 'form-control'
 
   %h3.mt-4 Essay Questions
