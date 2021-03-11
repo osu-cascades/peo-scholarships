@@ -186,6 +186,8 @@
         = award_form.text_field :description, class: 'form-control'
 
   %h3.mt-4 Essay Questions
+  - if @scholarship.questions.empty?
+    %p There are no essay questions to answer.
   - @application.answers.each do |answer|
     .row
       .col.form-group
