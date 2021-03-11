@@ -49,6 +49,9 @@ class Application < ApplicationRecord
   validates :high_school_gpa, presence: true, allow_blank: false
   validates :career_plan, presence: true, allow_blank: false
 
+  validate :correct_recommendation_letter_mime_type
+  validate :correct_transcript_mime_type
+
   def to_s
     "#{scholarship} application by #{applicant}"
   end
@@ -71,6 +74,24 @@ class Application < ApplicationRecord
 
     def modifiable_by? current_user
       current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
+    end
+
+    def correct_recommendation_letter_mime_type
+      if recommendation_letter.attached? && !document.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
+        recommendation_letter.purge
+        errors.add(:recommendation_letter, 'Must be a PDF or Word file')
+      end
+    end
+
+    def correct_transcript_mime_type
+      return unless transcripts.attached?
+      transcripts.each do |transcript|
+        if !transcript.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
+          transcript.purge
+          errors.add(:transcripts, 'Must be a PDF or Word file')
+          return
+        end
+      end
     end
 
 end
