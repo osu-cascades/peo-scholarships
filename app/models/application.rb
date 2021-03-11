@@ -1,5 +1,7 @@
 class Application < ApplicationRecord
 
+  ATTACHMENT_MIME_TYPES = 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+
   belongs_to :applicant, class_name: 'User', foreign_key: 'user_id'
   belongs_to :scholarship
   has_many :answers, dependent: :destroy

@@ -201,7 +201,8 @@
         %p.my-0 Current recommendation letter:
         %p= link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
         =f.label :recommendation_letter, 'Replace with new recommendation letter:'
-      = f.file_field :recommendation_letter, class: 'form-control-file'
+      = f.file_field :recommendation_letter, class: 'form-control-file', accept: Application::ATTACHMENT_MIME_TYPES
+      %small.form-text.text-muted PDF or Word files only, please.
 
   %h3.mt-4 Transcripts
   .row
@@ -215,7 +216,8 @@
         = f.label :transcripts, 'Add another transcript:'
       - else
         = f.label :transcripts, 'Please upload a high school transcript (if in the past ten years) and any post-high school transcripts.'
-      = f.file_field :transcripts, multiple:true, class: 'form-control-file'
+      = f.file_field :transcripts, multiple:true, class: 'form-control-file', accept: Application::ATTACHMENT_MIME_TYPES
+      %small.form-text.text-muted PDF or Word files only, please.
 
   .actions.mt-4
     = f.submit('Save Application', {class: 'btn btn-success'})
