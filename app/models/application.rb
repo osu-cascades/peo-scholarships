@@ -1,6 +1,10 @@
 class Application < ApplicationRecord
 
-  ATTACHMENT_MIME_TYPES = 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ALLOWED_ATTACHMENT_MIME_TYPES = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ]
 
   belongs_to :applicant, class_name: 'User', foreign_key: 'user_id'
   belongs_to :scholarship
@@ -64,7 +68,9 @@ class Application < ApplicationRecord
   end
 
   private
+
     def modifiable_by? current_user
       current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
     end
+
 end
