@@ -39,15 +39,18 @@
           = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
 
 %h3.mt-5 Applications
-%table.table.table-hover
-  %thead
-    %tr
-      %th{scope: 'col'} Applicant
-      %th{scope: 'col'} Status
-      %th Last Updated
-  %tbody
-    - @scholarship.applications.order(:updated_at).each do |application|
+- if @scholarship.applications.submitted.empty?
+  %h4.text-center There are no submitted applications yet.
+- else
+  %table.table.table-hover
+    %thead
       %tr
-        %th.font-weight-normal{scope: 'row'}= link_to application.applicant, admin_scholarship_application_path(@scholarship, application)
-        %td= application.submitted? ? 'Complete' : 'Incomplete'
-        %td= application.updated_at.to_s(:long)
+        %th{scope: 'col'} Applicant
+        %th{scope: 'col'} Status
+        %th Last Updated
+    %tbody
+      - @scholarship.applications.submitted.order(:updated_at).each do |application|
+        %tr
+          %th.font-weight-normal{scope: 'row'}= link_to application.applicant, admin_scholarship_application_path(@scholarship, application)
+          %td= application.submitted? ? 'Complete' : 'Incomplete'
+          %td= application.updated_at.to_s(:long)

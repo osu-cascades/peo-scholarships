@@ -52,6 +52,9 @@ class Application < ApplicationRecord
   validate :correct_recommendation_letter_mime_type
   validate :correct_transcript_mime_type
 
+  scope :submitted, -> { where(submitted: true) }
+  scope :incomplete, -> { where(submitted: false) }
+
   def to_s
     "#{scholarship} application by #{applicant}"
   end

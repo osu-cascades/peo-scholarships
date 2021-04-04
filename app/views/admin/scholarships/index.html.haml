@@ -18,10 +18,12 @@
       %tr[scholarship]
         %th{scope: 'row'}
           = link_to scholarship, admin_scholarship_path(scholarship)
-          .small= pluralize(scholarship.questions.count, 'essay question')
+          .small.text-muted= pluralize(scholarship.questions.count, 'essay question')
         %td= scholarship.status
         %td= scholarship.application_deadline.to_s(:long)
-        %td= link_to pluralize(scholarship.applications.count, 'application'), admin_scholarship_applications_path(scholarship)
+        %td
+          = link_to pluralize(scholarship.applications.submitted.count, 'application'), admin_scholarship_applications_path(scholarship)
+          %p.small.text-muted #{scholarship.applications.incomplete.count} incomplete
         %td
           = link_to 'Edit', edit_admin_scholarship_path(scholarship), class: 'btn btn-light btn-sm mr-4'
           = link_to 'Delete', admin_scholarship_path(scholarship), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
