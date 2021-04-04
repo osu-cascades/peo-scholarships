@@ -77,7 +77,7 @@ class Application < ApplicationRecord
     end
 
     def correct_recommendation_letter_mime_type
-      if recommendation_letter.attached? && !document.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
+      if recommendation_letter.attached? && !recommendation_letter.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
         recommendation_letter.purge
         errors.add(:recommendation_letter, 'Must be a PDF or Word file')
       end
