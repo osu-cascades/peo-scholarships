@@ -1,0 +1,21 @@
+one:
+  application: first_submitted
+  kind: 'employment'
+  title: Fake Experience 1
+  started_at: <%= Date.current %>
+  ended_at: <%= 1.year.from_now %>
+  frequency: Once
+  hours_per_week: 1
+  total_hours: 1
+  responsibilities_accomplishments_honors: Fake Description 1
+
+two:
+  application: first_submitted
+  kind: 'employment'
+  title: Fake Experience 2
+  started_at: <%= Date.current %>
+  ended_at: <%= 1.year.from_now %>
+  frequency: Once
+  hours_per_week: 1
+  total_hours: 1
+  responsibilities_accomplishments_honors: Fake Description 2
