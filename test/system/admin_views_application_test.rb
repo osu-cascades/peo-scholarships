@@ -8,7 +8,7 @@ class AdminViewsApplicationTest < ApplicationSystemTestCase
     application = applications(:first_submitted)
     sign_in(users(:admin))
     visit admin_scholarships_path
-    click_on '2 applications', match: :first
+    click_on '1 application', match: :first
     click_on application.applicant.full_name
     assert_text application.scholarship.name
     assert_text application.applicant.full_name
