@@ -76,26 +76,26 @@ class Application < ApplicationRecord
 
   private
 
-    def modifiable_by? current_user
-      current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
-    end
+  def modifiable_by? current_user
+    current_user.admin? || (current_user == self.applicant && !self.submitted? && current_user.applicant?)
+  end
 
-    def correct_recommendation_letter_mime_type
-      if recommendation_letter.attached? && !recommendation_letter.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
-        recommendation_letter.purge
-        errors.add(:recommendation_letter, 'Must be a PDF or Word file')
+  def correct_recommendation_letter_mime_type
+    if recommendation_letter.attached? && !recommendation_letter.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
+      recommendation_letter.purge
+      errors.add(:recommendation_letter, 'Must be a PDF or Word file')
+    end
+  end
+
+  def correct_transcript_mime_type
+    return unless transcripts.attached?
+    transcripts.each do |transcript|
+      if !transcript.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
+        transcript.purge
+        errors.add(:transcripts, 'Must be a PDF or Word file')
+        return
       end
     end
-
-    def correct_transcript_mime_type
-      return unless transcripts.attached?
-      transcripts.each do |transcript|
-        if !transcript.content_type.in?(ALLOWED_ATTACHMENT_MIME_TYPES)
-          transcript.purge
-          errors.add(:transcripts, 'Must be a PDF or Word file')
-          return
-        end
-      end
-    end
+  end
 
 end
