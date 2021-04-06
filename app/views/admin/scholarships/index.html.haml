@@ -24,6 +24,15 @@
         %td
           = link_to pluralize(scholarship.applications.submitted.count, 'application'), admin_scholarship_applications_path(scholarship)
           %p.small.text-muted #{scholarship.applications.incomplete.count} incomplete
-        %td
-          = link_to 'Edit', edit_admin_scholarship_path(scholarship), class: 'btn btn-light btn-sm mr-4'
-          = link_to 'Delete', admin_scholarship_path(scholarship), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
+
+        - if scholarship.published?
+          %td
+            .btn.btn-light.btn-sm.disabled Can Not Edit
+          %td
+            = link_to 'Delete', admin_scholarship_path(scholarship), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
+
+        - else
+          %td
+            = link_to 'Edit', edit_admin_scholarship_path(scholarship), class: 'btn btn-light btn-sm'
+          %td
+            = link_to 'Delete', admin_scholarship_path(scholarship), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'

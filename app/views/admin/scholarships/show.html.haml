@@ -5,16 +5,21 @@
     %h2= @scholarship
     %h3 Application Deadline: #{@scholarship.application_deadline.to_s(:long)}
 
-  .col.text-right
-    = link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'btn btn-outline-primary'
-    = link_to 'Preview', new_admin_scholarship_application_path(@scholarship), class: 'btn btn-outline-primary'
-    = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
-
     - if @scholarship.published?
+      .col.text-right
+        = link_to 'Preview', new_admin_scholarship_application_path(@scholarship), class: 'btn btn-outline-primary'
+        = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
+
       %p.mt-3
         This scholarship is published and visible to applicants.
         = link_to 'hide', unpublish_admin_scholarship_path(@scholarship), method: :patch
+
     - else
+      .col.text-right
+        = link_to 'Edit', edit_admin_scholarship_path(@scholarship), class: 'btn btn-outline-primary'
+        = link_to 'Preview', new_admin_scholarship_application_path(@scholarship), class: 'btn btn-outline-primary'
+        = link_to 'Delete', admin_scholarship_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this scholarship?' }
+
       %p.mt-3
         This scholarship is not visible to applicants.
         = link_to 'publish', publish_admin_scholarship_path(@scholarship), method: :patch
