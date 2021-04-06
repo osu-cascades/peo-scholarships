@@ -27,10 +27,14 @@ class Admin::ScholarshipsController < Admin::AdminController
 
   def update
     @scholarship = Scholarship.find(params[:id])
-    if @scholarship.update(scholarship_params)
-      redirect_to [:admin, @scholarship], notice: 'Scholarship updated.'
+    if @scholarship.updatable_by? current_user
+      if @scholarship.update(scholarship_params)
+        redirect_to [:admin, @scholarship], notice: 'Scholarship updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to [:admin, @scholarship], alert: 'Could not update this scholarship.'
     end
   end
 

@@ -45,4 +45,11 @@ class Scholarship < ApplicationRecord
     end
   end
 
+  def updatable_by? current_user
+    if current_user.admin? && !self.published?
+      return true
+    end
+    false
+  end
+
 end

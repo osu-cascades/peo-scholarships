@@ -119,4 +119,22 @@ class ScholarshipTest < ActiveSupport::TestCase
     assert_equal scholarship.status, 'Open'
   end
 
+  test 'not updatable when visible' do
+    scholarship = scholarships(:first)
+    admin = users(:admin)
+    refute scholarship.updatable_by? admin
+  end
+
+  test 'not updatable by non-admin, even when non-visible' do
+    scholarship = scholarships(:unpublished)
+    applicant = users(:applicant)
+    refute scholarship.updatable_by? applicant
+  end
+
+  test 'updatable by admin when non-visible' do
+    scholarship = scholarships(:unpublished)
+    admin = users(:admin)
+    assert scholarship.updatable_by? admin
+  end
+
 end

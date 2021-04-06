@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 2021_04_05_045955) do
   end
 
   create_table "applications", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "scholarship_id", null: false
+    t.string "name"
     t.string "email"
     t.date "dob"
     t.string "address"
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(version: 2021_04_05_045955) do
   end
 
   create_table "awards", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.date "awarded_date"
+    t.string "name", null: false
+    t.string "description", null: false
+    t.date "awarded_date", null: false
     t.bigint "application_id"
     t.index ["application_id"], name: "index_awards_on_application_id"
   end
