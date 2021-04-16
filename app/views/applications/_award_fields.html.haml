@@ -8,3 +8,7 @@
   .col-6.form-group
     = f.label :description, 'Description'
     = f.text_field :description, class: 'form-control'
+.row
+  .col-4.form-group
+    = f.hidden_field :_destroy
+    = link_to "remove", '#', class: "remove_fields"

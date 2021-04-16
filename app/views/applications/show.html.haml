@@ -130,13 +130,14 @@
 
 
 %h3 Awards
-%dl.row.mt5
-  %dt.col-sm-3 Award Name:
-  %dd.col-sm-9= @application.award.name
-  %dt.col-sm-3 Award Received At:
-  %dd.col-sm-9= @application.award.awarded_date
-  %dt.col-sm-3 Award Description:
-  %dd.col-sm-9= @application.award.description
+- @application.awards.each do |award|
+  %dl.row.mt5
+    %dt.col-sm-3 Award Name:
+    %dd.col-sm-9= award.name
+    %dt.col-sm-3 Award Received At:
+    %dd.col-sm-9= award.awarded_date
+    %dt.col-sm-3 Award Description:
+    %dd.col-sm-9= award.description
 
 %h3 Essay Questions
 - @application.answers.each do |answer|
