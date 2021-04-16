@@ -10,8 +10,8 @@ class Application < ApplicationRecord
   belongs_to :scholarship
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers
-  has_one :award, dependent: :destroy
-  accepts_nested_attributes_for :award
+  has_many :awards, dependent: :destroy
+  accepts_nested_attributes_for :awards, allow_destroy: true
   has_many :experiences, dependent: :destroy
   has_one_attached :recommendation_letter
   has_many_attached :transcripts
