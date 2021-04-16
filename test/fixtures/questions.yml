@@ -13,3 +13,7 @@ third:
 fourth:
   prompt: Fake Question 1
   scholarship: with_questions_but_no_applications
+
+fifth:
+  prompt: Fake Question 1
+  scholarship: unpublished

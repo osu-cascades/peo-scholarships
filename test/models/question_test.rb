@@ -36,4 +36,14 @@ class QuestionTest < ActiveSupport::TestCase
     refute question.deletable?
   end
 
+  test 'can not be created, updated, or deleted if its scholarship is visible' do
+    question = questions(:first)
+    refute question.updatable?
+  end
+
+  test 'can be created or updated if its scholarship is not visible' do
+    question = questions(:fifth)
+    assert question.updatable?
+  end
+
 end

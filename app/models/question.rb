@@ -13,4 +13,8 @@ class Question < ApplicationRecord
     answers.none?
   end
 
+  def updatable?
+    !self.scholarship.published?
+  end
+
 end

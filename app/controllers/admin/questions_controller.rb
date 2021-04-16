@@ -8,10 +8,14 @@ class Admin::QuestionsController < Admin::AdminController
   def create
     @scholarship = Scholarship.find(params[:scholarship_id])
     @question = @scholarship.questions.build(question_params)
-    if @question.save
-      redirect_to [:admin, @scholarship], notice: 'Question added.'
+    if @question.updatable?
+      if @question.save
+        redirect_to [:admin, @scholarship], notice: 'Question added.'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to [:admin, @scholarship], alert: 'Questions can not be added to published scholarships.'
     end
   end
 
@@ -23,21 +27,29 @@ class Admin::QuestionsController < Admin::AdminController
   def update
     @scholarship = Scholarship.find(params[:scholarship_id])
     @question = @scholarship.questions.find(params[:id])
-    if @question.update(question_params)
-      redirect_to [:admin, @scholarship], notice: 'Question updated.'
+    if @question.updatable?
+      if @question.update(question_params)
+        redirect_to [:admin, @scholarship], notice: 'Question updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to [:admin, @scholarship], alert: 'Questions can not be updated on published scholarships.'
     end
   end
 
   def destroy
     scholarship = Scholarship.find(params[:scholarship_id])
     question = scholarship.questions.find(params[:id])
-    question.destroy
-    if question.destroyed?
-      redirect_to [:admin, scholarship], notice: 'Question deleted.'
+    if question.updatable?
+      question.destroy
+      if question.destroyed?
+        redirect_to [:admin, scholarship], notice: 'Question deleted.'
+      else
+        redirect_to [:admin, scholarship], alert: 'Applicants have answered this question, so it cannot be deleted.'
+      end
     else
-      redirect_to [:admin, scholarship], alert: 'Applicants have answered this question, so it cannot be deleted.'
+      redirect_to [:admin, scholarship], alert: 'Questions can not be deleted from published scholarships.'
     end
   end
 
