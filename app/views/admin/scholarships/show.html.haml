@@ -27,8 +27,9 @@
 .row.mt-5.mb-1
   .col
     %h3 Questions
-  .col.text-right
-    = link_to 'Add New Question', new_admin_scholarship_question_path(@scholarship), class: 'btn btn-outline-primary'
+  - if !@scholarship.published?
+    .col.text-right
+      = link_to 'Add New Question', new_admin_scholarship_question_path(@scholarship), class: 'btn btn-outline-primary'
 
 %table.table.table-hover
   %thead
@@ -39,9 +40,10 @@
     - @scholarship.questions.each do |question|
       %tr[question]
         %th.font-weight-normal{scope: 'row'}= question
-        %td
-          = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
-          = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
+        - if !@scholarship.published?
+          %td
+            = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
+            = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
 
 %h3.mt-5 Applications
 - if @scholarship.applications.submitted.empty?
