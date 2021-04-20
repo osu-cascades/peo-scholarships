@@ -1,3 +1,6 @@
+- javascript_include_tag 'awards', 'data-turbolinks-track' => true
+
+
 %h2 #{@scholarship} Application
 
 = form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
@@ -170,6 +173,11 @@
     .col-4.form-group
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
       = f.text_field :other_debt, class: 'form-control'
+
+  %h3.mt-4 Awards
+  = f.fields_for :awards, @application.awards do |award_form|
+    = render 'award_fields', f: award_form
+  = link_to_add_fields "Add Award", f, :awards
 
 
   %h3.mt-4 Essay Questions
