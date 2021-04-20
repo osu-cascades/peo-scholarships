@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_203810) do
+ActiveRecord::Schema.define(version: 2021_04_20_204614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_203810) do
   create_table "awards", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.date "awarded_date"
+    t.date "date"
     t.bigint "application_id"
     t.index ["application_id"], name: "index_awards_on_application_id"
   end
