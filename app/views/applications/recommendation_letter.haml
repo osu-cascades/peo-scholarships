@@ -1,0 +1,22 @@
+%h2 Submit a Letter of Recommendation
+
+= form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
+
+  %h3.mt-5 Candidate Information
+  %dl.row.mt-3
+    %dt.col-sm-3 Full Name
+    %dd.col-sm-9= @application.name
+    %dt.col-sm-3 Student ID
+    %dd.col-sm-9= @application.student_id
+    %dt.col-sm-3 Email
+    %dd.col-sm-9= @application.email
+
+  .form-group.mt-5
+    %h3 File Selection
+    .mt-3
+      = f.file_field :recommendation_letter, class: 'form-control-file', accept: Application::ALLOWED_ATTACHMENT_MIME_TYPES.join(',')
+      %small.form-text.text-muted PDF or Word files only, please.
+
+  .actions.mt-5
+    = f.submit('Submit Letter', {class: 'btn btn-success'})
+    %small.form-text.text-muted Your letter will be added to the candidate's application.
