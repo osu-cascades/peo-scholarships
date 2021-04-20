@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_045955) do
+ActiveRecord::Schema.define(version: 2021_04_20_203810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,9 +101,9 @@ ActiveRecord::Schema.define(version: 2021_04_05_045955) do
   end
 
   create_table "awards", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description", null: false
-    t.date "awarded_date", null: false
+    t.string "name"
+    t.string "description"
+    t.date "awarded_date"
     t.bigint "application_id"
     t.index ["application_id"], name: "index_awards_on_application_id"
   end
@@ -166,6 +166,5 @@ ActiveRecord::Schema.define(version: 2021_04_05_045955) do
   add_foreign_key "applications", "scholarships"
   add_foreign_key "applications", "users"
   add_foreign_key "awards", "applications"
-  add_foreign_key "experiences", "applications"
   add_foreign_key "questions", "scholarships", on_delete: :cascade
 end
