@@ -1,6 +1,7 @@
 %h1 Administration
 %h2= @scholarship
 %h3= @application
+= link_to 'Print',admin_scholarship_application_path(@scholarship, @application), :onclick => 'window.print();return false;', class: 'btn btn-outline-primary'
 
 %h3 Personal Information
 %dl.row.mt-5
