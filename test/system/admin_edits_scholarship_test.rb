@@ -46,6 +46,7 @@ class AdminEditsScholarshipTest < ApplicationSystemTestCase
   end
 
   test 'admin does not see a link to edit a published scholarship on its page' do
+    sign_in users(:admin)
     visit admin_scholarship_path(scholarships(:first))
     refute_link 'Edit'
   end
