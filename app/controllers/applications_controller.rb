@@ -79,6 +79,13 @@ class ApplicationsController < ApplicationController
     redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
   end
 
+  def recommendation_letter
+    @scholarship = Scholarship.published.find(params[:scholarship_id])
+    @application = current_user.applications.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
+  end
+
   private
 
   def application_params

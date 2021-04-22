@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :scholarships, only: :index do
     resources :applications, except: [:index] do
+      get 'recommendation-letter', on: :member
       patch 'submit', on: :member
       resources :transcripts, only: [:destroy]
     end
