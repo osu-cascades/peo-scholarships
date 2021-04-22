@@ -33,4 +33,11 @@ class AdminEditsScholarshipTest < ApplicationSystemTestCase
     assert_text 'Edited Fake Scholarship'
   end
 
+  test 'admin does not see a link to edit a published scholarship on its page' do
+    scholarship = scholarships(:first)
+    scholarship.save
+    visit '/admin/scholarships/1'
+    refute_link 'Edit'
+  end
+
 end
