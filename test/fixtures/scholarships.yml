@@ -27,3 +27,8 @@ past_deadline:
   name: Fifth Fake Scholarship
   published: true
   application_deadline: <%= Date.yesterday %>
+
+unpublished_past_deadline:
+  name: Sixth Fake Scholarship
+  published: false
+  application_deadline: <%= Date.yesterday %>

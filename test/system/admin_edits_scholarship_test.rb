@@ -16,7 +16,7 @@ class AdminEditsScholarshipTest < ApplicationSystemTestCase
 
   test 'admin changes an existing scholarship deadline to a date in the past fails' do
     sign_in(users(:admin))
-    visit edit_admin_scholarship_path(scholarships(:first))
+    visit edit_admin_scholarship_path(scholarships(:unpublished))
     fill_in 'Application deadline', with: Date.yesterday.to_s
     click_button 'Update Scholarship'
     refute_text 'Scholarship updated'
@@ -26,7 +26,7 @@ class AdminEditsScholarshipTest < ApplicationSystemTestCase
 
   test 'admin edits a scholarship with a deadline in the past succeeds' do
     sign_in(users(:admin))
-    visit edit_admin_scholarship_path(scholarships(:past_deadline))
+    visit edit_admin_scholarship_path(scholarships(:unpublished_past_deadline))
     fill_in 'Name', with: 'Edited Fake Scholarship'
     click_button 'Update Scholarship'
     assert_text 'Scholarship updated'
