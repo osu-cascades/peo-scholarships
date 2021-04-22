@@ -7,6 +7,7 @@ class AdminAddsQuestionToScholarshipTest < ApplicationSystemTestCase
   test 'admin adds question to scholarship' do
     sign_in(users(:admin))
     visit admin_scholarship_path(scholarships(:first))
+    click_link 'hide'
     click_on 'Add New Question'
     fill_in 'Prompt', with: 'Fake New Question'
     click_button 'Create Question'
