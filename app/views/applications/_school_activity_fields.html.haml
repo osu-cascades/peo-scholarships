@@ -1,0 +1,29 @@
+%fieldset
+  .row
+    = f.hidden_field :kind, {value: 'school_activity'}
+    .col-4.form-group
+      = f.label :title, 'Name of Activity'
+      = f.text_field :title, class: 'form-control'
+    .col-6.form-group
+      = f.label :responsibilities_accomplishments_honors, 'Description'
+      = f.text_field :responsibilities_accomplishments_honors, class: 'form-control'
+  .row
+    .col-2.form-group
+      = f.label :started_at, 'Date Started'
+      = f.date_field :started_at, class: 'form-control'
+    .col-2.form-group
+      = f.label :ended_at, 'Date Ended'
+      = f.date_field :ended_at, class: 'form-control'
+    .col-2.form-group 
+      = f.label :frequency, 'Frequency'
+      = f.text_field :frequency, class: 'form-control'
+    .col-2.form-group
+      = f.label :hours_per_week, 'Hours per week'
+      = f.text_field :hours_per_week, class: 'form-control'
+    .col-2.form-group
+      = f.label :total_hours, 'Total_Hours'
+      = f.text_field :total_hours, class: 'form-control'
+  .row
+    .col-4.form-group
+      = f.hidden_field :_destroy
+      = link_to 'remove', '#', class: 'remove_fields'
