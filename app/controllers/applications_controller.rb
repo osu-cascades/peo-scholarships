@@ -101,8 +101,9 @@ class ApplicationsController < ApplicationController
       :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
       :savings, :investments, :school_loan_debt, :other_debt, :recommendation_letter, transcripts: [],
       answers_attributes: [:id, :question_id, :body],
-      awards_attributes: [:id, :name, :date, :description, :_destroy]),
+      awards_attributes: [:id, :name, :date, :description, :_destroy],
       experiences_attributes: [:id, :kind, :title, :started_at, :ended_at, :frequency, :hours_per_week, :total_hours, :responsibilities_accomplishments_honors, :_destroy]
+    )
   end
 
 end

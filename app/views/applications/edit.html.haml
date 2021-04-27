@@ -182,7 +182,7 @@
   = f.fields_for :experiences, @application.experiences do |experience|
     - if experience.kind == employment 
       = render 'employment_fields', f: experience
-  = link_to_add_fields "Add Employment", f, :experiences
+  = link_to_add_experiences "Add Employment", f, :experiences, :employment
   
 
 
