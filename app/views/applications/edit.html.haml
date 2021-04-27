@@ -180,11 +180,16 @@
 
   %h3.mt-4 Employment History
   = f.fields_for :experiences, @application.experiences do |experience|
-    - if experience.kind == employment 
+    - if experience.employment?
       = render 'employment_fields', f: experience
   = link_to_add_experiences "Add Employment", f, :experiences, :employment
   
-
+  %h3.mt-4 Volunteer History
+  = f.fields_for :experiences, @application.experiences do |experience|
+    - if experience.employment?
+      = render 'employment_fields', f: experience
+  = link_to_add_experiences "Add Volunteer Experience", f, :experiences, :employment
+  
 
   %h3.mt-4 Essay Questions
   - if @scholarship.questions.empty?

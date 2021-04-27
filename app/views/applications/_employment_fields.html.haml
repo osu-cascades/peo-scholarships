@@ -1,6 +1,6 @@
 %fieldset
   .row
-    = f.hidden_field, :kind, value: employment
+    = f.hidden_field :kind, {value: 'employment'}
     .col-4.form-group
       = f.label :title, 'Place of Employment'
       = f.text_field :title, class: 'form-control'
