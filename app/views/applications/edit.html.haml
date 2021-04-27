@@ -173,7 +173,12 @@
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
       = f.text_field :other_debt, class: 'form-control'
 
-
+  %h3.mt-4 School Activities
+  - @application.experiences.each do |experience|
+    - if experience.kind == 'school_activity'
+      = f.fields_for :experience, experience do |experience_form|
+        = render 'school_activity_fields', f: experience_form
+  = link_to_add_experiences "Add School Activity", f, :experiences, :school_activity
 
   %h3.mt-4 Employment History
   - @application.experiences.each do |experience|
