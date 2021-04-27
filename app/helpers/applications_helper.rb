@@ -7,4 +7,14 @@ module ApplicationsHelper
     end
     link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")})
   end
+  #TODO implement new helper for experiences, instead of association, passs in the kind of enum
+
+  def link_to_add(name, f, kind)
+    new_object = f.send(experience).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(experience, new_object, child_index: id) do |builder|
+      render(kind.to_s.singularize + '_fields', f: builder)
+    end
+    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")})    
+  
 end
