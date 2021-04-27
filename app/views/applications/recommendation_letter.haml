@@ -1,15 +1,25 @@
 %h2 Submit a Letter of Recommendation
+Your recommendation letter will be added to #{@application.name}'s application for #{@scholarship.name}. Thank you for your time.
 
 = form_with(model: @application, url: [@scholarship, @application], local: true) do |f|
 
-  %h3.mt-5 Candidate Information
-  %dl.row.mt-3
-    %dt.col-sm-3 Full Name
-    %dd.col-sm-9= @application.name
-    %dt.col-sm-3 Student ID
-    %dd.col-sm-9= @application.student_id
-    %dt.col-sm-3 Email
-    %dd.col-sm-9= @application.email
+  .row.mt-5
+    .col-5
+      %h3 Candidate Information
+      %dl.row.mt-3
+        %dt.col-sm-3 Full Name
+        %dd.col-sm-9= @application.name
+        %dt.col-sm-3 Student ID
+        %dd.col-sm-9= @application.student_id
+        %dt.col-sm-3 Email
+        %dd.col-sm-9= @application.email
+    .col-5
+      %h3 Scholarship Information
+      %dl.row.mt-3
+        %dt.col-sm-3 Name
+        %dd.col-sm-9= @scholarship.name
+        %dt.col-sm-3 Deadline
+        %dd.col-sm-9= @scholarship.application_deadline
 
   .form-group.mt-5
     %h3 File Selection
@@ -19,4 +29,3 @@
 
   .actions.mt-5
     = f.submit('Submit Letter', {class: 'btn btn-success'})
-    %small.form-text.text-muted Your letter will be added to the candidate's application.
