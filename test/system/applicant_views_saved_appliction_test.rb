@@ -64,4 +64,30 @@ class ApplicantViewsSavedApplicationTest < ApplicationSystemTestCase
     refute_link 'Submit'
   end
 
+  test 'applicant sees \'Submitted\' badge when application is submitted and no other badges' do
+    application = applications(:first_submitted)
+    sign_in application.applicant
+    visit scholarship_application_path(application.scholarship, application)
+    refute_text 'Late'
+    refute_text 'In Progress'
+    assert_text 'Submitted'
+  end
+
+  test 'applicant sees \'Late\' badge when application is late and no other badges' do
+    application = applications(:late)
+    sign_in application.applicant
+    visit scholarship_application_path(application.scholarship, application)
+    refute_text 'Submitted'
+    refute_text 'In Progress'
+    assert_text 'Late'
+  end
+
+  test 'applicant sees \'In Progress\' badge when application is in progress and no other badges' do
+    application = applications(:second_unsubmitted)
+    sign_in application.applicant
+    visit scholarship_application_path(application.scholarship, application)
+    refute_text 'Submitted'
+    refute_text 'Late'
+    assert_text 'In Progress'
+  end
 end

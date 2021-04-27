@@ -5,7 +5,14 @@
       = link_to 'Submit', submit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary', method: :patch, data: {confirm: 'Are you sure you are ready to to submit this application? It can not be changed or deleted later'}
     = link_to 'Delete', scholarship_application_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this application? This can not be undone' }
 
-%h2= @application
+%h2
+  = @application
+  - if @application.submitted?
+    .badge.bg-success.text-light Submitted
+  - elsif Date.today > @application.scholarship.application_deadline
+    .badge.bg-danger.text-light Late
+  - else
+    .badge.bg-primary.text-light In Progress
 
 %h3 Personal Information
 %dl.row.mt-5
