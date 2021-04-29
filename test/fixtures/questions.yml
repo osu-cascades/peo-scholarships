@@ -1,19 +1,24 @@
 first:
   prompt: Fake Question 1
+  word_limit: 250
   scholarship: first
 
 second:
   prompt: Fake Question 2
+  word_limit: 250
   scholarship: first
 
 third:
   prompt: Fake Question 1
+  word_limit: 250
   scholarship: second
 
 fourth:
   prompt: Fake Question 1
+  word_limit: 250
   scholarship: with_questions_but_no_applications
 
 fifth:
   prompt: Fake Question 1
+  word_limit: 250
   scholarship: unpublished
