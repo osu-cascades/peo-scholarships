@@ -56,7 +56,7 @@ class Admin::QuestionsController < Admin::AdminController
   private
 
   def question_params
-    params.require(:question).permit(:prompt)
+    params.require(:question).permit(:prompt, :word_limit)
   end
 
 end

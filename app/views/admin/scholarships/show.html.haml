@@ -35,11 +35,13 @@
   %thead
     %tr
       %th{scope: 'col'} Prompt
+      %th{scope: 'col'} Word Limit
       %th
   %tbody
     - @scholarship.questions.each do |question|
       %tr[question]
         %th.font-weight-normal{scope: 'row'}= question
+        %th.font-weight-normal{scope: 'row'}= question.word_limit
         - if !@scholarship.published?
           %td
             = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
