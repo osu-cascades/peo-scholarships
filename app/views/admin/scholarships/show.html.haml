@@ -49,6 +49,7 @@
 - if @scholarship.applications.submitted.empty?
   %h4.text-center There are no submitted applications yet.
 - else
+  = link_to 'Download as Excel', admin_scholarship_applications_path(format: "xlsx", :scholarship_id => @scholarship.id)
   %table.table.table-hover
     %thead
       %tr
