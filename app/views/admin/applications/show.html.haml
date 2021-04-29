@@ -127,6 +127,61 @@
   %dt.col-sm-3 Total Balance of Other Indebtedness
   %dd.col-sm-9= @application.other_debt
 
+%h3 School Activities
+- @application.experiences.each do |experience|
+  - if experience.kind == 'school_activity'
+    %dt.col-sm3 Activity Name:
+    %dd.col-sm-9= experience.title
+    %dt.col-sm3 Activity Description:
+    %dd.col-sm-9= experience.responsibilities_accomplishments_honors
+    %dt.col-sm3 Started at:
+    %dd.col-sm-9= experience.started_at
+    %dt.col-sm3 Ended at:
+    %dd.col-sm-9= experience.ended_at
+    %dt.col-sm3 Frequency:
+    %dd.col-sm-9= experience.frequency
+    %dt.col-sm3 Hours per Week:
+    %dd.col-sm-9= experience.hours_per_week
+    %dt.col-sm3 Total Hours:
+    %dd.col-sm-9= experience.total_hours
+    
+
+%h3 Employment History
+- @application.experiences.each do |experience|
+  - if experience.kind == 'employment'
+    %dt.col-sm3 Place of Employment:
+    %dd.col-sm-9= experience.title
+    %dt.col-sm3 Description:
+    %dd.col-sm-9= experience.responsibilities_accomplishments_honors
+    %dt.col-sm3 Started at:
+    %dd.col-sm-9= experience.started_at
+    %dt.col-sm3 Ended at:
+    %dd.col-sm-9= experience.ended_at
+    %dt.col-sm3 Frequency:
+    %dd.col-sm-9= experience.frequency
+    %dt.col-sm3 Hours per Week:
+    %dd.col-sm-9= experience.hours_per_week
+    %dt.col-sm3 Total Hours:
+    %dd.col-sm-9= experience.total_hours
+
+%h3 Volunteer Experience
+- @application.experiences.each do |experience|
+  - if experience.kind == 'volunteer_experience'
+    %dt.col-sm3 Place where Volunteered:
+    %dd.col-sm-9= experience.title
+    %dt.col-sm3 Description:
+    %dd.col-sm-9= experience.responsibilities_accomplishments_honors
+    %dt.col-sm3 Started at:
+    %dd.col-sm-9= experience.started_at
+    %dt.col-sm3 Ended at:
+    %dd.col-sm-9= experience.ended_at
+    %dt.col-sm3 Frequency:
+    %dd.col-sm-9= experience.frequency
+    %dt.col-sm3 Hours per Week:
+    %dd.col-sm-9= experience.hours_per_week
+    %dt.col-sm3 Total Hours:
+    %dd.col-sm-9= experience.total_hours    
+
 %h3 Awards
 - @application.awards.each do |award|
   %dl.row.mt-5
