@@ -1,7 +1,7 @@
 wb = xlsx_package.workbook
 
 
-wb.add_worksheet(name: "Applications") do |sheet|
+wb.add_worksheet(name: @scholarship.name + ' Applications') do |sheet|
   sheet.add_row ["Name", "Major"]
 
   @applications.each do |application|
