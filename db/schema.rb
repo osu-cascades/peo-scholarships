@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_201717) do
+ActiveRecord::Schema.define(version: 2021_04_29_223127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_201717) do
     t.bigint "scholarship_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "word_limit"
     t.index ["scholarship_id"], name: "index_questions_on_scholarship_id"
   end
 
