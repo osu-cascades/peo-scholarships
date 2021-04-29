@@ -2,9 +2,10 @@ wb = xlsx_package.workbook
 
 
 wb.add_worksheet(name: @scholarship.name + ' Applications') do |sheet|
-  sheet.add_row ["Name", "Major"]
+  sheet.add_row ["Name", "Major", "Rank", "Comments"]
 
   @applications.each do |application|
     sheet.add_row [application.name, application.major]
   end
+  sheet.column_widths 10, 10, 10, 40
 end
