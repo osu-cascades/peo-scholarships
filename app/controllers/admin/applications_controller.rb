@@ -5,6 +5,11 @@ class Admin::ApplicationsController < Admin::AdminController
   def index
     @scholarship = Scholarship.includes('applications').find(params[:scholarship_id])
     @applications = @scholarship.applications.submitted
+
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def show

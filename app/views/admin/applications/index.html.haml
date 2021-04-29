@@ -4,6 +4,7 @@
 - if @applications.empty?
   %h4.text-center There are no submitted applications yet.
 - else
+  = link_to 'Download as Excel', admin_scholarship_applications_path(format: "xlsx")
   %table.table.table-hover
     %thead
       %tr
