@@ -102,7 +102,8 @@ class ApplicationsController < ApplicationController
       :savings, :investments, :school_loan_debt, :other_debt, :recommendation_letter, transcripts: [],
       answers_attributes: [:id, :question_id, :body],
       awards_attributes: [:id, :name, :date, :description, :_destroy],
-      experiences_attributes: [:id, :kind, :title, :started_at, :ended_at, :frequency, :hours_per_week, :total_hours, :responsibilities_accomplishments_honors, :_destroy]
+      experiences_attributes: [:id, :kind, :title, :started_at, :ended_at, :frequency, :hours_per_week, :total_hours, :responsibilities_accomplishments_honors, :_destroy],
+      external_scholarships_attributes: [:id, :name, :amount, :_destroy]
     )
   end
 
