@@ -1,0 +1,2 @@
+class ExternalScholarship < ApplicationRecord
+end
