@@ -7,4 +7,9 @@ class ExternalScholarshipTest < ActiveSupport::TestCase
     assert_respond_to(ex_scholarship, :name)
     assert_respond_to(ex_scholarship, :amount)
   end
+
+  test 'belongs to an application' do
+    assert_respond_to(ExternalScholarship.new, :application)
+  end
+
 end
