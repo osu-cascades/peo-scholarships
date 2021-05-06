@@ -167,6 +167,5 @@ ActiveRecord::Schema.define(version: 2021_04_29_223127) do
   add_foreign_key "applications", "scholarships"
   add_foreign_key "applications", "users"
   add_foreign_key "awards", "applications"
-  add_foreign_key "experiences", "applications"
   add_foreign_key "questions", "scholarships", on_delete: :cascade
 end
