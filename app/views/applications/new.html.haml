@@ -116,6 +116,14 @@
     .col-5.form-group
       = f.label :total_scholarship_monthly, 'Total Monthly from Scholarships/Grants'
       = f.text_field :total_scholarship_monthly, class: 'form-control'
+
+  .row
+    .col-5.form-group
+      = f.fields_for :external_scholarships, @application.external_scholarships do |external_scholarship_form|
+        = render 'external_scholarship_fields', f: external_scholarship_form
+      = link_to_add_fields "Add Scholarship/Grant", f, :external_scholarships
+  
+
   .row
     .col-5.form-group
       = f.label :scholarship1, 'Scholarship/Grant Name'
