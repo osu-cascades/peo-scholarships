@@ -121,27 +121,7 @@
         = render 'external_scholarship_fields', f: external_scholarship_form
       = link_to_add_fields "Add Scholarship/Grant", f, :external_scholarships
 
-  .row
-    .col-5.form-group
-      = f.label :scholarship1, 'Scholarship/Grant Name'
-      = f.text_field :scholarship1, class: 'form-control'
-    .col-5.form-group
-      = f.label :scholarship1_per_month, 'Amount per Month'
-      = f.text_field :scholarship1_per_month, class: 'form-control'
-  .row
-    .col-5.form-group
-      = f.label :scholarship2, 'Scholarship/Grant Name'
-      = f.text_field :scholarship2, class: 'form-control'
-    .col-5.form-group
-      = f.label :scholarship2_per_month, 'Amount per Month'
-      = f.text_field :scholarship2_per_month, class: 'form-control'
-  .row
-    .col-5.form-group
-      = f.label :scholarship3, 'Scholarship/Grant Name'
-      = f.text_field :scholarship3, class: 'form-control'
-    .col-5.form-group
-      = f.label :scholarship3_per_month, 'Amount per Month'
-      = f.text_field :scholarship3_per_month, class: 'form-control'
+
   %h4 Educational Expenses per Term
   .row
     .col-3.form-group
