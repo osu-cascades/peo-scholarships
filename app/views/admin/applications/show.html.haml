@@ -79,27 +79,15 @@
   %dd.col-sm-9= @application.total_monthly_income
   %dt.col-sm-3 Total Scholarship Money Monthly
   %dd.col-sm-9= @application.total_scholarship_monthly
-  %dt.col-sm-3 Scholarships/Grant
-  %dd.col-sm-9
-    %dl.row
-      %dt.col-sm-3 Name
-      %dd.col-sm-9= @application.scholarship1
-      %dt.col-sm-3 Amount Per Month
-      %dd.col-sm-9= @application.scholarship1_per_month
-  %dt.col-sm-3 Scholarships/Grant
-  %dd.col-sm-9
-    %dl.row
-      %dt.col-sm-3 Name
-      %dd.col-sm-9= @application.scholarship2
-      %dt.col-sm-3 Amount Per Month
-      %dd.col-sm-9= @application.scholarship2_per_month
-  %dt.col-sm-3 Scholarships/Grant
-  %dd.col-sm-9
-    %dl.row
-      %dt.col-sm-3 Name
-      %dd.col-sm-9= @application.scholarship3
-      %dt.col-sm-3 Amount Per Month
-      %dd.col-sm-9= @application.scholarship3_per_month
+  %dt.col-sm-3 Scholarships/Grant:
+  - @application.external_scholarships.each do |ex_scholarship|
+    %dl.row.mt5
+      %dt.col-sm-3 Scholarship/Grant Name:
+      %dd.col-sm-9= ex_scholarship.name
+      %dt.col-sm-3 Amount per Month:
+      %dd.col-sm-9= ex_scholarship.amount
+
+
 
 %h3 Educational Expenses
 %dl.row.mt-5
