@@ -12,9 +12,7 @@ document.addEventListener('turbolinks:load', () ->
       field.value = ''
       i = 0
       while i < word_limit
-        field.value += word_array[i]
-        if i < word_limit - 1
-          field.value += ' '
+        field.value += word_array[i] + ' '
         i++
       word_count = word_limit
 
