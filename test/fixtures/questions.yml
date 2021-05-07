@@ -10,7 +10,7 @@ second:
 
 third:
   prompt: Fake Question 1
-  word_limit: 250
+  word_limit: 10
   scholarship: second
 
 fourth:
