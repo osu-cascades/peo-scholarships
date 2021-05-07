@@ -1,4 +1,5 @@
 - javascript_include_tag 'awards', 'data-turbolinks-track' => true
+- javascript_include_tag 'questions', 'data-turbolinks-track' => true
 
 %h2 #{@scholarship} Application
 
@@ -172,7 +173,7 @@
       = f.fields_for :experience, experience do |experience_form|
         = render 'employment_fields', f: experience_form
   = link_to_add_experiences "Add Employment", f, :experiences, :employment
-  
+
   %h3.mt-4 Volunteer History
   - @application.experiences.each do |experience|
     - if experience.kind  == 'volunteer_experience'
@@ -184,7 +185,7 @@
   = f.fields_for :awards, @application.awards do |award_form|
     = render 'award_fields', f: award_form
   = link_to_add_fields "Add Award", f, :awards
-  
+
 
   %h3.mt-4 Essay Questions
   - if @scholarship.questions.empty?
@@ -195,7 +196,8 @@
         = f.fields_for :answers, answer do |answer_form|
           = answer_form.hidden_field :question_id, value: answer.question.id
           = answer_form.label :body, answer.question.prompt
-          = answer_form.text_area :body, class: 'form-control'
+          = answer_form.text_area :body, id: 'question_field_' + answer.question.id.to_s, name: answer.question.word_limit.to_s + '_word_question_field', class: 'question_field form-control'
+          = answer_form.label :body, answer.body.split.length.to_s + ' words', id: 'word_count_' + answer.question.id.to_s
 
   %h3.mt-4 Recommendation Letter
   .row
