@@ -3,7 +3,7 @@ document.addEventListener('turbolinks:load', () ->
     field = event.target
     word_array = field.value.split(' ')
     word_count = word_array.length
-    word_limit = field.name.split('_')[0]
+    word_limit = field.id.split('_')[0]
 
     if word_array[0] == '' && word_count == 1
       word_count = 0
@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', () ->
         i++
       word_count = word_limit
 
-    counter = document.getElementById('word_count_' + field.id.split('_')[2])
+    counter = document.getElementById('word_counter_' + field.id.split('_')[4])
     if word_count == 1
       counter.innerHTML = word_count + ' word'
     else
