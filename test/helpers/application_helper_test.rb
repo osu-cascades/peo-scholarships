@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
+  include Devise::TestHelpers
 
   def signed_in?
     false
@@ -11,7 +12,9 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test 'displays sign out link when user is logged in' do
-    skip("See https://stackoverflow.com/questions/53514537/how-to-test-a-rails-5-helper-that-relies-on-devise-signed-in-helper-with-minit")
+
+    sign_in(:applicant)
+    ("See https://stackoverflow.com/questions/53514537/how-to-test-a-rails-5-helper-that-relies-on-devise-signed-in-helper-with-minit")
     assert_match 'Sign Out', sign_in_or_out_link
   end
 
