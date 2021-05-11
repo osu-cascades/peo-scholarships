@@ -23,7 +23,11 @@ class ApplicationsController < ApplicationController
     @application.applicant = current_user
     @application.scholarship = @scholarship
     if @application.save(validate: false)
-      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
+      unless any_word_limit_exceeded_in? @application
+        redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
+      else
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application created. One or more question word limits have been exceeded.'
+      end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :new
@@ -45,7 +49,11 @@ class ApplicationsController < ApplicationController
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
     if @application.update_application(current_user)
-      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
+      unless any_word_limit_exceeded_in? @application
+        redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
+      else
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application updated. One or more question word limits have been exceeded.'
+      end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :edit
@@ -68,9 +76,15 @@ class ApplicationsController < ApplicationController
   def submit
     @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
-    @application.submitted = true
+    unless any_word_limit_exceeded_in? @application
+      @application.submitted = true
+    end
     if @application.save
-      redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
+      if @application.submitted
+        redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
+      else
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Could not submit application. One or more question word limits have been exceeded.'
+      end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :edit
@@ -87,6 +101,15 @@ class ApplicationsController < ApplicationController
   end
 
   private
+
+  def any_word_limit_exceeded_in? application
+    application.answers.each do |answer|
+      if answer.body.split.length > answer.question.word_limit
+        return true
+      end
+    end
+    false
+  end
 
   def application_params
     params.require(:application).permit(:name, :dob, :email, :address,
