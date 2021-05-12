@@ -195,9 +195,9 @@
       .col.form-group
         = f.fields_for :answers, answer do |answer_form|
           = answer_form.hidden_field :question_id, value: answer.question.id
-          = answer_form.label :body, answer.question.prompt + ' (' + answer.question.word_limit.to_s + ' word limit)'
+          = answer_form.label :body, answer.question.prompt + ' (' + answer.question.word_limit.to_s + ' word limit)', for: answer.question.word_limit.to_s + '_word_question_field_' + answer.question.id.to_s
           = answer_form.text_area :body, id: answer.question.word_limit.to_s + '_word_question_field_' + answer.question.id.to_s, class: 'question_field form-control'
-          = answer_form.label :body, answer.body.split.length.to_s + ' words', id: 'word_counter_' + answer.question.id.to_s
+          = answer_form.label :body, answer.body.split.length.to_s + ' words', id: 'word_counter_' + answer.question.id.to_s, for: answer.question.word_limit.to_s + '_word_question_field_' + answer.question.id.to_s
 
   %h3.mt-4 Recommendation Letter
   .row

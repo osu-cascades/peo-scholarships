@@ -26,7 +26,7 @@ class ApplicationsController < ApplicationController
       unless any_word_limit_exceeded_in? @application
         redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
       else
-        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application created. One or more question word limits have been exceeded.'
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application created. Word limit in one or more questions exceeded.'
       end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
@@ -52,7 +52,7 @@ class ApplicationsController < ApplicationController
       unless any_word_limit_exceeded_in? @application
         redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
       else
-        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application updated. One or more question word limits have been exceeded.'
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application updated. Word limit in one or more questions exceeded.'
       end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
@@ -83,7 +83,7 @@ class ApplicationsController < ApplicationController
       if @application.submitted
         redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
       else
-        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Could not submit application. One or more question word limits have been exceeded.'
+        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Could not submit application. Word limit in one or more questions exceeded.'
       end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
