@@ -10,7 +10,7 @@ second:
 
 third:
   prompt: Fake Question 1
-  word_limit: 10
+  word_limit: 5
   scholarship: second
 
 fourth:
@@ -22,3 +22,8 @@ fifth:
   prompt: Fake Question 1
   word_limit: 250
   scholarship: unpublished
+
+sixth:
+  prompt: Fake Question 1
+  word_limit: 5
+  scholarship: third

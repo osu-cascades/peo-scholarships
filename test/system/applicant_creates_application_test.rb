@@ -13,4 +13,12 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     assert_text 'First Fake Applicant'
   end
 
+  test 'applicant creates an application with an exceeded question word limit' do
+    sign_in users(:applicant)
+    visit new_scholarship_application_path(scholarships(:third))
+    fill_in 'Fake Question 1 (5 word limit)', with: 'one two three four five six'
+    click_button 'Save Application'
+    assert_text 'Word limit in one or more questions exceeded.'
+  end
+
 end
