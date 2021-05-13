@@ -236,7 +236,6 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:first_submitted)
     applicant = users(:applicant)
     previous_update = application.updated_at
-
     application.email = 'updated_fake_email@example.com'
     refute application.update_application(applicant)
     assert_equal application.updated_at, previous_update
@@ -246,7 +245,6 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:second_unsubmitted)
     applicant = users(:second_applicant)
     previous_update = application.updated_at
-
     application.email = 'updated_fake_email@example.com'
     refute application.update_application(applicant)
     assert_equal application.updated_at, previous_update
@@ -256,7 +254,6 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:second_unsubmitted)
     member = users(:member)
     previous_update = application.updated_at
-
     application.email = 'updated_fake_email@example.com'
     refute application.update_application(member)
     assert_equal application.updated_at, previous_update
@@ -266,7 +263,6 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:second_unsubmitted)
     applicant = users(:applicant)
     previous_update = application.updated_at
-
     application.email = 'updated_fake_email@example.com'
     assert application.update_application(applicant)
     refute_equal application.updated_at, previous_update
@@ -276,9 +272,21 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:first_submitted)
     admin = users(:admin)
     previous_update = application.updated_at
-
     application.email = 'updated_fake_email@example.com'
     assert application.update_application(admin)
     refute_equal application.updated_at, previous_update
   end
+
+  test 'does not exceed word limits when no answers have too many words' do
+    application = applications(:second_unsubmitted)
+    application.answers[0].body = 'one two three four five'
+    refute application.exceeds_word_limits?
+  end
+
+  test 'exceeds word limits when an answer has too many words' do
+    application = applications(:second_unsubmitted)
+    application.answers[0].body = 'one two three four five six'
+    assert application.exceeds_word_limits?
+  end
+
 end

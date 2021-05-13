@@ -64,7 +64,6 @@ class ScholarshipTest < ActiveSupport::TestCase
   test 'cannot be deleted when applications exist' do
     scholarship_with_application = scholarships(:second)
     assert_empty scholarship_with_application.errors
-    assert_empty scholarship_with_application.questions.collect(&:answers).flatten
     refute scholarship_with_application.destroy
     refute scholarship_with_application.destroyed?
   end
