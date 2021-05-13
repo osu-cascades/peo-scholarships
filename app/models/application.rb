@@ -77,6 +77,15 @@ class Application < ApplicationRecord
     false
   end
 
+  def exceeds_word_limits?
+    self.answers.each do |answer|
+      if answer.body.split.length > answer.question.word_limit
+        return true
+      end
+    end
+    false
+  end
+
   private
 
   def modifiable_by? current_user
