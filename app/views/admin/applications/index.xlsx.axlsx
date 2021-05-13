@@ -2,10 +2,14 @@ wb = xlsx_package.workbook
 
 
 wb.add_worksheet(name: @scholarship.name + ' Applications') do |sheet|
-  sheet.add_row ["Name", "Major", "Rank", "Comments"]
+  sheet.add_row ["Name", "Grad/Undergrad", "Post GPA", "Letter", "Area of Study", "Completion Date", "GPA", "Rank", "Comments"]
 
   @applications.each do |application|
-    sheet.add_row [application.name, application.major]
+    letter = "No"
+    if application.recommendation_letter.attached?
+      letter = "Yes"
+    end
+    sheet.add_row [application.name, application.academic_year, application.post_high_school_gpa, letter, application.major, application.completion_date, application.high_school_gpa]
   end
-  sheet.column_widths 10, 10, 10, 40
+  sheet.column_widths 20, 10, 10, 5, 10, 15, 10, 10, 40
 end
