@@ -58,7 +58,7 @@ class ScholarshipTest < ActiveSupport::TestCase
     assert_empty scholarship.errors
     refute scholarship.destroy
     refute scholarship.destroyed?
-    skip # See https://stackoverflow.com/questions/64941365/how-to-incorporate-a-rails-restrict-with-error-message-in-a-parents-parent
+   # See https://stackoverflow.com/questions/64941365/how-to-incorporate-a-rails-restrict-with-error-message-in-a-parents-parent
   end
 
   test 'cannot be deleted when applications exist' do
