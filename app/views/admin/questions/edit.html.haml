@@ -2,6 +2,7 @@
 %h2= @scholarship
 %h3 Edit Question
 %p Both fields are required.
+
 = form_for [:admin, @scholarship, @question] do |f|
   - if @question.errors.any?
     #error_explanation
