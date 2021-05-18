@@ -107,16 +107,15 @@
       = f.label :high_school_graduation_year, 'Year Graduated'
       = f.text_field :high_school_graduation_year, class: 'form-control'
 
-  %h3.mt-4 Income and Expenses
+    %h3.mt-4 Income and Expenses
   %h4 Monthly Income
   .row
     .col-5.form-group
       = f.label :total_monthly_income, 'Total Monthly Income'
-      = f.text_field :total_monthly_income, class: 'form-control'
+      = f.number_field :total_monthly_income, class: 'form-control'
     .col-5.form-group
       = f.label :total_scholarship_monthly, 'Total Monthly from Scholarships/Grants'
-      = f.text_field :total_scholarship_monthly, class: 'form-control'
-
+      = f.number_field :total_scholarship_monthly, class: 'form-control'
   .row
     .col-5.form-group
       = f.fields_for :external_scholarships, @application.external_scholarships do |external_scholarship_form|
@@ -128,38 +127,38 @@
   .row
     .col-3.form-group
       = f.label :tuition_cost, 'Tuition'
-      = f.text_field :tuition_cost, class: 'form-control'
+      = f.number_field :tuition_cost, class: 'form-control'
     .col-3.form-group
       = f.label :supplies, 'Books/Educational supplies'
-      = f.text_field :supplies, class: 'form-control'
+      = f.number_field :supplies, class: 'form-control'
     .col-3.form-group
       = f.label :childcare, 'Childcare related to education'
-      = f.text_field :childcare, class: 'form-control'
+      = f.number_field :childcare, class: 'form-control'
   .row
     .col-3.form-group
       = f.label :transportation, 'Transportation (gas, parking, bus fare)'
-      = f.text_field :transportation, class: 'form-control'
+      = f.number_field :transportation, class: 'form-control'
     .col-3.form-group
       = f.label :other, 'Other'
-      = f.text_field :other, class: 'form-control'
+      = f.number_field :other, class: 'form-control'
   %h4 Monthly Non-educational Expenses
   .row
     .col-4.form-group
       = f.label :monthly_expenses, 'Estimated Monthly Expenses (please consider total expenses including housing, food, utilities, medical, and car)'
-      = f.text_field :monthly_expenses, class: 'form-control'
+      = f.number_field :monthly_expenses, class: 'form-control'
     .col-4.form-group
       = f.label :savings, 'Total in Savings Account'
-      = f.text_field :savings, class: 'form-control'
+      = f.number_field :savings, class: 'form-control'
     .col-4.form-group
       = f.label :investments, 'Total in Investments'
-      = f.text_field :investments, class: 'form-control'
-  .row
+      = f.number_field :investments, class: 'form-control'
+  .row.border
     .col-4.form-group
       = f.label :school_loan_debt, 'Current Educational Loan Debt'
-      = f.text_field :school_loan_debt, class: 'form-control'
+      = f.number_field :school_loan_debt, class: 'form-control'
     .col-4.form-group
       = f.label :other_debt, 'Total Balance of Other Indebtedness'
-      = f.text_field :other_debt, class: 'form-control'
+      = f.number_field :other_debt, class: 'form-control'
 
   %h3.mt-4 School Activities
   - @application.experiences.each do |experience|
