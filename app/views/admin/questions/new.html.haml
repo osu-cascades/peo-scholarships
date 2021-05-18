@@ -1,6 +1,7 @@
 %h1 Administration
 %h2= @scholarship
 %h3 Add New Question
+%p Both fields are required.
 
 = form_for [:admin, @scholarship, @question] do |f|
   - if @question.errors.any?
