@@ -186,8 +186,9 @@
       .col.form-group
         = f.fields_for :answers, Answer.new do |answer_form|
           = answer_form.hidden_field :question_id, value: question.id
-          = answer_form.label :body, question.prompt
-          = answer_form.text_area :body, class: 'form-control'
+          = answer_form.label :body, question.prompt + ' (' + question.word_limit.to_s + ' word limit)', for: question.word_limit.to_s + '_word_question_field_' + question.id.to_s
+          = answer_form.text_area :body, id: question.word_limit.to_s + '_word_question_field_' + question.id.to_s, class: 'question_field form-control'
+          = answer_form.label :body, '0 words', id: 'word_counter_' + question.id.to_s, for: question.word_limit.to_s + '_word_question_field_' + question.id.to_s
 
   %h3.mt-4 Recommendation Letter
   .row
