@@ -23,7 +23,7 @@ class ApplicationsController < ApplicationController
     @application.applicant = current_user
     @application.scholarship = @scholarship
     if @application.save(validate: false)
-      unless any_word_limit_exceeded_in? @application
+      unless @application.exceeds_word_limits?
         redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application created.'
       else
         redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application created. Word limit in one or more questions exceeded.'
@@ -49,7 +49,7 @@ class ApplicationsController < ApplicationController
     @application = current_user.applications.find(params[:id])
     @application.attributes = application_params
     if @application.update_application(current_user)
-      unless any_word_limit_exceeded_in? @application
+      unless @application.exceeds_word_limits?
         redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application updated.'
       else
         redirect_to scholarship_application_path(@scholarship, @application), alert: 'Application updated. Word limit in one or more questions exceeded.'
@@ -76,7 +76,7 @@ class ApplicationsController < ApplicationController
   def submit
     @scholarship = Scholarship.open.find(params[:scholarship_id])
     @application = current_user.applications.find(params[:id])
-    unless any_word_limit_exceeded_in? @application
+    unless @application.exceeds_word_limits?
       @application.submitted = true
     end
     if @application.save
@@ -101,15 +101,6 @@ class ApplicationsController < ApplicationController
   end
 
   private
-
-  def any_word_limit_exceeded_in? application
-    application.answers.each do |answer|
-      if answer.body.split.length > answer.question.word_limit
-        return true
-      end
-    end
-    false
-  end
 
   def application_params
     params.require(:application).permit(:name, :dob, :email, :address,

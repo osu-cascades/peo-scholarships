@@ -27,3 +27,8 @@ sixth:
   prompt: Fake Question 1
   word_limit: 5
   scholarship: third
+
+seventh:
+  prompt: Fake Question 2
+  word_limit: 5
+  scholarship: second
