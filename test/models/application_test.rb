@@ -49,6 +49,18 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :answers)
   end
 
+  test 'has many experiences' do
+    assert_respond_to(Application.new, :experiences)
+  end
+
+  test 'has many awards' do
+    assert_respond_to(Application.new, :awards)
+  end
+
+  test 'has many external_scholarships' do
+    assert_respond_to(Application.new, :external_scholarships)
+  end
+
   test 'has a recommendation letter' do
     assert_respond_to(Application.new, :recommendation_letter)
   end
