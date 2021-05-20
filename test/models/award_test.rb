@@ -27,4 +27,11 @@ class AwardTest < ActiveSupport::TestCase
     refute award.valid?
   end
 
+  test 'is not valid without a date' do
+    award = awards(:first_submitted)
+    assert award.valid?
+    award.date = nil
+    refute award.valid?
+  end
+
 end
