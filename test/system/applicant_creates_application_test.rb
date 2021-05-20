@@ -21,4 +21,13 @@ class ApplicantCreatesApplicationTest < ApplicationSystemTestCase
     assert_text 'Word limit in one or more questions exceeded.'
   end
 
+  test 'applicant creates an application with external scholarship', js: true do
+    sign_in users(:applicant)
+    visit new_scholarship_application_path(scholarships(:third))
+    click_link 'Add Scholarship/Grant'
+    fill_in 'Scholarship/Grant Name', with: 'eop'
+    fill_in 'Amount per Month', with: 1000
+    click_button 'Save Application'
+    assert_text 'Application created.'
+  end
 end
