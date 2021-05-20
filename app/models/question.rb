@@ -4,6 +4,7 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :restrict_with_error
 
   validates :prompt, presence: true
+  validates :word_limit, presence: true
 
   def to_s
     prompt

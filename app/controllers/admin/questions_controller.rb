@@ -17,8 +17,6 @@ class Admin::QuestionsController < Admin::AdminController
     else
       redirect_to [:admin, @scholarship], alert: 'Questions can not be added to published scholarships.'
     end
-  rescue ActiveRecord::NotNullViolation
-    redirect_to [:admin, @scholarship], alert: 'Failed to create question. Word limit can\'t be blank.'
   end
 
   def edit
@@ -38,8 +36,6 @@ class Admin::QuestionsController < Admin::AdminController
     else
       redirect_to [:admin, @scholarship], alert: 'Questions can not be updated on published scholarships.'
     end
-  rescue ActiveRecord::NotNullViolation
-    redirect_to [:admin, @scholarship], alert: 'Failed to update question. Word limit can\'t be blank.'
   end
 
   def destroy
