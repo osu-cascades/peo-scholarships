@@ -17,6 +17,13 @@ class QuestionTest < ActiveSupport::TestCase
     refute q.valid?
   end
 
+  test 'has a required word count' do
+    q = questions(:first)
+    assert q.valid?
+    q.word_limit = ''
+    refute q.valid?
+  end    
+
   test 'has a string representation that is its prompt' do
     assert_equal questions(:first).to_s, questions(:first).prompt
   end
