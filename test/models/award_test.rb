@@ -20,4 +20,11 @@ class AwardTest < ActiveSupport::TestCase
     refute award.valid?
   end
 
+  test 'is not valid without a description' do
+    award = awards(:first_submitted)
+    assert award.valid?
+    award.description = nil
+    refute award.valid?
+  end
+
 end
