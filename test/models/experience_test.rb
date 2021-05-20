@@ -18,6 +18,11 @@ class ExperienceTest < ActiveSupport::TestCase
     assert_respond_to(Experience.new, :application)
   end
 
+  test 'has a string representation' do
+    experience = experiences(:one)
+    assert_equal "#{experience.title}", experience.to_s
+  end
+
   test 'is not valid without a title' do
     experience = experiences(:one)
     assert experience.valid?
