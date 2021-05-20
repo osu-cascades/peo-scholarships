@@ -17,4 +17,13 @@ class ExternalScholarshipTest < ActiveSupport::TestCase
     assert_equal "#{ex_scholarship.name}", ex_scholarship.to_s
   end
 
+  test 'is not valid without a name' do
+    external_scholarship = external_scholarships(:one)
+    assert external_scholarship.valid?
+    external_scholarship.name = nil
+    refute external_scholarship.valid?
+    external_scholarship.name = ''
+    refute external_scholarship.valid?
+  end
+
 end
