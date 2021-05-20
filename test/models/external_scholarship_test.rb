@@ -12,4 +12,9 @@ class ExternalScholarshipTest < ActiveSupport::TestCase
     assert_respond_to(ExternalScholarship.new, :application)
   end
 
+  test 'has a string representation' do
+    ex_scholarship = external_scholarships(:one)
+    assert_equal "#{ex_scholarship.name}", ex_scholarship.to_s
+  end
+
 end
