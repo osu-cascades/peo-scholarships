@@ -49,6 +49,18 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :answers)
   end
 
+  test 'has many experiences' do
+    assert_respond_to(Application.new, :experiences)
+  end
+
+  test 'has many awards' do
+    assert_respond_to(Application.new, :awards)
+  end
+
+  test 'has many external_scholarships' do
+    assert_respond_to(Application.new, :external_scholarships)
+  end
+
   test 'has a recommendation letter' do
     assert_respond_to(Application.new, :recommendation_letter)
   end
@@ -182,13 +194,19 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_equal "#{scholarship_name} application by #{applicant_name}", application.to_s
   end
 
-  test 'deleting an application deletes all of its answers' do
+  test 'deleting an application deletes all of the objects that belong to it' do
     application = applications(:first_submitted)
     answers = application.answers
+    awards = application.awards
+    experience = application.experiences
     assert application.answers.any?
+    assert application.awards.any?
+    assert application.experiences.any?
     application.destroy
     assert application.destroyed?
     assert_empty application.answers
+    assert_empty application.awards
+    assert_empty application.experiences
   end
 
   test 'can not be deleted by applicant after being submitted' do

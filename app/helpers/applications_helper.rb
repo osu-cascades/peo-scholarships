@@ -5,7 +5,7 @@ module ApplicationsHelper
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
       render(association.to_s.singularize + '_fields', f: builder)
     end
-    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")}, class: 'btn btn-primary')
+    link_to(name, '#', class: 'add_fields btn btn-primary', data: {id: id, fields: fields.gsub("\n", "")})
   end
   #TODO implement new helper for experiences, instead of association, passs in the kind of enum
 
@@ -15,6 +15,6 @@ module ApplicationsHelper
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
       render(kind.to_s.singularize + '_fields', f: builder)
     end
-    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", "")}, class: 'btn btn-primary')    
+    link_to(name, '#', class: 'add_fields btn btn-primary', data: {id: id, fields: fields.gsub("\n", "")})    
   end
 end
