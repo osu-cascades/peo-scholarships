@@ -13,4 +13,11 @@ class AwardTest < ActiveSupport::TestCase
     assert_respond_to(Award.new, :application)
   end
 
+  test 'is not valid without a name' do
+    award = awards(:first_submitted)
+    assert award.valid?
+    award.name = nil
+    refute award.valid?
+  end
+
 end
