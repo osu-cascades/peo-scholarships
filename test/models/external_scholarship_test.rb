@@ -26,4 +26,13 @@ class ExternalScholarshipTest < ActiveSupport::TestCase
     refute external_scholarship.valid?
   end
 
+  test 'is not valid without a numeric amount' do
+    external_scholarship = external_scholarships(:one)
+    assert external_scholarship.valid?
+    external_scholarship.amount = nil
+    refute external_scholarship.valid?
+    external_scholarship.amount = 'NOT NUMERIC'
+    refute external_scholarship.valid?
+  end
+
 end
