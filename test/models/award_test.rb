@@ -13,6 +13,11 @@ class AwardTest < ActiveSupport::TestCase
     assert_respond_to(Award.new, :application)
   end
 
+  test 'award has a string representation' do
+    award = awards(:first_submitted)
+    assert_equal "#{award.name}", award.to_s
+  end
+
   test 'is not valid without a name' do
     award = awards(:first_submitted)
     assert award.valid?
