@@ -8,6 +8,8 @@ class Application < ApplicationRecord
 
   belongs_to :applicant, class_name: 'User', foreign_key: 'user_id'
   belongs_to :scholarship
+  # # See issue 43
+  # belongs_to :recommender, class_name: 'User', foreign_key: 'recommender_id'
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers
   has_many :awards, dependent: :destroy
@@ -60,7 +62,12 @@ class Application < ApplicationRecord
   scope :incomplete, -> { where(submitted: false) }
 
   def to_s
-    "#{scholarship} application by #{applicant}"
+    str = "#{scholarship} application by #{applicant}"
+    # # See issue 43
+    # if self.recommender_id != nil
+    #   str += "\nRecommended by #{recommender} (#{recommender.email})"
+    # end
+    str
   end
 
   def delete_application(current_user)

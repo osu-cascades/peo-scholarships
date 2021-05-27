@@ -202,6 +202,21 @@
   %h3.mt-4 Recommendation Letter
   .row
     .col.form-group
+      -# -# See issue 43
+      -# %p You will be given the option to email the reference whose information you provide after you save your application. Once emailed, your reference will have the option to submit a recommendation letter for you.
+      -# = f.fields_for :users, User.new do |recommender_form|
+      -#   = recommender_form.hidden_field :role, value: 'Recommender'
+      -#   -# Password needs to be set automatically.
+      -#   .row
+      -#     .col-4.form-group
+      -#       = recommender_form.label :first_name, 'First Name'
+      -#       = recommender_form.text_field :first_name, class: 'form-control'
+      -#     .col-4.form-group
+      -#       = recommender_form.label :last_name, 'Last Name'
+      -#       = recommender_form.text_field :last_name, class: 'form-control'
+      -#     .col-4.form-group
+      -#       = recommender_form.label :email
+      -#       = recommender_form.text_field :email, class: 'form-control'
       = f.file_field :recommendation_letter, class: 'form-control-file', accept: Application::ALLOWED_ATTACHMENT_MIME_TYPES.join(',')
       %small.form-text.text-muted PDF or Word files only, please.
 

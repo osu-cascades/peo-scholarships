@@ -1,12 +1,16 @@
 .float-right
   - unless @application.submitted?
     - if Date.today <= @application.scholarship.application_deadline
+      -# -# See issue 43
+      -# = link_to 'Request Recommendation Letter', recommendation_letter_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary'
       = link_to 'Edit', edit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary'
       = link_to 'Submit', submit_scholarship_application_path(@scholarship, @application), class: 'btn btn-outline-primary', method: :patch, data: {confirm: 'Are you sure you are ready to to submit this application? It can not be changed or deleted later'}
     = link_to 'Delete', scholarship_application_path(@scholarship), class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete this application? This can not be undone' }
 
 %h2
   = @application
+
+%h3
   - if @application.submitted?
     .badge.bg-success.text-light Submitted
   - elsif Date.today > @application.scholarship.application_deadline
@@ -89,7 +93,6 @@
   %dt.col-sm-3 Total Household Monthly Income
   %dd.col-sm-9= @application.total_monthly_income
   %dt.col-sm-3 Scholarships/Grants:
-  
 
   - @application.external_scholarships.each do |ex_scholarship|
     %dl.row.mt5
@@ -97,8 +100,6 @@
       %dd.col-sm-9= ex_scholarship.name
       %dt.col-sm-3 Amount per Month:
       %dd.col-sm-9= ex_scholarship.amount
-
-
 
 %h3 Educational Expenses
 %dl.row.mt-5
@@ -143,7 +144,7 @@
     %dd.col-sm-9= experience.hours_per_week
     %dt.col-sm3 Total Hours:
     %dd.col-sm-9= experience.total_hours
-    
+
 
 %h3 Employment History
 - @application.experiences.each do |experience|
@@ -179,7 +180,7 @@
     %dt.col-sm3 Hours per Week:
     %dd.col-sm-9= experience.hours_per_week
     %dt.col-sm3 Total Hours:
-    %dd.col-sm-9= experience.total_hours    
+    %dd.col-sm-9= experience.total_hours
 
 %h3 Awards
 - @application.awards.each do |award|

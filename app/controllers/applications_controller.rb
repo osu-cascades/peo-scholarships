@@ -93,12 +93,19 @@ class ApplicationsController < ApplicationController
     redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
   end
 
-  def recommendation_letter
-    @scholarship = Scholarship.published.find(params[:scholarship_id])
-    @application = current_user.applications.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
-  end
+  # # See issue 43
+  # def recommendation_letter
+  #   @scholarship = Scholarship.published.find(params[:scholarship_id])
+  #   @application = current_user.applications.find(params[:id])
+  #   if @application.recommender_id?
+  #     UserMailer.recommendation_letter_email(@application.recommender_id).deliver
+  #     redirect_to scholarship_application_path(@scholarship, @application), notice: 'Email sent to recommender.'
+  #   else
+  #     redirect_to scholarship_application_path(@scholarship, @application), alert: 'There was a problem emailing the recommender.'
+  #   end
+  # rescue ActiveRecord::RecordNotFound
+  #   redirect_to scholarships_path, alert: 'There was a problem accessing this application.'
+  # end
 
   private
 
@@ -112,7 +119,8 @@ class ApplicationsController < ApplicationController
       :high_school_name, :high_school_graduation_year, :total_monthly_income,
       :total_scholarship_monthly,
       :tuition_cost, :supplies, :childcare, :transportation, :other, :monthly_expenses,
-      :savings, :investments, :school_loan_debt, :other_debt, :recommendation_letter, transcripts: [],
+      :savings, :investments, :school_loan_debt, :other_debt, :recommender_id,
+      :recommendation_letter, transcripts: [],
       answers_attributes: [:id, :question_id, :body],
       awards_attributes: [:id, :name, :date, :description, :_destroy],
       experiences_attributes: [:id, :kind, :title, :started_at, :ended_at, :frequency, :hours_per_week, :total_hours, :responsibilities_accomplishments_honors, :_destroy],
