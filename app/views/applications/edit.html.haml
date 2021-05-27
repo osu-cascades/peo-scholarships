@@ -202,6 +202,7 @@
   %h3.mt-4 Recommendation Letter
   .row
     .col.form-group
+      %p Only the most recently added recommendation letter will be saved.
       - if @application.recommendation_letter.attached?
         %p.my-0 Current recommendation letter:
         %p= link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
