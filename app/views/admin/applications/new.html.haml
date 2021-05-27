@@ -179,6 +179,7 @@
   %h3.mt-4 Recommendation Letter
   .row
     .col.form-group
+      %p Only the most recently added recommendation letter will be saved.
       = f.file_field :recommendation_letter, class: 'form-control-file', accept: Application::ALLOWED_ATTACHMENT_MIME_TYPES.join(',')
       %small.form-text.text-muted PDF or Word files only, please.
 
