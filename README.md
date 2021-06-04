@@ -96,4 +96,4 @@ User.create(first_name: 'Your', last_name: 'Name', email: 'you@domain.com', pass
 You should now be able to visit the staging and/or production URLs and sign in
 with your admin user credentials.
 
-&copy; 2020 Taylor Slye and Yong Joseph Bakos. All rights reserved.
+&copy; 2020 Taylor Slye, Yong Joseph Bakos, and Amber Kolar. All rights reserved.
