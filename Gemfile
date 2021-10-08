@@ -5,7 +5,7 @@ ruby '2.7.4'
 
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.8', require: false
-gem 'bootstrap', '>= 4.5.2'
+gem 'bootstrap', '~> 4.5'
 gem 'caxlsx', '~> 3.0'
 gem 'caxlsx_rails', '~> 0.6.2'
 gem 'coffee-rails', '~> 5.0.0'
