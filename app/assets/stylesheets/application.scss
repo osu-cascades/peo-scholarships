@@ -117,18 +117,6 @@ body.home main.container {
 .centered-title h1, .centered-title h2, .centered-title img, .apply-button {
   filter: drop-shadow(0 0 5px black);
 }
-.apply-button {
-  margin-top: 1rem;
-  padding: 10px 10% 10px 10%;
-  font-weight: bold;
-  border: solid #012d72 2px;
-  color: #012d72;
-  background-color: white;
-}
-.apply-button:hover {
-  color: #012d72;
-  background-color: #dbe3f3;
-}
 
 body.home main.container .alert {
   position: absolute;
