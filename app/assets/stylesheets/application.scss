@@ -112,6 +112,7 @@ body.home main.container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
 }
 .centered-title h1, .centered-title h2, .centered-title img, .apply-button {
   filter: drop-shadow(0 0 5px black);
@@ -135,13 +136,6 @@ body.home main.container .alert {
   margin-left: 15px;
   z-index: 1;
   width: 97%;
-}
-
-.body-content {
-  text-align: left;
-  max-width: 1140px;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .info-bar {
