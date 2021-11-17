@@ -1,5 +1,8 @@
 %h1 Scholarships
 
+- if @scholarships.empty?
+  %h2.display-4.mt-5.text-muted There are no currently open scholarships.
+
 %ul.list-unstyled.mt-5
   - @scholarships.each do |scholarship|
     %li.mb-5[scholarship]
