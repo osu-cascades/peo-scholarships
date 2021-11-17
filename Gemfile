@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
+gem 'airbrake'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.9.1', require: false
 gem 'bootstrap', '~> 4.6'
