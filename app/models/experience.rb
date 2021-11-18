@@ -1,5 +1,7 @@
 class Experience < ApplicationRecord
 
+  belongs_to :application
+
   enum kind: [:employment, :volunteer_experience, :school_activity]
   attribute :kind, :integer, default: :employment
 
@@ -12,7 +14,5 @@ class Experience < ApplicationRecord
   def to_s
     title
   end
-
-  belongs_to :application
 
 end
