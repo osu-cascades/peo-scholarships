@@ -6,10 +6,11 @@ class Application < ApplicationRecord
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ]
 
-  belongs_to :applicant, class_name: 'User', foreign_key: 'user_id'
   belongs_to :scholarship
-  # # See issue 43
-  # belongs_to :recommender, class_name: 'User', foreign_key: 'recommender_id'
+
+  belongs_to :applicant, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :recommender, class_name: 'User', optional: true
+
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers
   has_many :awards, dependent: :destroy
@@ -62,12 +63,7 @@ class Application < ApplicationRecord
   scope :incomplete, -> { where(submitted: false) }
 
   def to_s
-    str = "#{scholarship} application by #{applicant}"
-    # # See issue 43
-    # if self.recommender_id != nil
-    #   str += "\nRecommended by #{recommender} (#{recommender.email})"
-    # end
-    str
+    "#{scholarship} application by #{applicant}"
   end
 
   def delete_application(current_user)
