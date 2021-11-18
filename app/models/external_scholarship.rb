@@ -1,5 +1,7 @@
 class ExternalScholarship < ApplicationRecord
 
+  belongs_to :application
+
   validates :name, presence: true
   validates :amount, presence: true, numericality: true
 
@@ -7,5 +9,4 @@ class ExternalScholarship < ApplicationRecord
     name
   end
 
-  belongs_to :application
 end
