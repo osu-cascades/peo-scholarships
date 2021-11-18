@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable,
          :rememberable, :validatable
 
+  has_many :applications, dependent: :restrict_with_error
+
   enum role: [:applicant, :admin, :member, :recommender]
   attribute :role, :integer, default: :applicant
 
@@ -12,8 +14,6 @@ class User < ApplicationRecord
   default_scope { order(:last_name) }
   scope :active, -> { where(active: true) }
   scope :deactivated, -> { where(active: false) }
-
-  has_many :applications, dependent: :restrict_with_error
 
   def to_s
     full_name
