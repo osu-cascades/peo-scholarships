@@ -29,6 +29,12 @@ namespace :applications do
         academic_standing: "Freshman",
         high_school_gpa: 4.0,
         career_plan: 'A career in sustainable aerospace engineering.',
+        previous_college1_name: 'Central Oregon Community College',
+        previous_college1_years: '2019-2020',
+        previous_college1_degree: 'Associate of Arts Transfer',
+        previous_college2_name: 'Lane Community College',
+        previous_college2_years: '2018-2019',
+        previous_college2_degree: 'N/A',
         high_school_name: 'Example High School',
         high_school_graduation_year: '2020',
         total_monthly_income: 100,
@@ -50,8 +56,11 @@ namespace :applications do
       application.awards << Award.new(name: 'Example Award 1', description: 'A description of the award.', date: 2.years.ago)
       application.awards << Award.new(name: 'Example Award 2', description: 'A description of the award.', date: 1.year.ago)
       application.experiences << Experience.new(kind: :employment, title: 'Example Job', started_at: 1.year.ago, frequency: '3 shifts/wk', responsibilities_accomplishments_honors: 'Example job description', total_hours: 200)
+      application.experiences << Experience.new(kind: :employment, title: 'Second Example Job', started_at: 2.years.ago, frequency: '2 shifts/wk', responsibilities_accomplishments_honors: 'Second example job description', total_hours: 100)
       application.experiences << Experience.new(kind: :volunteer_experience, title: 'Example Volunteer', started_at: 2.years.ago, frequency: 'once a month', responsibilities_accomplishments_honors: 'Example volunteer accomplishments description', total_hours: 40)
+      application.experiences << Experience.new(kind: :volunteer_experience, title: 'Second Example Volunteer', started_at: 3.years.ago, frequency: 'once a year', responsibilities_accomplishments_honors: 'Second example volunteer accomplishments description', total_hours: 8)
       application.experiences << Experience.new(kind: :school_activity, title: 'Example School Activity', started_at: 2.months.ago, frequency: 'bi-weekly', responsibilities_accomplishments_honors: 'Example school activity accomplishment', total_hours: 20)
+      application.experiences << Experience.new(kind: :school_activity, title: 'Second Example School Activity', started_at: 4.months.ago, frequency: 'monthly', responsibilities_accomplishments_honors: 'Second example school activity accomplishment', total_hours: 10)
       application.external_scholarships << ExternalScholarship.new(name: 'Example grant 1', amount: 200)
       application.external_scholarships << ExternalScholarship.new(name: 'Example grant 2', amount: 500)
 
