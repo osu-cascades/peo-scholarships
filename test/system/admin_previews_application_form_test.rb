@@ -5,11 +5,9 @@ class AdminPreviewsApplicationFormTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   test 'admin previews the application form for a scholarship' do
-    skip
     sign_in(users(:admin))
     scholarship = scholarships(:first)
-    visit admin_scholarship_path(scholarship)
-    click_on 'Preview'
+    visit new_admin_scholarship_application_path(scholarship)
     assert_text 'This is a preview'
   end
 end
