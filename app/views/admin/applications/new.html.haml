@@ -98,7 +98,7 @@
       = f.label :high_school_graduation_year, 'Year Graduated'
       = f.text_field :high_school_graduation_year, class: 'form-control'
 
-   %h3.mt-4 Income and Expenses
+  %h3.mt-4 Income and Expenses
   %h4 Monthly Income
   .row
     .col-5.form-group
@@ -111,7 +111,7 @@
     .col-5.form-group
       = f.fields_for :external_scholarships, @application.external_scholarships do |external_scholarship_form|
         = render 'external_scholarship_fields', f: external_scholarship_form
-      = link_to_add_fields "Add Scholarship/Grant", f, :external_scholarships
+      = link_to "Add Scholarship/Grant", '#'
 
 
   %h4 Educational Expenses per Term
