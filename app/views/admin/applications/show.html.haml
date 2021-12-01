@@ -4,8 +4,8 @@
   = link_to 'Print',admin_scholarship_application_path(@scholarship, @application), :onclick => 'window.print();return false;', class: 'btn btn-outline-primary'
 %h3= @application
 
-%h3 Personal Information
-%dl.row.mt-5
+%h3.mt-5 Personal Information
+%dl.row
   %dt.col-sm-3 Full Name
   %dd.col-sm-9= @application.name
   %dt.col-sm-3 Date of Birth
@@ -25,8 +25,8 @@
   %dt.col-sm-3 Email
   %dd.col-sm-9= @application.email
 
-%h3 Institution to be Attended
-%dl.row.mt-5
+%h3.mt-5 Institution to be Attended
+%dl.row
   %dt.col-sm-3 Institution
   %dd.col-sm-9= @application.institution_name
   %dt.col-sm-3 Academic Year
@@ -46,8 +46,8 @@
   %dt.col-sm-3 Career Plan
   %dd.col-sm-9= @application.career_plan
 
-%h3 Educational History
-%dl.row.mt-5
+%h3.mt-5 Educational History
+%dl.row
   %dt.col-sm-3 Previous College/Institution
   %dd.col-sm-9
     %dl.row
@@ -74,24 +74,23 @@
       %dt.col-sm-3 Year Graduated
       %dd.col-sm-9= @application.high_school_graduation_year
 
-%h3 Income
-%dl.row.mt-5
+%h3.mt-5 Income
+%dl.row
   %dt.col-sm-3 Total Household Monthly Income
   %dd.col-sm-9= @application.total_monthly_income
   %dt.col-sm-3 Total Scholarship Money Monthly
   %dd.col-sm-9= @application.total_scholarship_monthly
   %dt.col-sm-3 Scholarships/Grant:
-  - @application.external_scholarships.each do |ex_scholarship|
-    %dl.row.mt5
-      %dt.col-sm-3 Scholarship/Grant Name:
-      %dd.col-sm-9= ex_scholarship.name
-      %dt.col-sm-3 Amount per Month:
-      %dd.col-sm-9= ex_scholarship.amount
+  %dd.col-sm-9
+    - @application.external_scholarships.each do |ex_scholarship|
+      %dl.row.mt5
+        %dt.col-sm-3 Scholarship/Grant Name:
+        %dd.col-sm-9= ex_scholarship.name
+        %dt.col-sm-3 Amount per Month:
+        %dd.col-sm-9= ex_scholarship.amount
 
-
-
-%h3 Educational Expenses
-%dl.row.mt-5
+%h3.mt-5 Educational Expenses
+%dl.row
   %dt.col-sm-3 Tuiton per Semester
   %dd.col-sm-9= @application.tuition_cost
   %dt.col-sm-3 Books/Educational supplies
@@ -103,8 +102,8 @@
   %dt.col-sm-3 Other
   %dd.col-sm-9= @application.other
 
-%h3 Non-Educational Expenses
-%dl.row.mt-5
+%h3.mt-5 Non-Educational Expenses
+%dl.row
   %dt.col-sm-3 Estimated Monthly Expenses
   %dd.col-sm-9= @application.monthly_expenses
   %dt.col-sm-3 Total in Savings Account
@@ -116,7 +115,7 @@
   %dt.col-sm-3 Total Balance of Other Indebtedness
   %dd.col-sm-9= @application.other_debt
 
-%h3 School Activities
+%h3.mt-5 School Activities
 - @application.experiences.each do |experience|
   - if experience.kind == 'school_activity'
     %dt.col-sm3 Activity Name:
@@ -135,7 +134,7 @@
     %dd.col-sm-9= experience.total_hours
     
 
-%h3 Employment History
+%h3.mt-5 Employment History
 - @application.experiences.each do |experience|
   - if experience.kind == 'employment'
     %dt.col-sm3 Place of Employment:
@@ -153,7 +152,7 @@
     %dt.col-sm3 Total Hours:
     %dd.col-sm-9= experience.total_hours
 
-%h3 Volunteer Experience
+%h3.mt-5 Volunteer Experience
 - @application.experiences.each do |experience|
   - if experience.kind == 'volunteer_experience'
     %dt.col-sm3 Place where Volunteered:
@@ -171,9 +170,9 @@
     %dt.col-sm3 Total Hours:
     %dd.col-sm-9= experience.total_hours    
 
-%h3 Awards
+%h3.mt-5 Awards
 - @application.awards.each do |award|
-  %dl.row.mt-5
+  %dl.row
     %dt.col-sm-3 Name:
     %dd.col-sm-9= award.name
     %dt.col-sm-3 Awarded At:
@@ -181,21 +180,21 @@
     %dt.col-sm-3 Description:
     %dd.col-sm-9= award.description
 
-%h3 Essay Questions
+%h3.mt-5 Essay Questions
 - @application.answers.each do |answer|
-  %dl.row.mt-5
+  %dl.row
     %dt.col-sm-3
       = answer.question.prompt
     %dd.col-sm-9
       = answer.body
 
-%h3 Recommendation Letter
+%h3.mt-5 Recommendation Letter
 - if @application.recommendation_letter.attached?
   = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
 - else
   %p No recommendation letter has been provided.
 
-%h3 Transcripts
+%h3.mt-5 Transcripts
 - if @application.transcripts.attached?
   - @application.transcripts.each do |transcript|
     .row
