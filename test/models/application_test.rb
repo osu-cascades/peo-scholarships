@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ApplicationTest < ActiveSupport::TestCase
 
+  RECOMMENDATION_LETTER_FIXTURE_FILE_PATH = 'test/fixtures/files/example_recommendation_letter.pdf'
+
   def valid_application_for(applicant, scholarship)
     Application.new(
       name: 'Fake',
@@ -299,6 +301,21 @@ class ApplicationTest < ActiveSupport::TestCase
     application = applications(:second_unsubmitted)
     application.answers[0].body = 'one two three four five six'
     assert application.exceeds_word_limits?
+  end
+
+  test 'has_recommendation_letter? when one is attached' do
+    application = applications(:first_submitted)
+    application.recommendation_letter.attach(
+      io: File.open(RECOMMENDATION_LETTER_FIXTURE_FILE_PATH),
+      filename: 'example_recommendation_letter.pdf',
+      content_type: 'application/pdf'
+    )
+    assert application.has_recommendation_letter?
+  end
+
+  test 'does not has_recommendation_letter? when one is not attached' do
+    application_without_letter = applications(:first_submitted)
+    refute application_without_letter.has_recommendation_letter?
   end
 
 end

@@ -89,6 +89,10 @@ class Application < ApplicationRecord
     false
   end
 
+  def has_recommendation_letter?
+    recommendation_letter.attached?
+  end
+
   private
 
   def modifiable_by? current_user
