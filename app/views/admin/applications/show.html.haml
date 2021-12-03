@@ -148,8 +148,7 @@
 
 %h3.mt-5 Volunteer Experience
 - @application.experiences.volunteer_experience.each do |experience|
-  - if experience.kind == 'volunteer_experience'
-    %h5.mt-3= experience.title
+  %h5.mt-3= experience.title
   %p= experience.responsibilities_accomplishments_honors
   %dl.row
     %dt.col-sm-2 Start Date
