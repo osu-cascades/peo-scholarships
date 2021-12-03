@@ -178,7 +178,7 @@
   - @application.experiences.each do |experience|
     - if experience.kind  == 'volunteer_experience'
       = f.fields_for :experience, experience do |experience_form|
-        = render 'employment_fields', f: experience_form
+        = render 'volunteer_experience_fields', f: experience_form
   = link_to_add_experiences "Add Volunteer Experience", f, :experiences, :volunteer_experience
 
   %h3.mt-4 Awards and Honors
