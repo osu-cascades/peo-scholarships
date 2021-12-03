@@ -1,10 +1,11 @@
 %h1 Administration
 %h2= @scholarship
+.float-right
+  = link_to 'Download as Excel', admin_scholarship_applications_path(format: 'xlsx'), class: 'btn btn-outline-primary'
 %h3 Applications
 - if @applications.empty?
   %h4.text-center There are no submitted applications yet.
 - else
-  = link_to 'Download as Excel', admin_scholarship_applications_path(format: "xlsx")
   %table.table.table-hover
     %thead
       %tr

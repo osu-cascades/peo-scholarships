@@ -47,11 +47,13 @@
             = link_to 'Edit', edit_admin_scholarship_question_path(@scholarship, question), class: 'btn btn-light btn-sm mr-4'
             = link_to 'Delete', admin_scholarship_question_path(@scholarship, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
 
-%h3.mt-5 Applications
+.mt-5
+  .float-right
+    = link_to 'Download as Excel', admin_scholarship_applications_path(@scholarship, format: 'xlsx'), class: 'btn btn-outline-primary'
+  %h3= link_to 'Applications', admin_scholarship_applications_path(@scholarship)
 - if @scholarship.applications.submitted.empty?
   %h4.text-center There are no submitted applications yet.
 - else
-  = link_to 'Download as Excel', admin_scholarship_applications_path(format: "xlsx", :scholarship_id => @scholarship.id)
   %table.table.table-hover
     %thead
       %tr
