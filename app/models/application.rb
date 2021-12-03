@@ -53,7 +53,7 @@ class Application < ApplicationRecord
   validates :major, presence: true, allow_blank: false
   validates :completion_date, presence: true, allow_blank: false
   validates :academic_standing, presence: true, allow_blank: false
-  validates :high_school_gpa, presence: true, allow_blank: true
+  validates :high_school_gpa, presence: true, allow_blank: false
   validates :career_plan, presence: true, allow_blank: false
 
   validate :correct_recommendation_letter_mime_type
