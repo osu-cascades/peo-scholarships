@@ -24,7 +24,8 @@ wb.add_worksheet(name: 'Applications') do |sheet|
       application.completion_date,
       application.high_school_gpa,
       application.post_high_school_gpa,
-      application.has_recommendation_letter? ? 'Yes' : 'No'
+      application.has_recommendation_letter? ? 'Yes' : 'No',
+      application.rank
     ]
   end
   rows.each { |row| sheet.add_row(row) }

@@ -56,6 +56,8 @@ class Application < ApplicationRecord
   validates :high_school_gpa, presence: true, allow_blank: false
   validates :career_plan, presence: true, allow_blank: false
 
+  validates :rank, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+
   validate :correct_recommendation_letter_mime_type
   validate :correct_transcript_mime_type
 

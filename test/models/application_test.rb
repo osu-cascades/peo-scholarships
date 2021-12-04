@@ -71,7 +71,7 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :transcripts)
   end
 
-  test 'personal information attributes' do
+  test 'attributes' do
     application = Application.new
     assert_respond_to(application, :name)
     assert_respond_to(application, :email)
@@ -112,6 +112,7 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(application, :school_loan_debt)
     assert_respond_to(application, :other_debt)
 
+    assert_respond_to(application, :rank)
     assert_respond_to(application, :submitted)
   end
 
@@ -174,6 +175,14 @@ class ApplicationTest < ActiveSupport::TestCase
     refute application.valid?
     application.ssn = '4444'
     assert application.valid?
+  end
+
+  test 'is invalid if the rank is less than 1' do
+    application = applications(:first_submitted)
+    application.rank = 1
+    assert application.valid?
+    application.rank = 0
+    refute application.valid?
   end
 
   test 'only one application per scholarship per applicant' do

@@ -17,6 +17,7 @@
         %th{scope: 'col'} H.S. GPA
         %th{scope: 'col'} Post-H.S. GPA
         %th{scope: 'col'} Status
+        %th{scope: 'col'} Rank
         %th{scope: 'col'} Last Update
     %tbody
       - @applications.each do |application|
@@ -29,4 +30,5 @@
           %td= application.high_school_gpa
           %td= application.post_high_school_gpa
           %td= application.submitted? ? 'Complete' : 'Incomplete'
+          %td= application.rank
           %td= l(application.updated_at, format: :m_d_y)
