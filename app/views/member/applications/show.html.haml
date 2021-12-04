@@ -1,0 +1,192 @@
+%h1 Committee Member
+%h2= @scholarship
+.float-right
+  = link_to 'Print', '#', onclick: 'window.print();return false;', class: 'btn btn-outline-primary'
+%h3= @application
+
+%h3.mt-5 Personal Information
+%dl.row
+  %dt.col-sm-3 Full Name
+  %dd.col-sm-9= @application.name
+  %dt.col-sm-3 Date of Birth
+  %dd.col-sm-9= @application.dob.to_s(:long)
+  %dt.col-sm-3 Last four of SSN
+  %dd.col-sm-9= @application.ssn
+  %dt.col-sm-3 Marital Status
+  %dd.col-sm-9= @application.marital_status
+  %dt.col-sm-3 Ages of dependent children
+  %dd.col-sm-9= @application.ages_of_children
+  %dt.col-sm-3 Student ID
+  %dd.col-sm-9= @application.student_id
+  %dt.col-sm-3 Address
+  %dd.col-sm-9= @application.address
+  %dt.col-sm-3 Phone number
+  %dd.col-sm-9= @application.phone_number
+  %dt.col-sm-3 Email
+  %dd.col-sm-9= @application.email
+
+%h3.mt-5 Institution to be Attended
+%dl.row
+  %dt.col-sm-3 Institution
+  %dd.col-sm-9= @application.institution_name
+  %dt.col-sm-3 Academic Year
+  %dd.col-sm-9= @application.academic_year
+  %dt.col-sm-3 Address
+  %dd.col-sm-9= @application.institution_address
+  %dt.col-sm-3 Major/focus
+  %dd.col-sm-9= @application.major
+  %dt.col-sm-3 Projected Date of Completion
+  %dd.col-sm-9= @application.completion_date.to_s(:long)
+  %dt.col-sm-3 Academic Standing
+  %dd.col-sm-9= @application.academic_standing
+  %dt.col-sm-3 Post High School GPA
+  %dd.col-sm-9= @application.post_high_school_gpa.presence || '(not specified)'
+  %dt.col-sm-3 High School GPA
+  %dd.col-sm-9= @application.high_school_gpa
+  %dt.col-sm-3 Career Plan
+  %dd.col-sm-9= @application.career_plan
+
+%h3.mt-5 Educational History
+%dl.row
+  %dt.col-sm-3 Previous College/Institution
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.previous_college1_name
+      %dt.col-sm-3 Years
+      %dd.col-sm-9= @application.previous_college1_years
+      %dt.col-sm-3 Degree Earned
+      %dd.col-sm-9= @application.previous_college1_degree
+  %dt.col-sm-3 Previous College/Institution
+  %dd.col-sm-9
+    %dl.row
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.previous_college2_name
+      %dt.col-sm-3 Years
+      %dd.col-sm-9= @application.previous_college2_years
+      %dt.col-sm-3 Degree Earned
+      %dd.col-sm-9= @application.previous_college2_degree
+  %dt.col-sm-3 High School
+  %dd.col-sm-9
+    %dl.row.mb-0
+      %dt.col-sm-3 Name
+      %dd.col-sm-9= @application.high_school_name
+      %dt.col-sm-3 Year Graduated
+      %dd.col-sm-9= @application.high_school_graduation_year
+
+%h3.mt-5 Income
+%dl.row.mb-0
+  %dt.col-sm-4 Total Household Monthly Income
+  %dd.col-sm-8= @application.total_monthly_income
+  %dt.col-sm-4 Total Scholarship Money Monthly
+  %dd.col-sm-8= @application.total_scholarship_monthly
+%h5.m-0 Scholarships/Grants
+%dl.row
+  - @application.external_scholarships.each do |ex_scholarship|
+    %dt.col-sm-4 Scholarship/Grant Name
+    %dd.col-sm-8= ex_scholarship.name
+    %dt.col-sm-4 Amount per Month
+    %dd.col-sm-8= ex_scholarship.amount
+
+%h3.mt-5 Educational Expenses
+%dl.row
+  %dt.col-sm-4 Tuiton per Semester
+  %dd.col-sm-8= @application.tuition_cost
+  %dt.col-sm-4 Books/Educational supplies
+  %dd.col-sm-8= @application.supplies
+  %dt.col-sm-4 Childcare related to education
+  %dd.col-sm-8= @application.childcare
+  %dt.col-sm-4 Transportation (gas, parking, bus fare)
+  %dd.col-sm-8= @application.transportation
+  %dt.col-sm-4 Other
+  %dd.col-sm-8= @application.other
+
+%h3.mt-5 Non-Educational Expenses
+%dl.row
+  %dt.col-sm-4 Estimated Monthly Expenses
+  %dd.col-sm-8= @application.monthly_expenses
+  %dt.col-sm-4 Total in Savings Account
+  %dd.col-sm-8= @application.savings
+  %dt.col-sm-4 Total in Investments
+  %dd.col-sm-8= @application.investments
+  %dt.col-sm-4 Current Educational Loan Debt
+  %dd.col-sm-8= @application.school_loan_debt
+  %dt.col-sm-4 Total Balance of Other Indebtedness
+  %dd.col-sm-8= @application.other_debt
+
+%h3.mt-5 School Activities
+- @application.experiences.school_activity.each do |experience|
+  %h5.mt-3= experience.title
+  %p= experience.responsibilities_accomplishments_honors
+  %dl.row
+    %dt.col-sm-2 Start Date
+    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dt.col-sm-2 End Date
+    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dt.col-sm-2 Frequency
+    %dd.col-sm-10= experience.frequency
+    %dt.col-sm-2 Hours per Week
+    %dd.col-sm-10= experience.hours_per_week.presence || '(unspecified)'
+    %dt.col-sm-2 Total Hours
+    %dd.col-sm-10= experience.total_hours
+    
+%h3.mt-5 Employment History
+- @application.experiences.employment.each do |experience|
+  %h5.mt-3= experience.title
+  %p= experience.responsibilities_accomplishments_honors
+  %dl.row
+    %dt.col-sm-2 Start Date
+    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dt.col-sm-2 End Date
+    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dt.col-sm-2 Frequency
+    %dd.col-sm-10= experience.frequency
+    %dt.col-sm-2 Hours per Week
+    %dd.col-sm-10= experience.hours_per_week.presence || '(unspecified)'
+    %dt.col-sm-2 Total Hours
+    %dd.col-sm-10= experience.total_hours
+
+%h3.mt-5 Volunteer Experience
+- @application.experiences.volunteer_experience.each do |experience|
+  %h5.mt-3= experience.title
+  %p= experience.responsibilities_accomplishments_honors
+  %dl.row
+    %dt.col-sm-2 Start Date
+    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dt.col-sm-2 End Date
+    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dt.col-sm-2 Frequency
+    %dd.col-sm-10= experience.frequency
+    %dt.col-sm-2 Hours per Week
+    %dd.col-sm-10= experience.hours_per_week.presence || '(unspecified)'
+    %dt.col-sm-2 Total Hours
+    %dd.col-sm-10= experience.total_hours
+
+%h3.mt-5 Awards
+- @application.awards.each do |award|
+  %h5= award.name
+  %p.m-0= award.description
+  %p.m-0.mb-4= award.date.to_s(:long)
+
+%h3.mt-5 Essay Questions
+- @application.answers.each do |answer|
+  %dl.row
+    %dt.col-sm-3
+      = answer.question.prompt
+    %dd.col-sm-9
+      = answer.body
+
+%h3.mt-5 Recommendation Letter
+- if @application.recommendation_letter.attached?
+  = link_to @application.recommendation_letter.filename, rails_blob_path(@application.recommendation_letter, disposition: 'attachment')
+- else
+  %p No recommendation letter has been provided.
+
+%h3.mt-5 Transcripts
+- if @application.transcripts.attached?
+  - @application.transcripts.each do |transcript|
+    .row
+      .col
+        = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
+- else
+  %p The applicant has not provided any academic transcripts.

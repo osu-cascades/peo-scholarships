@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url, alert: 'Access denied.') unless current_user.admin?
     end
 
+    def restrict_unless_member
+      redirect_to(root_url, alert: 'Access denied.') unless current_user.member? || current_user.admin?
+    end
+
     def after_sign_in_path_for(resource)
       current_user.applicant? ? scholarships_path : admin_scholarships_path
     end

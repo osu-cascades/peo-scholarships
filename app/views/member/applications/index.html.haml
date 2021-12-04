@@ -1,0 +1,34 @@
+%h1 Committee Member
+%h2= @scholarship
+.float-right
+  = link_to 'Download as Excel', member_scholarship_applications_path(format: 'xlsx'), class: 'btn btn-outline-primary'
+%h3 Applications
+- if @applications.empty?
+  %h4.text-center There are no submitted applications yet.
+- else
+  %table.table.table-hover.table-condensed.table-sm#applicant_table
+    %thead
+      %tr
+        %th{scope: 'col'} Applicant
+        %th{scope: 'col'} Academic Year
+        %th{scope: 'col'} Institution Name
+        %th{scope: 'col'} Area of Study
+        %th{scope: 'col'} Completion Date
+        %th{scope: 'col'} H.S. GPA
+        %th{scope: 'col'} Post-H.S. GPA
+        %th{scope: 'col'} Status
+        %th{scope: 'col'} Rank
+        %th{scope: 'col'} Last Update
+    %tbody
+      - @applications.each do |application|
+        %tr
+          %th{scope: 'row'}= link_to application.applicant, member_scholarship_application_path(@scholarship, application)
+          %td= application.academic_year
+          %td= application.institution_name
+          %td= application.major
+          %td= l(application.completion_date, format: :completion_date_short)
+          %td= application.high_school_gpa
+          %td= application.post_high_school_gpa
+          %td= application.submitted? ? 'Complete' : 'Incomplete'
+          %td= application.rank
+          %td= l(application.updated_at, format: :m_d_y)

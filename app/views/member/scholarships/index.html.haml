@@ -1,0 +1,22 @@
+%h1 Committee Member
+
+%h2 Scholarships
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: 'col'} Name
+      %th{scope: 'col'} Status
+      %th{scope: 'col'} Application Deadline
+      %th{scope: 'col'} Number of Applications
+  %tbody
+    - @scholarships.each do |scholarship|
+      %tr[scholarship]
+        %th{scope: 'row'}
+          = scholarship
+          .small.text-muted= pluralize(scholarship.questions.count, 'essay question')
+        %td= scholarship.status
+        %td= scholarship.application_deadline.to_s(:long)
+        %td
+          = link_to pluralize(scholarship.applications.submitted.count, 'application'), member_scholarship_applications_path(scholarship)
+          %p.small.text-muted #{scholarship.applications.incomplete.count} incomplete

@@ -30,4 +30,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :member do
+    resources :scholarships, only: :index do
+      resources :applications, only: [:index, :show, :update]
+    end
+  end
+
 end
