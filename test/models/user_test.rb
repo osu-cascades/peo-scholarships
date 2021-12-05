@@ -12,6 +12,11 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to(User.new, :applications)
   end
 
+  test 'has many notes' do
+    assert_respond_to(User.new, :notes)
+  end
+
+
   test 'has a required first name' do
     u = new_user
     assert u.valid?

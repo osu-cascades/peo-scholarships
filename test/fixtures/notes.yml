@@ -1,0 +1,9 @@
+first:
+  body: First fake note body
+  application: first_submitted
+  author: admin
+
+second:
+  body: Second fake note body
+  application: first_submitted
+  author: admin

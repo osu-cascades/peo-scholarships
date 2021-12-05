@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :rememberable, :validatable
 
   has_many :applications, dependent: :restrict_with_error
+  has_many :notes, foreign_key: 'author_id', dependent: :restrict_with_error
 
   enum role: [:applicant, :admin, :member, :recommender]
   attribute :role, :integer, default: :applicant

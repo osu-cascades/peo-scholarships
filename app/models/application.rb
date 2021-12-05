@@ -19,6 +19,9 @@ class Application < ApplicationRecord
   accepts_nested_attributes_for :experiences, allow_destroy: true
   has_many :external_scholarships, dependent: :destroy
   accepts_nested_attributes_for :external_scholarships, allow_destroy: true
+
+  has_many :notes, dependent: :destroy
+
   has_one_attached :recommendation_letter
   has_many_attached :transcripts
 

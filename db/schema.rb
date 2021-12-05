@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_060955) do
+ActiveRecord::Schema.define(version: 2021_12_04_235325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,16 @@ ActiveRecord::Schema.define(version: 2021_12_04_060955) do
     t.index ["application_id"], name: "index_external_scholarships_on_application_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "application_id", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_notes_on_application_id"
+    t.index ["author_id"], name: "index_notes_on_author_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "prompt", null: false
     t.bigint "scholarship_id", null: false
@@ -174,5 +184,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_060955) do
   add_foreign_key "awards", "applications"
   add_foreign_key "experiences", "applications"
   add_foreign_key "external_scholarships", "applications"
+  add_foreign_key "notes", "applications"
+  add_foreign_key "notes", "users", column: "author_id"
   add_foreign_key "questions", "scholarships", on_delete: :cascade
 end

@@ -63,6 +63,10 @@ class ApplicationTest < ActiveSupport::TestCase
     assert_respond_to(Application.new, :external_scholarships)
   end
 
+  test 'has many notes' do
+    assert_respond_to(Application.new, :notes)
+  end
+
   test 'has a recommendation letter' do
     assert_respond_to(Application.new, :recommendation_letter)
   end
