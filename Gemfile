@@ -1,47 +1,50 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.5'
+ruby "3.0.3"
 
-gem 'airbrake'
-gem 'aws-sdk-s3', require: false
-gem 'bootsnap', '>= 1.9.1', require: false
-gem 'bootstrap', '~> 4.6'
-gem 'caxlsx', '~> 3.1'
-gem 'caxlsx_rails', '~> 0.6.2'
-gem 'coffee-rails', '~> 5.0.0'
-gem 'devise'
-gem 'haml'
-gem 'haml-rails'
-gem 'jbuilder', '~> 2.11.2'
-gem 'jquery-rails'
-gem 'pg'
-gem 'puma', '~> 5.5.2'
-gem 'rails', '~> 5.2.6'
-gem 'recaptcha', require: 'recaptcha/rails'
-gem 'sassc-rails', '~> 2.1.2'
-gem 'tzinfo-data'
-gem 'turbolinks', '~> 5.2.1'
-gem 'uglifier', '>= 4.2.0'
+gem "airbrake"
+gem "aws-sdk-s3", require: false
+# gem "bcrypt", "~> 3.1.7"
+gem "bootsnap", require: false
+gem "bootstrap", "~> 4.6"
+gem "caxlsx", "~> 3.1"
+gem "caxlsx_rails", "~> 0.6.2"
+gem "devise"
+gem "haml"
+gem "haml-rails"
+# gem "image_processing", "~> 1.2"
+gem "importmap-rails"
+gem "jbuilder"
+gem "jquery-rails"
+# gem "kredis"
+gem "pg"
+gem "puma", "~> 5.0"
+gem "rails", "~> 7.0.1"
+# gem "redis", "~> 4.0"
+gem "recaptcha", require: "recaptcha/rails"
+gem "sassc-rails"
+gem "sprockets-rails"
+gem "stimulus-rails"
+gem "turbo-rails"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "dotenv-rails"
 end
 
 group :development do
-  gem 'web-console', '>= 3.7.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.1'
-  gem 'guard'
-  gem 'guard-minitest'
+  gem "web-console"
+  gem "rack-mini-profiler"
+  gem "guard"
+  gem "guard-minitest"
+  # gem "spring"
 end
 
 group :test do
-  gem 'capybara', '>= 3.36.0'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
-
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
