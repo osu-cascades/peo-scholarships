@@ -5,8 +5,7 @@ class User < ApplicationRecord
   has_many :applications, dependent: :restrict_with_error
   has_many :notes, foreign_key: 'author_id', dependent: :restrict_with_error
 
-  enum role: [:applicant, :admin, :member, :recommender]
-  attribute :role, :integer, default: :applicant
+  enum :role, [:applicant, :admin, :member, :recommender], default: :applicant
 
   validates_presence_of :first_name
   validates_presence_of :last_name
