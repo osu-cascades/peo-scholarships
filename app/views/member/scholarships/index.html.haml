@@ -16,7 +16,7 @@
           = scholarship
           .small.text-muted= pluralize(scholarship.questions.count, 'essay question')
         %td= scholarship.status
-        %td= scholarship.application_deadline.to_s(:long)
+        %td= scholarship.application_deadline.to_formatted_s(:long)
         %td
           = link_to pluralize(scholarship.applications.submitted.count, 'application'), member_scholarship_applications_path(scholarship)
           %p.small.text-muted #{scholarship.applications.incomplete.count} incomplete

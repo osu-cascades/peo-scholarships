@@ -7,7 +7,7 @@
   - @scholarships.each do |scholarship|
     %li.mb-5[scholarship]
       %h2= scholarship.name
-      %p Application deadline: #{scholarship.application_deadline.to_s(:long)}
+      %p Application deadline: #{scholarship.application_deadline.to_formatted_s(:long)}
       %p
         - if current_user.started_application_for?(scholarship)
           = link_to 'View Application', scholarship_application_path(scholarship, current_user.application_for(scholarship)), class: 'btn btn-xs btn-primary'

@@ -9,7 +9,7 @@
   %dt.col-sm-3 Full Name
   %dd.col-sm-9= @application.name
   %dt.col-sm-3 Date of Birth
-  %dd.col-sm-9= @application.dob.to_s(:long)
+  %dd.col-sm-9= @application.dob.to_formatted_s(:long)
   %dt.col-sm-3 Last four of SSN
   %dd.col-sm-9= @application.ssn
   %dt.col-sm-3 Marital Status
@@ -36,7 +36,7 @@
   %dt.col-sm-3 Major/focus
   %dd.col-sm-9= @application.major
   %dt.col-sm-3 Projected Date of Completion
-  %dd.col-sm-9= @application.completion_date.to_s(:long)
+  %dd.col-sm-9= @application.completion_date.to_formatted_s(:long)
   %dt.col-sm-3 Academic Standing
   %dd.col-sm-9= @application.academic_standing
   %dt.col-sm-3 Post High School GPA
@@ -120,9 +120,9 @@
   %p= experience.responsibilities_accomplishments_honors
   %dl.row
     %dt.col-sm-2 Start Date
-    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dd.col-sm-10= experience.started_at&.to_formatted_s(:long)
     %dt.col-sm-2 End Date
-    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dd.col-sm-10= experience.ended_at&.to_formatted_s(:long).presence || '(unspecified)'
     %dt.col-sm-2 Frequency
     %dd.col-sm-10= experience.frequency
     %dt.col-sm-2 Hours per Week
@@ -136,9 +136,9 @@
   %p= experience.responsibilities_accomplishments_honors
   %dl.row
     %dt.col-sm-2 Start Date
-    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dd.col-sm-10= experience.started_at&.to_formatted_s(:long)
     %dt.col-sm-2 End Date
-    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dd.col-sm-10= experience.ended_at&.to_formatted_s(:long).presence || '(unspecified)'
     %dt.col-sm-2 Frequency
     %dd.col-sm-10= experience.frequency
     %dt.col-sm-2 Hours per Week
@@ -152,9 +152,9 @@
   %p= experience.responsibilities_accomplishments_honors
   %dl.row
     %dt.col-sm-2 Start Date
-    %dd.col-sm-10= experience.started_at&.to_s(:long)
+    %dd.col-sm-10= experience.started_at&.to_formatted_s(:long)
     %dt.col-sm-2 End Date
-    %dd.col-sm-10= experience.ended_at&.to_s(:long).presence || '(unspecified)'
+    %dd.col-sm-10= experience.ended_at&.to_formatted_s(:long).presence || '(unspecified)'
     %dt.col-sm-2 Frequency
     %dd.col-sm-10= experience.frequency
     %dt.col-sm-2 Hours per Week
@@ -166,7 +166,7 @@
 - @application.awards.each do |award|
   %h5= award.name
   %p.m-0= award.description
-  %p.m-0.mb-4= award.date.to_s(:long)
+  %p.m-0.mb-4= award.date.to_formatted_s(:long)
 
 %h3.mt-5 Essay Questions
 - @application.answers.each do |answer|

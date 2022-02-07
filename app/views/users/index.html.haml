@@ -21,7 +21,7 @@
         %td= user.email
         %td= user.role
         %td= user.status
-        %td= user.last_sign_in_at&.localtime&.to_s(:short)
+        %td= user.last_sign_in_at&.localtime&.to_formatted_s(:short)
         %td
           = link_to 'Edit', edit_user_path(user), class: 'btn btn-light btn-sm mr-4'
           - unless current_user == user

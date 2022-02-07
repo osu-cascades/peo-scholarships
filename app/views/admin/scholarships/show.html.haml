@@ -3,7 +3,7 @@
 .row
   .col
     %h2= @scholarship
-    %h3 Application Deadline: #{@scholarship.application_deadline.to_s(:long)}
+    %h3 Application Deadline: #{@scholarship.application_deadline.to_formatted_s(:long)}
 
     - if @scholarship.published?
       .col.text-right
