@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.3"
+ruby "3.1.1"
 
 gem "airbrake"
 gem "aws-sdk-s3", require: false
@@ -20,7 +20,7 @@ gem "jquery-rails"
 # gem "kredis"
 gem "pg"
 gem "puma", "~> 5.0"
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.0.2.2"
 # gem "redis", "~> 4.0"
 gem "recaptcha", require: "recaptcha/rails"
 gem "sassc-rails"
