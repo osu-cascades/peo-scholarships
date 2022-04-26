@@ -1,6 +1,6 @@
 .container-auth.text-center
   %h1.h3.font-weight-normal Register to apply
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-auth text-left'}) do |f|
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-auth text-left', data: { turbo: false }}) do |f|
     = render "devise/shared/error_messages", resource: resource
     .form-row.mb-4
       .col
