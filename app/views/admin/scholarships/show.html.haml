@@ -12,7 +12,7 @@
 
       %p.mt-3
         This scholarship is published and visible to applicants.
-        = link_to 'hide', unpublish_admin_scholarship_path(@scholarship), method: :patch
+        = link_to 'hide', unpublish_admin_scholarship_path(@scholarship), data: { 'turbo-method': :patch }
 
     - else
       .col.text-right
@@ -22,7 +22,7 @@
 
       %p.mt-3
         This scholarship is not visible to applicants.
-        = link_to 'publish', publish_admin_scholarship_path(@scholarship), method: :patch
+        = link_to 'publish', publish_admin_scholarship_path(@scholarship), data: { 'turbo-method': :patch }
 
 .row.mt-5.mb-1
   .col

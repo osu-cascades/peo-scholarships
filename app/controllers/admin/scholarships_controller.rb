@@ -41,18 +41,18 @@ class Admin::ScholarshipsController < Admin::AdminController
   def publish
     @scholarship = Scholarship.find(params[:id])
     if @scholarship.update(published: true)
-      redirect_to [:admin, @scholarship], notice: 'Scholarship published, and is now visible to applicants.'
+      redirect_to [:admin, @scholarship], status: :see_other, notice: 'Scholarship published, and is now visible to applicants.'
     else
-      redirect_to [:admin, @scholarship], alert: 'Could not publish this scholarship.'
+      redirect_to [:admin, @scholarship], status: :see_other, alert: 'Could not publish this scholarship.'
     end
   end
 
   def unpublish
     @scholarship = Scholarship.find(params[:id])
     if @scholarship.update(published: false)
-      redirect_to [:admin, @scholarship], notice: 'Scholarship unpublished, and is not visible to applicants.'
+      redirect_to [:admin, @scholarship], status: :see_other, notice: 'Scholarship unpublished, and is not visible to applicants.'
     else
-      redirect_to [:admin, @scholarship], alert: 'Could not unpublish this scholarship.'
+      redirect_to [:admin, @scholarship], status: :see_other, alert: 'Could not unpublish this scholarship.'
     end
   end
 
