@@ -81,16 +81,16 @@ class ApplicationsController < ApplicationController
     end
     if @application.save
       if @application.submitted
-        redirect_to scholarship_application_path(@scholarship, @application), notice: 'Application Submitted.'
+        redirect_to scholarship_application_path(@scholarship, @application), status: :see_other, notice: 'Application Submitted.'
       else
-        redirect_to scholarship_application_path(@scholarship, @application), alert: 'Could not submit application. Word limit in one or more questions exceeded.'
+        redirect_to scholarship_application_path(@scholarship, @application), status: :see_other, alert: 'Could not submit application. Word limit in one or more questions exceeded.'
       end
     else
       @options_for_marital_status = MaritalStatus::STATUSES.map { |s| [s, s] }
       render :edit
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem submitting this application.'
+    redirect_to scholarships_path, status: :see_other, alert: 'There was a problem submitting this application.'
   end
 
   # # See issue 43

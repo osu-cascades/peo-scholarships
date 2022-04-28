@@ -8,6 +8,6 @@ class TranscriptsController < ApplicationController
     redirect_to edit_scholarship_application_path(@scholarship, @application), status: :see_other
 
   rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem deleting this transcript.'
+    redirect_to scholarships_path, status: :see_other, alert: 'There was a problem deleting this transcript.'
   end
 end
