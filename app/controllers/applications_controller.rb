@@ -65,12 +65,12 @@ class ApplicationsController < ApplicationController
   def destroy
     application = current_user.applications.find(params[:id])
     if application.delete_application(current_user)
-      redirect_to scholarships_url, notice: 'Application deleted.'
+      redirect_to scholarships_url, status: :see_other, notice: 'Application deleted.'
     else
-      redirect_to scholarships_url, alert: 'Could not delete application.'
+      redirect_to scholarships_url, status: :see_other, alert: 'Could not delete application.'
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to scholarships_path, alert: 'There was a problem deleting this application.'
+    redirect_to scholarships_url, status: :see_other, alert: 'There was a problem deleting this application.'
   end
 
   def submit

@@ -25,4 +25,4 @@
         %td
           = link_to 'Edit', edit_user_path(user), class: 'btn btn-light btn-sm mr-4'
           - unless current_user == user
-            = link_to 'Delete', "/admin/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm'
+            = link_to 'Delete', "/admin/users/#{user.id}", method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn text-danger btn-sm'

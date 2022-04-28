@@ -44,12 +44,12 @@ class Admin::QuestionsController < Admin::AdminController
     if question.updatable?
       question.destroy
       if question.destroyed?
-        redirect_to [:admin, scholarship], notice: 'Question deleted.'
+        redirect_to [:admin, scholarship], status: :see_other, notice: 'Question deleted.'
       else
-        redirect_to [:admin, scholarship], alert: 'Applicants have answered this question, so it cannot be deleted.'
+        redirect_to [:admin, scholarship], status: :see_other, alert: 'Applicants have answered this question, so it cannot be deleted.'
       end
     else
-      redirect_to [:admin, scholarship], alert: 'Questions can not be deleted from published scholarships.'
+      redirect_to [:admin, scholarship], status: :see_other, alert: 'Questions can not be deleted from published scholarships.'
     end
   end
 

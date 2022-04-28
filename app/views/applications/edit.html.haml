@@ -215,7 +215,7 @@
         - @application.transcripts.each do |transcript|
           %p
             = link_to transcript.filename, rails_blob_path(transcript, disposition: 'attachment')
-            = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-outline-danger btn-sm'
+            = link_to 'Remove', scholarship_application_transcript_url(scholarship: @application.scholarship, application_id: @application.id, transcript_id: transcript.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-outline-danger btn-sm'
         = f.label :transcripts, 'Add another transcript:'
       - else
         = f.label :transcripts, 'Please upload a high school transcript (if in the past ten years) and any post-high school transcripts.'
