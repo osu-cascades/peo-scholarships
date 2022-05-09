@@ -4,7 +4,7 @@ class Admin::ApplicationsController < Admin::AdminController
 
   def index
     @scholarship = Scholarship.includes('applications').find(params[:scholarship_id])
-    @applications = @scholarship.applications.submitted
+    @applications = @scholarship.applications.includes('applicant').submitted.order('users.last_name')
 
     respond_to do |format|
       format.html
